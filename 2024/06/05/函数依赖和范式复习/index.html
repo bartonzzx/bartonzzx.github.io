@@ -5,8 +5,8 @@
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
-<script src="/js/color.global.min.js" ></script>
-<script src="/js/load-settings.js" ></script>
+<script src="../../../../js/color.global.min.js" ></script>
+<script src="../../../../js/load-settings.js" ></script>
 <head>
   <meta charset="utf-8">
   
@@ -17,8 +17,8 @@
   <title>函数依赖和范式复习 | 张志雄的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../../../../css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../../../../css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <meta name="description" content="函数依赖和范式[TOC] 函数依赖无损分解$$对于R &#x3D; (R_1, R_2)的情况\我们要求对于模式R上所有可能的关系r\r &#x3D; \Pi _{R_1}(r) \Join \Pi _{R_2}(r)\将R分解为R_1和R_2是无损分解\前提是F^+中至少有下列依赖项之一存在:\R_1 \cap R_2 \rightarrow R_1\R_1 \cap R_2 \rightarr">
 <meta property="og:type" content="article">
@@ -27,41 +27,41 @@
 <meta property="og:site_name" content="张志雄的博客">
 <meta property="og:description" content="函数依赖和范式[TOC] 函数依赖无损分解$$对于R &#x3D; (R_1, R_2)的情况\我们要求对于模式R上所有可能的关系r\r &#x3D; \Pi _{R_1}(r) \Join \Pi _{R_2}(r)\将R分解为R_1和R_2是无损分解\前提是F^+中至少有下列依赖项之一存在:\R_1 \cap R_2 \rightarrow R_1\R_1 \cap R_2 \rightarr">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602193901045.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170154740.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172759570.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170341255.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170433429.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170720889.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170759561.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170929424.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170939586.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170948162.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172435106.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602171907229.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172244223.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602173646861.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194516680.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194742463.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194334353.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194639139.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194841155.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202151367.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202230502.png">
-<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194913903.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602193901045.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170154740.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172759570.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170341255.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170433429.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170720889.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170759561.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170929424.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170939586.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170948162.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172435106.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602171907229.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172244223.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602173646861.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194516680.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194742463.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194334353.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194639139.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194841155.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202151367.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202230502.png">
+<meta property="og:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194913903.png">
 <meta property="article:published_time" content="2024-06-05T01:22:45.000Z">
 <meta property="article:modified_time" content="2024-06-15T03:44:18.860Z">
 <meta property="article:author" content="张志雄">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png">
+<meta name="twitter:image" content="https://bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png">
   
   
-    <link rel="shortcut icon" href="/avatar.png">
+    <link rel="shortcut icon" href="../../../../avatar.png">
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="../../../../css/style.css">
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -72,7 +72,7 @@
   
     
 <div id="banner" class="">
-  <img src="/bg.png" itemprop="image">
+  <img src="../../../../bg.png" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
@@ -81,17 +81,17 @@
     <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
-    <a href="/">
+    <a href="../../../../index.html">
       <div>张志雄的博客 </div>
     </a>
   </nav>
   <nav id="main-nav">
     
-      <a class="main-nav-link" href="/">主页</a>
+      <a class="main-nav-link" href="../../../../index.html">主页</a>
     
-      <a class="main-nav-link" href="/archives">博客列表</a>
+      <a class="main-nav-link" href="../../../../archives">博客列表</a>
     
-      <a class="main-nav-link" href="/intro">简介</a>
+      <a class="main-nav-link" href="../../../../intro">简介</a>
     
   </nav>
   <nav id="sub-nav">
@@ -108,11 +108,11 @@
 <div id="nav-dropdown" class="hidden">
   <div id="dropdown-link-list">
     
-      <a class="nav-dropdown-link" href="/">主页</a>
+      <a class="nav-dropdown-link" href="../../../../index.html">主页</a>
     
-      <a class="nav-dropdown-link" href="/archives">博客列表</a>
+      <a class="nav-dropdown-link" href="../../../../archives">博客列表</a>
     
-      <a class="nav-dropdown-link" href="/intro">简介</a>
+      <a class="nav-dropdown-link" href="../../../../intro">简介</a>
     
      
     </div>
@@ -132,7 +132,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=/avatar.png></image>
+        <image src=../../../../avatar.png></image>
       
       <div class="img-dim"></div>
     </div>
@@ -163,7 +163,7 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
+            <a class="category-link" href="categories/%E7%AC%94%E8%AE%B0/">
                 笔记
                 <div class="category-count">45</div>
             </a>
@@ -177,7 +177,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -216,7 +216,7 @@
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="../../../../categories/%E7%AC%94%E8%AE%B0/">笔记</a>
    
 </div>
   
@@ -226,33 +226,33 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <h1 id="函数依赖和范式"><a href="#函数依赖和范式" class="headerlink" title="函数依赖和范式"></a>函数依赖和范式</h1><p>[TOC]</p>
 <h2 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h2><h3 id="无损分解"><a href="#无损分解" class="headerlink" title="无损分解"></a>无损分解</h3><p>$$<br>对于R &#x3D; (R_1, R_2)的情况\<br>我们要求对于模式R上所有可能的关系r\<br>r &#x3D; \Pi _{R_1}(r) \Join \Pi _{R_2}(r)\<br>将R分解为R_1和R_2是无损分解\<br>前提是F^+中至少有下列依赖项之一存在:\<br>R_1 \cap R_2 \rightarrow R_1\<br>R_1 \cap R_2 \rightarrow R_2<br>$$</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png" alt="image-20240602165949781"></p>
-<h3 id="平凡依赖"><a href="#平凡依赖" class="headerlink" title="平凡依赖"></a>平凡依赖</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602193901045.png" alt="image-20240602193901045"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602165949781.png" alt="image-20240602165949781"></p>
+<h3 id="平凡依赖"><a href="#平凡依赖" class="headerlink" title="平凡依赖"></a>平凡依赖</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602193901045.png" alt="image-20240602193901045"></p>
 <h3 id="函数依赖保持"><a href="#函数依赖保持" class="headerlink" title="函数依赖保持"></a>函数依赖保持</h3><p>当分解一个关系时，如果不执行笛卡尔积，就不可能进行函数依赖测试。</p>
 <p>一种使其在计算上难以实施函数依赖的分解称为<strong>函数依赖不保持</strong></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170154740.png" alt="image-20240602170154740"></p>
-<h4 id="判定方法"><a href="#判定方法" class="headerlink" title="判定方法"></a>判定方法</h4><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172759570.png" alt="image-20240602172759570"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170154740.png" alt="image-20240602170154740"></p>
+<h4 id="判定方法"><a href="#判定方法" class="headerlink" title="判定方法"></a>判定方法</h4><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172759570.png" alt="image-20240602172759570"></p>
 <h3 id="函数依赖闭包"><a href="#函数依赖闭包" class="headerlink" title="函数依赖闭包"></a>函数依赖闭包</h3><h4 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h4><p>阿姆斯特朗公理</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170341255.png" alt="image-20240602170341255"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170341255.png" alt="image-20240602170341255"></p>
 <p>阿姆斯特朗公理推论</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170433429.png" alt="image-20240602170433429"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170433429.png" alt="image-20240602170433429"></p>
 <p>使用函数依赖计算$F^+$不实用，之后采用属性集闭包计算</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170720889.png" alt="image-20240602170720889"></p>
-<h3 id="属性集闭包"><a href="#属性集闭包" class="headerlink" title="属性集闭包"></a>属性集闭包</h3><h4 id="计算方法-1"><a href="#计算方法-1" class="headerlink" title="计算方法"></a>计算方法</h4><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170759561.png" alt="image-20240602170759561"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170720889.png" alt="image-20240602170720889"></p>
+<h3 id="属性集闭包"><a href="#属性集闭包" class="headerlink" title="属性集闭包"></a>属性集闭包</h3><h4 id="计算方法-1"><a href="#计算方法-1" class="headerlink" title="计算方法"></a>计算方法</h4><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170759561.png" alt="image-20240602170759561"></p>
 <h4 id="属性集闭包应用"><a href="#属性集闭包应用" class="headerlink" title="属性集闭包应用"></a>属性集闭包应用</h4><ul>
 <li>测试超键</li>
-<li><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170929424.png" alt="image-20240602170929424"></li>
+<li><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170929424.png" alt="image-20240602170929424"></li>
 <li>测试函数依赖</li>
-<li><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170939586.png" alt="image-20240602170939586"></li>
+<li><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170939586.png" alt="image-20240602170939586"></li>
 <li>计算函数依赖闭包$F^+$</li>
-<li><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170948162.png" alt="image-20240602170948162"></li>
+<li><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602170948162.png" alt="image-20240602170948162"></li>
 </ul>
 <h3 id="正则覆盖-F-C"><a href="#正则覆盖-F-C" class="headerlink" title="正则覆盖$F_C$"></a>正则覆盖$F_C$</h3><p>有一函数依赖集合F，一组与给定集合F具有相同闭包的简化函数依赖项为正则覆盖</p>
 <h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
@@ -261,29 +261,29 @@
 <li>$F_C$不包含冗余属性</li>
 <li>$F_C$左边没有相同的属性</li>
 </ul>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172435106.png" alt="image-20240602172435106"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172435106.png" alt="image-20240602172435106"></p>
 <h4 id="冗余属性"><a href="#冗余属性" class="headerlink" title="冗余属性"></a>冗余属性</h4><p>在不改变F+的情况下删除函数依赖的属性，那么F中的某个函数依赖属性就是多余的</p>
 <ul>
 <li>删除左侧属性，增强函数依赖</li>
 <li>删除右侧属性，减弱函数依赖</li>
 <li>安全删除：implie 推出</li>
-<li><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602171907229.png" alt="image-20240602171907229"></li>
+<li><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602171907229.png" alt="image-20240602171907229"></li>
 </ul>
 <h5 id="测试冗余属性"><a href="#测试冗余属性" class="headerlink" title="测试冗余属性"></a>测试冗余属性</h5><ul>
 <li><p>属性集闭包法</p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172244223.png" alt="image-20240602172244223"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602172244223.png" alt="image-20240602172244223"></p>
 </li>
 </ul>
-<h4 id="计算方法-2"><a href="#计算方法-2" class="headerlink" title="计算方法"></a>计算方法</h4><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602173646861.png" alt="image-20240602173646861"></p>
-<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><h3 id="BCNF定义"><a href="#BCNF定义" class="headerlink" title="BCNF定义"></a>BCNF定义</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194516680.png" alt="image-20240602194516680"></p>
-<h3 id="BCNF测试"><a href="#BCNF测试" class="headerlink" title="BCNF测试"></a>BCNF测试</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194742463.png" alt="image-20240602194742463"></p>
-<h3 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194334353.png" alt="image-20240602194334353"></p>
-<h3 id="3NF定义"><a href="#3NF定义" class="headerlink" title="3NF定义"></a>3NF定义</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194639139.png" alt="image-20240602194639139"></p>
+<h4 id="计算方法-2"><a href="#计算方法-2" class="headerlink" title="计算方法"></a>计算方法</h4><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602173646861.png" alt="image-20240602173646861"></p>
+<h2 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h2><h3 id="BCNF定义"><a href="#BCNF定义" class="headerlink" title="BCNF定义"></a>BCNF定义</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194516680.png" alt="image-20240602194516680"></p>
+<h3 id="BCNF测试"><a href="#BCNF测试" class="headerlink" title="BCNF测试"></a>BCNF测试</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194742463.png" alt="image-20240602194742463"></p>
+<h3 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194334353.png" alt="image-20240602194334353"></p>
+<h3 id="3NF定义"><a href="#3NF定义" class="headerlink" title="3NF定义"></a>3NF定义</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194639139.png" alt="image-20240602194639139"></p>
 <h3 id="3NF测试"><a href="#3NF测试" class="headerlink" title="3NF测试"></a>3NF测试</h3><p>NP难问题</p>
-<h3 id="3NF分解"><a href="#3NF分解" class="headerlink" title="3NF分解"></a>3NF分解</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194841155.png" alt="image-20240602194841155"></p>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202151367.png" alt="image-20240602202151367"></p>
-<p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202230502.png" alt="image-20240602202230502"></p>
-<h3 id="BCNF和3NF对比"><a href="#BCNF和3NF对比" class="headerlink" title="BCNF和3NF对比"></a>BCNF和3NF对比</h3><p><img src="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194913903.png" alt="image-20240602194913903"></p>
+<h3 id="3NF分解"><a href="#3NF分解" class="headerlink" title="3NF分解"></a>3NF分解</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194841155.png" alt="image-20240602194841155"></p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202151367.png" alt="image-20240602202151367"></p>
+<p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602202230502.png" alt="image-20240602202230502"></p>
+<h3 id="BCNF和3NF对比"><a href="#BCNF和3NF对比" class="headerlink" title="BCNF和3NF对比"></a>BCNF和3NF对比</h3><p><img src="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0.assets/image-20240602194913903.png" alt="image-20240602194913903"></p>
 
         
       </div>
@@ -298,7 +298,7 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80/"
+      href="../../07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80/"
       title="数据结构一"
      >
     <i class="fa-solid fa-angle-left"></i>
@@ -310,7 +310,7 @@
   </a>
   <a class="article-nav-btn right "
     
-      href="/2024/06/04/2023Test/"
+      href="../../04/2023Test/"
       title="2023Test"
      >
 
@@ -366,6 +366,6 @@
 </script>
 
   </div>
-  <script src="/js/light-dark-switch.js"></script>
+  <script src="../../../../js/light-dark-switch.js"></script>
 </body>
 </html>
