@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>Sql复习 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="Review使用not exists + except(minus)找到所有选修了Comp. Sci.开设的全部课程的学生 123456789select id,namefrom studentwhere exists((select course_id            from course            where dept_name&#x3D;&#x27;Comp. Sci.&#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sql复习">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/04/Sql%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="Review使用not exists + except(minus)找到所有选修了Comp. Sci.开设的全部课程的学生 123456789select id,namefrom studentwhere exists((select course_id            from course            where dept_name&#x3D;&#x27;Comp. Sci.&#x27;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-04T09:29:34.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.859Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-Sql复习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Sql复习
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-04T09:29:34.000Z" itemprop="datePublished">2024-06-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.1k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><h2 id="使用not-exists-except-minus"><a href="#使用not-exists-except-minus" class="headerlink" title="使用not exists + except(minus)"></a>使用not exists + except(minus)</h2><p>找到所有选修了Comp. Sci.开设的全部课程的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span>((<span class="keyword">select</span> course_id</span><br><span class="line">            <span class="keyword">from</span> course</span><br><span class="line">            <span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Comp. Sci.&#x27;</span>)</span><br><span class="line">             minus</span><br><span class="line">             (<span class="keyword">select</span> course_id</span><br><span class="line">             <span class="keyword">from</span> takes</span><br><span class="line">             <span class="keyword">where</span> takes.id<span class="operator">=</span>student.id))</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用some"><a href="#使用some" class="headerlink" title="使用some"></a>使用some</h2><p>找到工资至少比Biology系某位教师工资要高的所有教师的姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,salary</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> salary <span class="operator">&gt;</span> <span class="keyword">some</span>(<span class="keyword">select</span> salary</span><br><span class="line">                   <span class="keyword">from</span> instructor</span><br><span class="line">                   <span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Biology&#x27;</span>)</span><br><span class="line">                   </span><br><span class="line"><span class="comment">/*使用嵌套子查询:注意嵌套子查询不会去重 若想两个查询结果相同，需要distinct(a.name)*/</span></span><br><span class="line"><span class="keyword">select</span> a.name</span><br><span class="line"><span class="keyword">from</span> instructor a,instructor b</span><br><span class="line"><span class="keyword">where</span> a.salary <span class="operator">&gt;</span> b.salary</span><br><span class="line"><span class="keyword">and</span> b.dept_name<span class="operator">=</span><span class="string">&#x27;Biology&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用with"><a href="#使用with" class="headerlink" title="使用with"></a>使用with</h2><p>找到工资总额大于所有系平均工资总额的所有系</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> sum_salary(dept_name,sum_s) <span class="keyword">as</span></span><br><span class="line">(</span><br><span class="line">	<span class="keyword">select</span> dept_name,<span class="built_in">sum</span>(salary)</span><br><span class="line">	<span class="keyword">from</span> instructor</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> dept_name</span><br><span class="line">),</span><br><span class="line">avg_sum_salary(avg_value) <span class="keyword">as</span></span><br><span class="line">(</span><br><span class="line">	<span class="keyword">select</span> <span class="built_in">avg</span>(sum_s)</span><br><span class="line">    <span class="keyword">from</span> sum_salary</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> dept_name,sum_s</span><br><span class="line"><span class="keyword">from</span> sum_salary</span><br><span class="line"><span class="keyword">where</span> sum_s<span class="operator">&gt;</span>(<span class="keyword">select</span> avg_value <span class="keyword">from</span> avg_sum_salary)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除工资低于大学平均工资的所有教师记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> salary <span class="operator">&lt;</span> (<span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">from</span> instructor)</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>让Music系的每个修满144学时的学生称为Music系的教师，工资18000</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line">	<span class="keyword">select</span> id,name,dept_name,<span class="number">18000</span></span><br><span class="line">	<span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Music&#x27;</span> <span class="keyword">and</span> tot_cred <span class="operator">&gt;</span> <span class="number">144</span></span><br></pre></td></tr></table></figure>
+
+<p>简单插入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> course(course_id,title,dept_name,credits)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">223</span>,balabala,<span class="string">&#x27;Comp. Sci.&#x27;</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>所有教师的工资增长5%</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> instructor</span><br><span class="line"><span class="keyword">set</span> salary <span class="operator">=</span> salary <span class="operator">*</span> <span class="number">1.05</span></span><br></pre></td></tr></table></figure>
+
+<p>给工资低于平均的老师工资增长10%</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> instructor</span><br><span class="line"><span class="keyword">set</span> salary <span class="operator">=</span> salary <span class="operator">*</span> <span class="number">1.1</span></span><br><span class="line"><span class="keyword">where</span> salary <span class="operator">&lt;</span> (<span class="keyword">select</span> <span class="built_in">avg</span>(salary) <span class="keyword">from</span> instructor)</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Case"><a href="#使用Case" class="headerlink" title="使用Case"></a>使用Case</h2><p>给工资超过100000的老师工资增长3%，其余增长5%</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> instructor</span><br><span class="line"><span class="keyword">set</span> salary <span class="operator">=</span> (<span class="keyword">case</span></span><br><span class="line">             	<span class="keyword">when</span> salary <span class="operator">&gt;</span> <span class="number">100000</span> <span class="keyword">then</span> salary <span class="operator">*</span> <span class="number">1.03</span></span><br><span class="line">              	<span class="keyword">else</span> salary <span class="operator">*</span> <span class="number">1.05</span></span><br><span class="line">              <span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h2><h3 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">natural</span> <span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用join-…-using-A1-A2-A3…"><a href="#使用join-…-using-A1-A2-A3…" class="headerlink" title="使用join … using(A1,A2,A3…)"></a>使用join … using(A1,A2,A3…)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> name,title</span><br><span class="line"><span class="keyword">from</span> (student <span class="keyword">natural</span> <span class="keyword">join</span> takes) <span class="keyword">join</span> course <span class="keyword">using</span> (course_id);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用join-…-on"><a href="#使用join-…-on" class="headerlink" title="使用join … on"></a>使用join … on</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> student.id,name,dept_name,tot_cred</span><br><span class="line"><span class="keyword">from</span> student <span class="keyword">join</span> takes <span class="keyword">on</span> student.id<span class="operator">=</span>takes.id</span><br></pre></td></tr></table></figure>
+
+<h2 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h2><h3 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">natural</span> <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">natural</span> <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="全连接"><a href="#全连接" class="headerlink" title="全连接"></a>全连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">natural</span> <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="与on一起使用"><a href="#与on一起使用" class="headerlink" title="与on一起使用"></a>与on一起使用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">on</span> student.id <span class="operator">=</span> takes.id</span><br><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;A%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="与using一起使用"><a href="#与using一起使用" class="headerlink" title="与using一起使用"></a>与using一起使用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">using</span> (id)</span><br><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;A%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> myview <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> id,name,dept_name</span><br><span class="line"><span class="keyword">from</span> instructor</span><br></pre></td></tr></table></figure>
+
+<h3 id="带属性名-创建视图"><a href="#带属性名-创建视图" class="headerlink" title="带属性名 创建视图"></a>带属性名 创建视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> myview(view_id,view_name,view_dept_name) <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> id,name,dept_name</span><br><span class="line"><span class="keyword">from</span> instructor</span><br></pre></td></tr></table></figure>
+
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="rank函数排序"><a href="#rank函数排序" class="headerlink" title="rank函数排序"></a>rank函数排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name,salary,<span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> (salary) <span class="keyword">desc</span>) <span class="keyword">as</span> sa_rank</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sa_rank <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="dense-rank函数排序"><a href="#dense-rank函数排序" class="headerlink" title="dense_rank函数排序"></a>dense_rank函数排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name,salary,<span class="built_in">dense_rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> (salary) <span class="keyword">desc</span>) <span class="keyword">as</span> sa_rank</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sa_rank <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基本聚集函数实现rank函数"><a href="#基本聚集函数实现rank函数" class="headerlink" title="基本聚集函数实现rank函数"></a>基本聚集函数实现rank函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*示例*/</span></span><br><span class="line"><span class="keyword">select</span> id,(<span class="number">1</span><span class="operator">+</span>(<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line">             <span class="keyword">from</span> student_grades B</span><br><span class="line">             <span class="keyword">where</span> B.GPA <span class="operator">&gt;</span> A.GPA)) <span class="keyword">as</span> s_rank</span><br><span class="line"><span class="keyword">from</span> student_grades A</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> s_rank;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> id,name,salary,(<span class="number">1</span> <span class="operator">+</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line">                      <span class="keyword">from</span> instructor B</span><br><span class="line">                      <span class="keyword">where</span> B.salary <span class="operator">&gt;</span> A.salary)) <span class="keyword">as</span> s_rank</span><br><span class="line"><span class="keyword">from</span> instructor A</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> s_rank</span><br></pre></td></tr></table></figure>
+
+<h3 id="分区排序"><a href="#分区排序" class="headerlink" title="分区排序"></a>分区排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name,dept_name,salary,<span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> dept_name <span class="keyword">order</span> <span class="keyword">by</span> (salary) <span class="keyword">desc</span>) <span class="keyword">as</span> s_rank</span><br><span class="line"><span class="keyword">from</span> instructor</span><br></pre></td></tr></table></figure>
+
+<h2 id="分窗"><a href="#分窗" class="headerlink" title="分窗"></a>分窗</h2><h3 id="preceding分窗-向前分窗3个元组"><a href="#preceding分窗-向前分窗3个元组" class="headerlink" title="preceding分窗 向前分窗3个元组"></a>preceding分窗 向前分窗3个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*(假定每一年只有一个元组)*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,<span class="built_in">avg</span>(num_credits) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">rows</span> <span class="number">3</span> preceding) <span class="keyword">as</span> avg_tot_credits</span><br><span class="line"><span class="keyword">from</span> tot_credits</span><br></pre></td></tr></table></figure>
+
+<h3 id="preceding分窗-向前全部元组"><a href="#preceding分窗-向前全部元组" class="headerlink" title="preceding分窗 向前全部元组"></a>preceding分窗 向前全部元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,<span class="built_in">avg</span>(num_credits) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">rows</span> unbounded preceding) <span class="keyword">as</span> avg_tot_credits</span><br><span class="line"><span class="keyword">from</span> tot_credits</span><br></pre></td></tr></table></figure>
+
+<h3 id="preceding和following-向前3个向后2个元组"><a href="#preceding和following-向前3个向后2个元组" class="headerlink" title="preceding和following 向前3个向后2个元组"></a>preceding和following 向前3个向后2个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*记得加between and*/</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,<span class="built_in">avg</span>(num_credits) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">3</span> preceding <span class="keyword">and</span> <span class="number">2</span> following) <span class="keyword">as</span> avg_tot_credits</span><br><span class="line"><span class="keyword">from</span> tot_credits</span><br></pre></td></tr></table></figure>
+
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>查询各课程 A 类(A+,A,A-),B 类(B+,B,B-),C 类(C+,C,C-)成绩的人数，列依次为课程号，课程名称，A，B，C。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tmp <span class="keyword">as</span>(</span><br><span class="line"><span class="keyword">select</span> course_id,title,(</span><br><span class="line">    <span class="keyword">case</span> </span><br><span class="line">		<span class="keyword">when</span> grade <span class="keyword">like</span> <span class="string">&#x27;A%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">    	<span class="keyword">when</span> grade <span class="keyword">like</span> <span class="string">&#x27;B%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">    	<span class="keyword">when</span> grade <span class="keyword">like</span> <span class="string">&#x27;C%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">    <span class="keyword">end</span>) <span class="keyword">as</span> n_grade</span><br><span class="line"><span class="keyword">from</span> takes <span class="keyword">natural</span> <span class="keyword">join</span> course)</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> tmp</span><br><span class="line">pivot(</span><br><span class="line">	<span class="built_in">count</span>(n_grade)</span><br><span class="line">    <span class="keyword">for</span> n_grade <span class="keyword">in</span> (<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="上卷"><a href="#上卷" class="headerlink" title="上卷"></a>上卷</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> item_name,color,<span class="built_in">sum</span>(quantity)</span><br><span class="line"><span class="keyword">from</span> sales</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>(item_name,color)</span><br><span class="line"></span><br><span class="line"><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">select</span> item_name,color,<span class="built_in">sum</span>(quantity)</span><br><span class="line"><span class="keyword">from</span> sales</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> item_name,color)</span><br><span class="line"><span class="keyword">union</span> </span><br><span class="line">(<span class="keyword">select</span> item_name,<span class="keyword">null</span> <span class="keyword">as</span> color,<span class="built_in">sum</span>(quantity)</span><br><span class="line"><span class="keyword">from</span> sales</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> item_name)</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">null</span> <span class="keyword">as</span> item_name,<span class="keyword">null</span> <span class="keyword">as</span> color,<span class="built_in">sum</span>(quantity)</span><br><span class="line"><span class="keyword">from</span> sales)</span><br></pre></td></tr></table></figure>
+
+<p>rollup(item_name,color)&#x3D;&#x3D;{(item_name,color),(item_name),()}</p>
+<h2 id="立方体"><a href="#立方体" class="headerlink" title="立方体"></a>立方体</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> item_name,color,clothes_size,<span class="built_in">sum</span>(quantity)</span><br><span class="line"><span class="keyword">from</span> sales</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">cube</span>(item_name,color,clothes_size)</span><br><span class="line"></span><br><span class="line"><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">cube</span>(item_name,color,clothes_size)<span class="operator">=</span><span class="operator">=</span>&#123;(item_name,color,clothes_size),(item_name,color),(item_name,clothes_size),(color,clothes_size),(item_name),(color),(clothes_size),()&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">coalesce</span><br></pre></td></tr></table></figure>
+
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/04/Challenge_test/"
+      title="Challenge_test"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        Challenge_test
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/04/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A/"
+      title="实验五报告"
+     >
+
+    <p class="title-text">
+      
+        实验五报告
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

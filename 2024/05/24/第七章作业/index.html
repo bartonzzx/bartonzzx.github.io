@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>第七章作业 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="第七章作业7.1 7.2a b 7.3 score_sum&#x3D;sum(score) 7.9添加unique约束，使得instructor和student只能出现一次 7.10假设实体集B的主键为B_id，需要使A的B_id属性not null 7.11.a因为在此情况下产生的联系集中，无法用主键、外键或非空约束只能保证另一种实体集出现在联系集中，但不能确保全部参与联系 7.13a bstu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第七章作业">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/05/24/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="第七章作业7.1 7.2a b 7.3 score_sum&#x3D;sum(score) 7.9添加unique约束，使得instructor和student只能出现一次 7.10假设实体集B的主键为B_id，需要使A的B_id属性not null 7.11.a因为在此情况下产生的联系集中，无法用主键、外键或非空约束只能保证另一种实体集出现在联系集中，但不能确保全部参与联系 7.13a bstu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/image-20240521230404521.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A2a.drawio.png">
+<meta property="og:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A2b.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A3.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A13.drawio.png">
+<meta property="og:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A15.drawio.png">
+<meta property="og:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A16.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A21.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A21b.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A22.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A23.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A24.drawio-17163839481645.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A26.drawio.png">
+<meta property="article:published_time" content="2024-05-24T01:21:45.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.865Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/image-20240521230404521.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-第七章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        第七章作业
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="第七章作业"><a href="#第七章作业" class="headerlink" title="第七章作业"></a>第七章作业</h1><h2 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h2><p><img src="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/image-20240521230404521.png" alt="image-20240521230404521"></p>
+<h2 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h2><h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A2a.drawio.png" alt="第七章作业2a.drawio"></p>
+<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p><img src="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A2b.drawio.png" alt="第七章作业2b.drawio"></p>
+<h2 id="7-3"><a href="#7-3" class="headerlink" title="7.3"></a>7.3</h2><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A3.drawio.png" alt="第七章作业3.drawio"></p>
+<p>score_sum&#x3D;sum(score)</p>
+<h2 id="7-9"><a href="#7-9" class="headerlink" title="7.9"></a>7.9</h2><p>添加unique约束，使得instructor和student只能出现一次</p>
+<h2 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h2><p>假设实体集B的主键为B_id，需要使A的B_id属性not null</p>
+<h2 id="7-11-a"><a href="#7-11-a" class="headerlink" title="7.11.a"></a>7.11.a</h2><p>因为在此情况下产生的联系集中，无法用主键、外键或非空约束只能保证另一种实体集出现在联系集中，但不能确保全部参与联系</p>
+<h2 id="7-13"><a href="#7-13" class="headerlink" title="7.13"></a>7.13</h2><h3 id="a-1"><a href="#a-1" class="headerlink" title="a"></a>a</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A13.drawio.png" alt="第七章作业13.drawio"></p>
+<h3 id="b-1"><a href="#b-1" class="headerlink" title="b"></a>b</h3><p>student(<u>id</u>)</p>
+<p>student_name(<u>id</u>,<u>name</u>,<u>start_time</u>,<u>end_time</u>)</p>
+<p>student_tot_cred(<u>id</u>,<u>tot_cred</u>,<u>start_time</u>,<u>end_time</u>)</p>
+<p>instructor(<u>id</u>)</p>
+<p>instructor_name(<u>id</u>,<u>name</u>,<u>start_time</u>,<u>end_time</u>)</p>
+<p>instructor_salary(<u>id</u>,<u>salary</u>,<u>start_time</u>,<u>end_time</u>)</p>
+<h2 id="7-14"><a href="#7-14" class="headerlink" title="7.14"></a>7.14</h2><p>超码是一个或多个属性的集合，将这些属性组合在一起可以允许我们在一个关系中唯一地标识出一个元组。超码不唯一。超码的超集都是超码。</p>
+<p>候选码是一组最小超码，即这组超码的任意真子集都不是超码。候选码也不唯一。</p>
+<p>主码是被选择出的，在一个关系上用于区分不同元组的候选码。</p>
+<h2 id="7-15"><a href="#7-15" class="headerlink" title="7.15"></a>7.15</h2><p><img src="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A15.drawio.png" alt="第七章作业15.drawio"></p>
+<h2 id="7-16"><a href="#7-16" class="headerlink" title="7.16"></a>7.16</h2><p><img src="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A16.drawio.png" alt="第七章作业16.drawio"></p>
+<h2 id="7-18"><a href="#7-18" class="headerlink" title="7.18"></a>7.18</h2><h3 id="a-2"><a href="#a-2" class="headerlink" title="a"></a>a</h3><p>将实体集A内的属性名修改为A_X</p>
+<p>将实体集B内的属性名修改为B_X</p>
+<h3 id="b-2"><a href="#b-2" class="headerlink" title="b"></a>b</h3><ul>
+<li>对实体集B的X属性创建外键约束，引用实体集A的X属性</li>
+<li>可以将实体集A和B合并为实体集AB，使用属性X作为主码，并且包含实体集A、B中的所有其他属性</li>
+<li>创建一个实体集X_group，只有一个属性X，并为实体集A和B的X属性创建外键约束，引用X_group的X属性</li>
+</ul>
+<h2 id="7-20"><a href="#7-20" class="headerlink" title="7.20"></a>7.20</h2><h3 id="a-3"><a href="#a-3" class="headerlink" title="a"></a>a</h3><p>user(<u>user_id</u>,user_name)</p>
+<p>car(<u>car_id</u>,car_name,user_id,insurance_id)</p>
+<p>accident(<u>acc_id</u>,acc_info)</p>
+<p>car_accident(<u>car_id</u>,<u>acc_id</u>)</p>
+<p>insurance(<u>insurance_id</u>,end_day,pay_day)</p>
+<h3 id="b-3"><a href="#b-3" class="headerlink" title="b"></a>b</h3><p>course(<u>course_id</u>,title,credits)</p>
+<p>section(<u>course_id</u>,<u>sec_id</u>,<u>semester</u>,<u>year</u>)</p>
+<p>student(<u>id</u>,name,tot_cred)</p>
+<p>takes(<u>id</u>,<u>course_id</u>,<u>sec_id</u>,<u>semester</u>,<u>year</u>,score)</p>
+<h3 id="c"><a href="#c" class="headerlink" title="c"></a>c</h3><p>game(<u>game_id</u>,game_title,team_a,team_b,score_a,score_b)</p>
+<p>player(<u>player_id</u>,player_name)</p>
+<p>play(<u>game_id</u>,<u>player_id</u>,score)</p>
+<h3 id="d"><a href="#d" class="headerlink" title="d"></a>d</h3><p>doctor(<u>id</u>,name,type)</p>
+<p>patient(<u>id</u>,name)</p>
+<p>doctor_patient(<u>doc_id</u>,<u>pat_id</u>,admit_time)</p>
+<p>exam(<u>id</u>,name,time)</p>
+<p>patient_exam(<u>pat_id</u>,<u>exam_id</u>)</p>
+<h2 id="7-21"><a href="#7-21" class="headerlink" title="7.21"></a>7.21</h2><h3 id="a-4"><a href="#a-4" class="headerlink" title="a"></a>a</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A21.drawio.png" alt="第七章作业21.drawio"></p>
+<h3 id="b-4"><a href="#b-4" class="headerlink" title="b"></a>b</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A21b.drawio.png" alt="第七章作业21b.drawio"></p>
+<h2 id="7-22"><a href="#7-22" class="headerlink" title="7.22"></a>7.22</h2><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A22.drawio.png" alt="第七章作业22.drawio"></p>
+<p>car(<u>vin</u>,brand,model,option)</p>
+<p>dealer(<u>dealer_id</u>,name)</p>
+<p>car_dealer(<u>vin</u>,<u>dealer_id</u>)</p>
+<p>customer(<u>customer_id</u>,name)</p>
+<p>deal(<u>vin</u>,dealer_id,customer_id)</p>
+<p>car_dealer </p>
+<p>​	foreign_key(vin) references car(vin)</p>
+<p>​	foreign_key(dealer_id) references dealer(dealer_id)</p>
+<p>deal</p>
+<p>​	foreign_key(vin) references car(vin)</p>
+<p>​	foreign_key(dealer_id) references dealer(dealer_id)</p>
+<p>​	foreign_key(customer_Id) references customer(customer_id)</p>
+<h2 id="7-23"><a href="#7-23" class="headerlink" title="7.23"></a>7.23</h2><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A23.drawio.png" alt="第七章作业23.drawio"></p>
+<p>user(<u>user_id</u>,address,reg_time)</p>
+<p>package(<u>package_id</u>,package_info)</p>
+<p>order(<u>sender</u>,<u>receiver</u>,<u>package_id</u>,time)</p>
+<p>location(<u>location_id</u>,location_info)</p>
+<p>package_location(<u>package_id</u>,<u>location_id</u>,<u>time</u>)</p>
+<p>order</p>
+<p>​	foreign_key(sender) references user(user_id)</p>
+<p>​	foreign_key(receiver) references user(user_id)</p>
+<p>​	foreign_key(package_id) references package(package_id)</p>
+<p>package_location</p>
+<p>​	foreign_key(package_id) references package(package_id)</p>
+<h2 id="7-24"><a href="#7-24" class="headerlink" title="7.24"></a>7.24</h2><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A24.drawio-17163839481645.png" alt="第七章作业24.drawio"></p>
+<p>user(<u>user_id</u>,user_name,user_info)</p>
+<p>flight(<u>flight_id</u>,source,destination,time,status)</p>
+<p>book_flight(<u>user_id</u>,<u>flight_id</u>,book_status,seat)</p>
+<p>book_flight</p>
+<p>​	foreign_key(user_id) references user(user_id)</p>
+<p>​	foreign_key(flight_id) references flight(flight_id)</p>
+<h2 id="7-26"><a href="#7-26" class="headerlink" title="7.26"></a>7.26</h2><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A.assets/%E7%AC%AC%E4%B8%83%E7%AB%A0%E4%BD%9C%E4%B8%9A26.drawio.png" alt="第七章作业26.drawio"></p>
+<p>对车辆（vehicle）进行不相交特化</p>
+<p>对于摩托车，特别需要关注的是排量</p>
+<p>对于客车，需要关注的是车辆大小</p>
+<p>对于面包车，特别关注的是载重量</p>
+<p>对于客车，关注乘员数</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/"
+      title="第三章作业"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        第三章作业
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BD%9C%E4%B8%9A/"
+      title="第二章作业"
+     >
+
+    <p class="title-text">
+      
+        第二章作业
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

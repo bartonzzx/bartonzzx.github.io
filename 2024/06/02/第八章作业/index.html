@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>第八章作业 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="第八章作业8.1由于$R$分解为$R_1$与$R_2$，$R_1&#x3D;(A，B，C)$，$R_2&#x3D;(A，D，E)$，$R_1 \cap R_2&#x3D;(A)$，而$A \rightarrow BC$，即$R_1 \cap R_2 \rightarrow R1$，满足无损分解条件，所以该分解为无损分解。 8.3设$student$的主键为$K_S$，$instructor$的主键">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八章作业">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/02/%E7%AC%AC%E5%85%AB%E7%AB%A0%E4%BD%9C%E4%B8%9A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="第八章作业8.1由于$R$分解为$R_1$与$R_2$，$R_1&#x3D;(A，B，C)$，$R_2&#x3D;(A，D，E)$，$R_1 \cap R_2&#x3D;(A)$，而$A \rightarrow BC$，即$R_1 \cap R_2 \rightarrow R1$，满足无损分解条件，所以该分解为无损分解。 8.3设$student$的主键为$K_S$，$instructor$的主键">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-02T15:14:00.000Z">
+<meta property="article:modified_time" content="2024-06-15T04:19:32.041Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-第八章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        第八章作业
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-02T15:14:00.000Z" itemprop="datePublished">2024-06-02</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.6k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="第八章作业"><a href="#第八章作业" class="headerlink" title="第八章作业"></a>第八章作业</h1><h2 id="8-1"><a href="#8-1" class="headerlink" title="8.1"></a>8.1</h2><p>由于$R$分解为$R_1$与$R_2$，$R_1&#x3D;(A，B，C)$，$R_2&#x3D;(A，D，E)$，$R_1 \cap R_2&#x3D;(A)$，而$A \rightarrow BC$，即$R_1 \cap R_2 \rightarrow R1$，满足无损分解条件，所以该分解为无损分解。</p>
+<h2 id="8-3"><a href="#8-3" class="headerlink" title="8.3"></a>8.3</h2><p>设$student$的主键为$K_S$，$instructor$的主键为$K_I$，</p>
+<ul>
+<li>若$student$和$instructor$间存在一对一联系集，则有$K_S \rightarrow K_I$和$K_I \rightarrow K_S$</li>
+<li>若$student$和$instructor$间存在多对一联系集，假设是多个$student$对应一个$instructor$，则有$K_S \rightarrow K_I$</li>
+</ul>
+<h2 id="8-5"><a href="#8-5" class="headerlink" title="8.5"></a>8.5</h2><p>伪传递律内容为：如果$\alpha \rightarrow \beta$和$\gamma \beta \rightarrow \delta$成立，则$\gamma\alpha \rightarrow \delta$成立</p>
+<p>证明：根据增补律，$\alpha \rightarrow \beta \Longrightarrow \gamma \alpha \rightarrow \gamma \beta$，则再根据转递律，$\gamma \alpha \rightarrow \gamma \beta,\gamma \beta \rightarrow \delta \Longrightarrow \gamma \alpha \rightarrow \delta$</p>
+<h2 id="8-6"><a href="#8-6" class="headerlink" title="8.6"></a>8.6</h2><p>根据分解律，$A \rightarrow BC \Longrightarrow A \rightarrow B,A \rightarrow C$，</p>
+<p>根据转递律，$A \rightarrow B,B \rightarrow D \Longrightarrow A \rightarrow D$，</p>
+<p>根据合并律，$A \rightarrow C，A \rightarrow D \Longrightarrow A \rightarrow CD$，</p>
+<p>根据转递律，$A \rightarrow CD，CD \rightarrow E \Longrightarrow A \rightarrow E$，</p>
+<p>即$A \rightarrow ABCDE$，</p>
+<p>根据转递律，因为$E \rightarrow A，A \rightarrow ABCDE$，则$E \rightarrow ABCDE$，</p>
+<p>根据转递律，因为$CD \rightarrow E，E \rightarrow ABCDE$，则$CD \rightarrow ABCDE$，</p>
+<p>根据增补律，$B \rightarrow D \Longrightarrow BC \rightarrow DC$，又根据转递律，$BC \rightarrow DC,CD \rightarrow ABCDE$，则$BC \rightarrow ABCDE$</p>
+<p>由候选码的定义知，A、E、CD、BC都是R的候选码</p>
+<p>也可以使用属性闭包计算</p>
+<h2 id="8-7"><a href="#8-7" class="headerlink" title="8.7"></a>8.7</h2><p>正则覆盖不包含冗余属性，</p>
+<p>且8.6的函数依赖集已不包含冗余属性，</p>
+<p>则其正则覆盖为：<br>$$<br>A \rightarrow BC,CD \rightarrow E,B \rightarrow D,E \rightarrow A<br>$$</p>
+<h2 id="8-11"><a href="#8-11" class="headerlink" title="8.11"></a>8.11</h2><h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>$\alpha$为$r_1$的主码，且$\alpha$为$r_2$到$r_1$的外码约束</p>
+<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p>假设在$r_1$中删除一条数据$(\alpha_i,\beta_1)$，由于外码约束没有强制实施，所以该数据会被删除，但在$r_2$中，与之对应的数据并未同时删除，所以会导致数据不一致的情况出现</p>
+<h3 id="c"><a href="#c" class="headerlink" title="c"></a>c</h3><p>(1)主码</p>
+<p>对于每个由函数依赖$\alpha \rightarrow \beta$创建的分解，$\alpha$应当是主码。同时，若产生的分解中包含原关系模式的候选码$\gamma$，则该候选码$\gamma$也应当是主码。</p>
+<p>(2)外码</p>
+<p>除了上述关系模式外，剩下的关系模式中，若有包含上述关系模式的属性，则应为这些属性创建外码约束，引用(1)中的关系模式</p>
+<h2 id="8-13"><a href="#8-13" class="headerlink" title="8.13"></a>8.13</h2><p>判断函数依赖$CD \rightarrow E$是否保持：<br>$$<br>r_1&#x3D;(A,B,C),r_2&#x3D;(A,D,E)\<br>result&#x3D;CD\<br>t&#x3D;(result \cap r_1)^+ \cap r_1 \<br>&#x3D;C^+ \cap r_1\<br>&#x3D;C \cap r_1\<br>&#x3D;C\<br>result&#x3D;result \cup t&#x3D;CD \not\subset E<br>$$<br>所以函数依赖不保持</p>
+<h2 id="8-14"><a href="#8-14" class="headerlink" title="8.14"></a>8.14</h2><p>首先使用合并律得到函数依赖<br>$$<br>X \rightarrow YZ,Y \rightarrow XZ,Z \rightarrow XY<br>$$<br>再查找冗余属性</p>
+<p>情况1：<br>$$<br>假设X \rightarrow YZ中的Y是冗余属性\<br>即X \rightarrow Z,Y \rightarrow XZ,Z \rightarrow XY\<br>Y \subset X^+&#x3D;XYZ \<br>Y是冗余属性\<br>\<br>假设Y \rightarrow XZ中的Z是冗余属性\<br>即X \rightarrow Z,Y \rightarrow X,Z \rightarrow XY \<br>X \subset Y^+ &#x3D; XYZ \<br>Z是冗余属性\<br>\<br>假设Z \rightarrow XY中的X是冗余属性\<br>即X \rightarrow Z,Y \rightarrow X,Z \rightarrow Y\<br>X \subset Z^+ &#x3D; XYZ\<br>X是冗余属性\<br>\<br>正则覆盖为：X \rightarrow Z,Y \rightarrow X,Z \rightarrow Y<br>$$<br>情况2：<br>$$<br>假设X \rightarrow YZ中的Z是冗余属性\<br>即X \rightarrow Y,Y \rightarrow XZ,Z \rightarrow XY\<br>Z \subset X^+&#x3D;XYZ \<br>Z是冗余属性\<br>\<br>假设Y \rightarrow XZ中的X是冗余属性\<br>即X \rightarrow Y,Y \rightarrow Z,Z \rightarrow XY \<br>X \subset Y^+ &#x3D; XYZ \<br>X是冗余属性\<br>\<br>假设Z \rightarrow XY中的Y是冗余属性\<br>即X \rightarrow Y,Y \rightarrow Z,Z \rightarrow X\<br>Y \subset Z^+ &#x3D; XYZ\<br>Z是冗余属性\<br>\<br>正则覆盖为：X \rightarrow Y,Y \rightarrow Z,Z \rightarrow X<br>$$<br>证明了对于一个给定的函数依赖集可以有不止一个正则覆盖</p>
+<h2 id="8-15"><a href="#8-15" class="headerlink" title="8.15"></a>8.15</h2><p>对于$X \rightarrow YZ$，</p>
+<p>在一次删除一个属性的情况下，Y、Z这两个属性都可被认作冗余属性。</p>
+<p>假设一次删除两个属性，而对于习题8.14来说，当删除了右侧的一个冗余属性后，剩下的一个属性便不再是冗余的了，若一次删除两个属性，也就导致这条函数依赖失效了。所以不可以一次删除两个属性</p>
+<h2 id="8-18"><a href="#8-18" class="headerlink" title="8.18"></a>8.18</h2><p>根据定义，R在3NF中，设A是非主属性且有传递依赖，此时会违背3NF的课本定义</p>
+<h2 id="8-19"><a href="#8-19" class="headerlink" title="8.19"></a>8.19</h2><p>参考8.18，如果关系模式中都不包含主属性，则他是3NF的。</p>
+<h2 id="8-21"><a href="#8-21" class="headerlink" title="8.21"></a>8.21</h2><p>首先，计算$F^+$可知，原关系模式不满足BCNF。</p>
+<p>使用BCNF分解算法，</p>
+<p>对于非平凡函数依赖$\alpha \rightarrow \beta$，$\alpha \cap \beta &#x3D; \empty$，且$\alpha$不是超键，仅有一条函数依赖$B \rightarrow D$，</p>
+<p>利用$B \rightarrow D$对R进行分解，</p>
+<p>得到一种分解为$R_1&#x3D;(B,D),R_2&#x3D;(A,C,E)$</p>
+<h2 id="8-22"><a href="#8-22" class="headerlink" title="8.22"></a>8.22</h2><p>首先$F_C&#x3D;F$，候选键有A,E,CD,BC</p>
+<p>然后将$F_C$中的函数依赖全部转化为表，</p>
+<p>即$R_1&#x3D;(A,B,C),R_2&#x3D;(C,D,E),R_3&#x3D;(B,D),R_4&#x3D;(A,E)$，且有表已经包含候选键了，也不存在某个表的所有属性都被另一个表包含，</p>
+<p>则$R_1,R_2,R_3,R_4$就为3NF分解结果</p>
+<h2 id="8-28"><a href="#8-28" class="headerlink" title="8.28"></a>8.28</h2><p>$$<br>B^+ &#x3D; B\<br>\because B \rightarrow D \<br>\therefore B^+&#x3D;BD \<br>$$</p>
+<h2 id="8-29"><a href="#8-29" class="headerlink" title="8.29"></a>8.29</h2><p> 根据无损分解的条件，$R_1 \cap R_2 &#x3D; C \not\rightarrow R_1或R_2$，</p>
+<p>无法找到$R_1 \cap R_2 \rightarrow R_1或R_1 \cap R_2 \rightarrow R_2$，</p>
+<p>所以这不是一个无损分解</p>
+<h2 id="8-30"><a href="#8-30" class="headerlink" title="8.30"></a>8.30</h2><h3 id="a-1"><a href="#a-1" class="headerlink" title="a"></a>a</h3><p>$$<br>B^+&#x3D;B\<br>\because B \rightarrow D\<br>\therefore B^+&#x3D;BD\<br>又\because D\rightarrow A\<br>\therefore B^+&#x3D;ABD\<br>又\because A \rightarrow BCD\<br>\therefore B^+&#x3D;ABCD\<br>又\because BC \rightarrow DE\<br>\therefore B^+&#x3D;ABCDE<br>$$</p>
+<h3 id="b-1"><a href="#b-1" class="headerlink" title="b"></a>b</h3><p>$$<br>根据增补律，BC \rightarrow DE \Longrightarrow  BCD \rightarrow DE\<br>根据转递律,A \rightarrow BCD ,BCD \rightarrow DE \Longrightarrow A \rightarrow DE\<br>根据合并律和自反律,A \rightarrow A,A \rightarrow DE,A \rightarrow BCD \Longrightarrow A \rightarrow ABCDE\<br>根据增补律,A \rightarrow ABCDE \Longrightarrow AG \rightarrow ABCDEG\<br>\therefore AG是超码<br>$$</p>
+<h3 id="c-1"><a href="#c-1" class="headerlink" title="c"></a>c</h3><p>$$<br>假设A \rightarrow BCD中的D属性冗余，转为A \rightarrow BC，\<br>A^+&#x3D;ABC,\<br>\because BC \rightarrow DE\<br>\therefore A^+&#x3D;ABCDE\<br>\therefore D \subset A^+，D属性是冗余的\<br>\<br>假设BC \rightarrow DE中的D属性冗余，转为BC \rightarrow E \<br>BC^+&#x3D;BCE,\<br>\because B \rightarrow D \<br>\therefore BC^+&#x3D;BCDE\<br>\therefore D \subset BC^+,D属性是冗余的\<br>\<br>F_C:A \rightarrow BC,BC \rightarrow E,B \rightarrow D,D \rightarrow A<br>$$</p>
+<h3 id="d"><a href="#d" class="headerlink" title="d"></a>d</h3><p>$$<br>1.将F_C中的FD变成表\<br>(A,B,C),(B,C,E),(B,D),(A,D)\<br>2.检查候选键\<br>没有包含候选键AG的表，所以添加(A,G)\<br>3.检查是否有表的属性全部被另一个表包含:无\<br>3NF分解结果为R_1&#x3D;(A,B,C),R_2&#x3D;(B,C,E),R_3&#x3D;(B,D),R_4&#x3D;(A,D),R_5&#x3D;(A,G)<br>$$</p>
+<h3 id="e"><a href="#e" class="headerlink" title="e"></a>e</h3><p>$$<br>根据BCNF分解算法，\<br>对所有函数依赖进行遍历,\<br>得到R_1&#x3D;(A,B,C),R_2&#x3D;(B,D),R_3&#x3D;(A,E),R_4&#x3D;(A,G)<br>$$</p>
+<h2 id="8-31"><a href="#8-31" class="headerlink" title="8.31"></a>8.31</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>$$<br>1.AB \rightarrow CD不是一个平凡依赖\<br>2.AB^+&#x3D;A,B,C,D,E，即AB不是超码，\<br>所以AB \rightarrow CD表示R不属于BCNF\<br>$$</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>$$<br>根据函数依赖AB \rightarrow CD，\<br>得到R_1&#x3D;(A,B,G),R_2&#x3D;(A,B,E),R_3&#x3D;(A,B,C),R_4&#x3D;(B,D)\<br>\<br>这是一个函数依赖不保持的分解，例如对于函数依赖AB \rightarrow CD,没有一个分解包含这个依赖的所有属性<br>$$</p>
+<h2 id="8-32"><a href="#8-32" class="headerlink" title="8.32 **"></a>8.32 **</h2><h3 id="a-2"><a href="#a-2" class="headerlink" title="a"></a>a</h3><p>$$<br>CD \rightarrow AB,A \rightarrow BC \Longrightarrow CD \rightarrow BC\<br>CD \rightarrow BC,BD \rightarrow E \Longrightarrow CD \rightarrow CE<br>$$</p>
+<h3 id="b-2"><a href="#b-2" class="headerlink" title="b"></a>b</h3><p>$$<br>使用A \rightarrow BC进行BCNF分解,\<br>初步分为R_1&#x3D;(A,B,C),R_2&#x3D;(D,E,G),\<br>由于R_2不满足BCNF，再次进行分解,\<br>得到R_3&#x3D;(A,D,G),R_4&#x3D;(A,D,E),\<br>最后结果为R_1&#x3D;(A,B,C),R_3&#x3D;(A,D,G),R_4&#x3D;(A,D,E)<br>$$</p>
+<h3 id="c-2"><a href="#c-2" class="headerlink" title="c"></a>c</h3><p>$$<br>是无损分解，对\Pi_{R_1}\Join\Pi_{R_3}\Join\Pi_{R_4}可以得到原R<br>$$</p>
+<h3 id="d-1"><a href="#d-1" class="headerlink" title="d"></a>d</h3><p>$$<br>不是保持依赖的，例如函数依赖BD \rightarrow E，\<br>没有一个分解包含该函数依赖的所有属性，\<br>所以这不是保持依赖的分解<br>$$</p>
+<h2 id="8-33"><a href="#8-33" class="headerlink" title="8.33 ***"></a>8.33 ***</h2><h3 id="候选码列表"><a href="#候选码列表" class="headerlink" title="候选码列表"></a>候选码列表</h3><p>$$<br>对于A^+&#x3D;A \ne R,B^+&#x3D;(B,C,D,E,G) \ne R,\<br>AB^+&#x3D;(A,B,C,D,E,G) &#x3D; R,\<br>ADE^+ &#x3D; (A, D, E, G) \ne R,\<br>G^+ &#x3D; (D, E, G) \ne R\<br>所以候选键只有AB<br>$$</p>
+<h3 id="其余步骤"><a href="#其余步骤" class="headerlink" title="其余步骤***"></a>其余步骤***</h3><p>$$<br>1.应用合并律，合并所有函数依赖\<br>此时F_C&#x3D;F&#x3D;AB \rightarrow CD,ADE \rightarrow GDE,B \rightarrow GC,G \rightarrow DE\<br>2.查找冗余属性并删除\<br>AB \rightarrow CD中的C是冗余属性\<br>F_C&#x3D;AB \rightarrow D,ADE \rightarrow GDE,B \rightarrow GC,G \rightarrow DE\<br>ADE \rightarrow GDE中的E是冗余属性\<br>F_C&#x3D;AB \rightarrow D,ADE \rightarrow GD,B \rightarrow GC,G \rightarrow DE\<br>ADE \rightarrow GD中的D是冗余属性\<br>F_C&#x3D;AB \rightarrow D,ADE \rightarrow G,B \rightarrow GC,G \rightarrow DE\<br>由B \rightarrow GC,G \rightarrow DE可以推出B \rightarrow D，所以删除AB \rightarrow D\<br>最终F_C&#x3D;ADE \rightarrow G,B \rightarrow GC,G \rightarrow DE\<br>\<br>最后分解为R_1&#x3D;(A,D,E,G),R_2&#x3D;(B,C,G),R_3&#x3D;(D,E,G)<br>$$</p>
+<h2 id="8-34"><a href="#8-34" class="headerlink" title="8.34 ***"></a>8.34 ***</h2><h3 id="候选码列表-1"><a href="#候选码列表-1" class="headerlink" title="候选码列表"></a>候选码列表</h3><p>$$<br>候选键:ABEGH、DEGH<br>$$</p>
+<h3 id="其他步骤"><a href="#其他步骤" class="headerlink" title="其他步骤"></a>其他步骤</h3><p>$$<br>初始正则覆盖F_C&#x3D;{AB \rightarrow CD, D \rightarrow C, DE \rightarrow B, DEH \rightarrow AB, AC \rightarrow DC}\<br>在AC \rightarrow DC中，右方的C是冗余的，\<br>F_C&#x3D;AB \rightarrow CD,D \rightarrow C,DE \rightarrow B,DEH \rightarrow AB,AC \rightarrow D\<br>在AB \rightarrow CD中，右方的C是冗余的，\<br>F_C&#x3D;AB \rightarrow D,D \rightarrow C,DE \rightarrow B,DEH \rightarrow AB,AC \rightarrow D\<br>在DEH \rightarrow AB中，B是冗余的,\<br>最终F_C&#x3D;AB \rightarrow D,D \rightarrow C,DE \rightarrow B,DEH \rightarrow A,AC \rightarrow D\<br>\<br>最后分解为R_1&#x3D;(A,B,D),R_2&#x3D;(C,D),R_3&#x3D;(B,D,E),R_4&#x3D;(A,D,E,H),R_5&#x3D;(A,C,D)<br>$$</p>
+<h2 id="8-36"><a href="#8-36" class="headerlink" title="8.36"></a>8.36</h2><p>因为只有两个属性，如果函数依赖左侧的属性是超键，那么就是BCNF的，如果左侧属性不是超键，那就不符合只有两个属性的关系模式的定义了。</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/02/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A/"
+      title="实验七报告"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        实验七报告
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/31/%E6%A8%A1%E6%9D%BF/"
+      title="模板"
+     >
+
+    <p class="title-text">
+      
+        模板
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

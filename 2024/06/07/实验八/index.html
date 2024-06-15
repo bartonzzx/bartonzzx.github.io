@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>实验八 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="实验八实验内容设计程序模拟内存的动态分区内存管理方法。内存空闲区使用空闲分区表进行管理，采用最先适应算法从空闲分区表中寻找空闲区进行分配，内存回收时不考虑与相邻空闲区的合并。 假定系统的内存共 640K，初始状态为操作系统本身占用 40K。 t1 时刻，为作业 A、B、C 分配 80K、60K、100K、的内存空间； t2 时刻作业 B 完成； t3 时刻为作业 D 分配 50K 的内存空间； t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验八">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E5%85%AB/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="实验八实验内容设计程序模拟内存的动态分区内存管理方法。内存空闲区使用空闲分区表进行管理，采用最先适应算法从空闲分区表中寻找空闲区进行分配，内存回收时不考虑与相邻空闲区的合并。 假定系统的内存共 640K，初始状态为操作系统本身占用 40K。 t1 时刻，为作业 A、B、C 分配 80K、60K、100K、的内存空间； t2 时刻作业 B 完成； t3 时刻为作业 D 分配 50K 的内存空间； t">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193057697.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193138959.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193159414.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193247529.png">
+<meta property="article:published_time" content="2024-06-07T07:10:28.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:43:18.695Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193057697.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-实验八" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        实验八
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-07T07:10:28.000Z" itemprop="datePublished">2024-06-07</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.7k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="实验八"><a href="#实验八" class="headerlink" title="实验八"></a>实验八</h1><h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>设计程序模拟内存的动态分区内存管理方法。内存空闲区使用空闲分区表进行管理，采用最先适应算法从空闲分区表中寻找空闲区进行分配，内存回收时不考虑与相邻空闲区的合并。</p>
+<p>假定系统的内存共 640K，初始状态为操作系统本身占用 40K。</p>
+<p>t1 时刻，为作业 A、B、C 分配 80K、60K、100K、的内存空间；</p>
+<p>t2 时刻作业 B 完成；</p>
+<p>t3 时刻为作业 D 分配 50K 的内存空间；</p>
+<p>t4 时刻作业 C、A 完成；</p>
+<p>t5 时刻作业 D 完成。</p>
+<p>要求编程序分别输出 t1、t2、t3、t4、t5 时刻内存的空闲区的状态。</p>
+<h2 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> maxPCB 6 <span class="comment">// 最大进程数</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> maxPart 6 <span class="comment">// 最大空闲分区数</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> size 10 <span class="comment">// 不在切割剩余分区的大小</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PCB_type</span> &#123;</span><br><span class="line">    <span class="type">char</span> name; <span class="comment">// 进程名</span></span><br><span class="line">    <span class="type">int</span> address; <span class="comment">// 进程所占分区首地址</span></span><br><span class="line">    <span class="type">int</span> len; <span class="comment">// 进程所占分区的长度</span></span><br><span class="line">    <span class="type">int</span> valid; <span class="comment">// PCB标识符（有效，无效）</span></span><br><span class="line">&#125; PCB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">seqlist</span> &#123; <span class="comment">// 进程信息队列</span></span><br><span class="line">    PCB PCBelem[maxPCB]; <span class="comment">// maxPCB为系统中允许的最多进程数</span></span><br><span class="line">    <span class="type">int</span> total; <span class="comment">// 系统中实际的进程数</span></span><br><span class="line">&#125; PCBseql;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分区类型的描述</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Partition</span> &#123;</span><br><span class="line">    <span class="type">int</span> address; <span class="comment">// 分区起址</span></span><br><span class="line">    <span class="type">int</span> len; <span class="comment">// 分区的长度</span></span><br><span class="line">    <span class="type">int</span> valid; <span class="comment">// 有效标识符（有效，无效）</span></span><br><span class="line">&#125; Part;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 内存空闲分区表（顺序表）描述</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Partlist</span> &#123; <span class="comment">// 空白分区链</span></span><br><span class="line">    Part Partelem[maxPart]; <span class="comment">// maxPart为系统中可能的最多空闲分区数</span></span><br><span class="line">    <span class="type">int</span> sum; <span class="comment">// 系统中实际的分区数</span></span><br><span class="line">&#125; Partseql;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量</span></span><br><span class="line">PCBseql* pcbl; <span class="comment">// 进程队列指针</span></span><br><span class="line">Partseql* partl; <span class="comment">// 空闲队列指针</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">initpcb</span><span class="params">()</span> </span>&#123; <span class="comment">// 初始化进程表</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    pcbl-&gt;PCBelem[<span class="number">0</span>].address = <span class="number">0</span>;</span><br><span class="line">    pcbl-&gt;PCBelem[<span class="number">0</span>].len = <span class="number">40</span>;</span><br><span class="line">    pcbl-&gt;PCBelem[<span class="number">0</span>].name = <span class="string">&#x27;s&#x27;</span>;</span><br><span class="line">    pcbl-&gt;PCBelem[<span class="number">0</span>].valid = <span class="number">1</span>;</span><br><span class="line">    pcbl-&gt;total = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; maxPCB; i++) &#123;</span><br><span class="line">        pcbl-&gt;PCBelem[i].name = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        pcbl-&gt;PCBelem[i].address = <span class="number">0</span>;</span><br><span class="line">        pcbl-&gt;PCBelem[i].len = <span class="number">0</span>;</span><br><span class="line">        pcbl-&gt;PCBelem[i].valid = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">initpart</span><span class="params">()</span> </span>&#123; <span class="comment">// 初始化空闲分区表</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    partl-&gt;Partelem[<span class="number">0</span>].address = <span class="number">40</span>;</span><br><span class="line">    partl-&gt;Partelem[<span class="number">0</span>].len = <span class="number">600</span>;</span><br><span class="line">    partl-&gt;Partelem[<span class="number">0</span>].valid = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; maxPart; i++) &#123;</span><br><span class="line">        partl-&gt;Partelem[i].address = <span class="number">0</span>;</span><br><span class="line">        partl-&gt;Partelem[i].len = <span class="number">0</span>;</span><br><span class="line">        partl-&gt;Partelem[i].valid = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    partl-&gt;sum = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">request</span><span class="params">(<span class="type">char</span> name, <span class="type">int</span> len)</span> </span>&#123; <span class="comment">// 进程name请求len大小的内存</span></span><br><span class="line">    <span class="type">int</span> i, j, k;</span><br><span class="line">    <span class="type">int</span> address;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; partl-&gt;sum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (partl-&gt;Partelem[i].len &gt;= len) &#123;</span><br><span class="line">            address = partl-&gt;Partelem[i].address;</span><br><span class="line">            <span class="keyword">if</span> (partl-&gt;Partelem[i].len - len &gt;= size) &#123;</span><br><span class="line">                partl-&gt;Partelem[i].address += len;</span><br><span class="line">                partl-&gt;Partelem[i].len -= len;</span><br><span class="line">                partl-&gt;Partelem[i].valid = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (j = i; j &lt; maxPart - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                    partl-&gt;Partelem[j] = partl-&gt;Partelem[j + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                partl-&gt;Partelem[j].valid = <span class="number">0</span>;</span><br><span class="line">                partl-&gt;Partelem[j].address = <span class="number">0</span>;</span><br><span class="line">                partl-&gt;Partelem[j].len = <span class="number">0</span>;</span><br><span class="line">                partl-&gt;sum--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; maxPCB; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (pcbl-&gt;PCBelem[k].valid == <span class="number">0</span>) &#123;</span><br><span class="line">                    pcbl-&gt;PCBelem[k].address = address;</span><br><span class="line">                    pcbl-&gt;PCBelem[k].len = len;</span><br><span class="line">                    pcbl-&gt;PCBelem[k].name = name;</span><br><span class="line">                    pcbl-&gt;PCBelem[k].valid = <span class="number">1</span>;</span><br><span class="line">                    pcbl-&gt;total++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">release</span><span class="params">(<span class="type">char</span> name)</span> </span>&#123; <span class="comment">// 回收name进程所占内存空间</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; maxPCB; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pcbl-&gt;PCBelem[i].name == name) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pcbl-&gt;PCBelem[i].valid == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%c进程非运行进程，无法结束！&quot;</span>, name);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                pcbl-&gt;PCBelem[i].valid = <span class="number">0</span>;</span><br><span class="line">                pcbl-&gt;total--;</span><br><span class="line">                partl-&gt;Partelem[partl-&gt;sum].address = pcbl-&gt;PCBelem[i].address;</span><br><span class="line">                partl-&gt;Partelem[partl-&gt;sum].len = pcbl-&gt;PCBelem[i].len;</span><br><span class="line">                partl-&gt;Partelem[partl-&gt;sum].valid = <span class="number">1</span>;</span><br><span class="line">                partl-&gt;sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123; <span class="comment">// 输出内存空闲分区</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;当前的进程有：\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;name address length\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; maxPCB; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pcbl-&gt;PCBelem[i].valid == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%c %d %d\n&quot;</span>, pcbl-&gt;PCBelem[i].name, pcbl-&gt;PCBelem[i].address, pcbl-&gt;PCBelem[i].len);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;当前的空闲分区有：\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;address length\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; maxPart; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (partl-&gt;Partelem[i].valid == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, partl-&gt;Partelem[i].address, partl-&gt;Partelem[i].len);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> ch;</span><br><span class="line">    <span class="type">char</span> pcbname;</span><br><span class="line">    <span class="type">int</span> pcblen;</span><br><span class="line">    PCBseql pcb;</span><br><span class="line">    Partseql part;</span><br><span class="line">    pcbl = &amp;pcb;</span><br><span class="line">    partl = &amp;part;</span><br><span class="line">    <span class="built_in">initpcb</span>();</span><br><span class="line">    <span class="built_in">initpart</span>();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\t****************************MENU****************************\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\t************** Enter: r 请求分配内存**************\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\t************** Enter: s 结束进程 **************\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\t************** Enter: p 打印分配情况**************\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\t************** Enter: e 退出 **************\n&quot;</span>);</span><br><span class="line">    ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="built_in">fflush</span>(stdin);</span><br><span class="line">    <span class="keyword">while</span> (ch != <span class="string">&#x27;e&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (ch) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;r&#x27;</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;请输入请求进程的name，len:&quot;</span>);</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%c %d&quot;</span>, &amp;pcbname, &amp;pcblen);</span><br><span class="line">            <span class="built_in">fflush</span>(stdin);</span><br><span class="line">            <span class="built_in">request</span>(pcbname, pcblen);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;s&#x27;</span>:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;请输入要结束进程的name：&quot;</span>);</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>, &amp;pcbname);</span><br><span class="line">            <span class="built_in">fflush</span>(stdin);</span><br><span class="line">            <span class="built_in">release</span>(pcbname);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;p&#x27;</span>:</span><br><span class="line">            <span class="built_in">print</span>();</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;e&#x27;</span>:</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        ch = <span class="built_in">getchar</span>();</span><br><span class="line">        <span class="built_in">fflush</span>(stdin);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>1.界面图</p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193057697.png" alt="image-20240606193057697"></p>
+<p>2.分配内存</p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193138959.png" alt="image-20240606193138959"></p>
+<p>3.打印分配情况</p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193159414.png" alt="image-20240606193159414"></p>
+<p>4.结束a进程后 打印分配情况</p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E5%85%AB.assets/image-20240606193247529.png" alt="image-20240606193247529"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"
+      title="实验报告"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        实验报告
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E4%B8%83/"
+      title="实验七"
+     >
+
+    <p class="title-text">
+      
+        实验七
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

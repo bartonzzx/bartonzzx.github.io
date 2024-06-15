@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>实验二报告 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="实验二报告1． 建表下载见表DDL脚本 https:&#x2F;&#x2F;www.db-book.com&#x2F;university-lab-dir&#x2F;sample_tables-dir&#x2F;DDL.sql 在sqlplus中或者Toad中使用@命令执行建库脚本   2． 插入数据库数据下载数据脚本 https:&#x2F;&#x2F;www.db-book.com&#x2F;university-lab-dir&#x2F;sample_tablesdir&#x2F;larg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验二报告">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="实验二报告1． 建表下载见表DDL脚本 https:&#x2F;&#x2F;www.db-book.com&#x2F;university-lab-dir&#x2F;sample_tables-dir&#x2F;DDL.sql 在sqlplus中或者Toad中使用@命令执行建库脚本   2． 插入数据库数据下载数据脚本 https:&#x2F;&#x2F;www.db-book.com&#x2F;university-lab-dir&#x2F;sample_tablesdir&#x2F;larg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325143558286.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325143622807.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145129866.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144259903.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144311982.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144501536.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145440942.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145603997.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145659715.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150037781.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150149138.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150530263.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150859911.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150946894.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325151213349.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325151347037.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153058500.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153116137.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325152700886.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325152752426.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153223379.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325154231894.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325154358792.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162254329.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162341439.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162905403.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163013503.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163111395.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163410421.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163750379.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163807356.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163900463.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325164025392.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325164617234.png">
+<meta property="article:published_time" content="2024-05-24T01:21:45.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.863Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325143558286.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-实验二报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        实验二报告
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="实验二报告"><a href="#实验二报告" class="headerlink" title="实验二报告"></a>实验二报告</h1><h2 id="1．-建表"><a href="#1．-建表" class="headerlink" title="1． 建表"></a>1． 建表</h2><p>下载见表DDL脚本 <a target="_blank" rel="noopener" href="https://www.db-book.com/university-lab-dir/sample_tables-dir/DDL.sql">https://www.db-book.com/university-lab-dir/sample_tables-dir/DDL.sql</a> 在sqlplus中或者Toad中使用@命令执行建库脚本 </p>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325143558286.png" alt="image-20240325143558286"></p>
+<h2 id="2．-插入数据库数据"><a href="#2．-插入数据库数据" class="headerlink" title="2． 插入数据库数据"></a>2． 插入数据库数据</h2><p>下载数据脚本 <a target="_blank" rel="noopener" href="https://www.db-book.com/university-lab-dir/sample_tablesdir/largeRelations/largeRelationsInsertFile.sql">https://www.db-book.com/university-lab-dir/sample_tablesdir/largeRelations/largeRelationsInsertFile.sql</a> 在sqlplus中或者Toad中使用@命令执行建库脚本 </p>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325143622807.png" alt="image-20240325143622807"></p>
+<h2 id="3．-主键约束"><a href="#3．-主键约束" class="headerlink" title="3． 主键约束"></a>3． 主键约束</h2><h3 id="a-插入一条数据，使得其违反instructor的主键约束"><a href="#a-插入一条数据，使得其违反instructor的主键约束" class="headerlink" title="a. 插入一条数据，使得其违反instructor的主键约束"></a>a. 插入一条数据，使得其违反instructor的主键约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--在instructor中已存在id&#x27;14365&#x27;的记录</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;14365&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Comp. Sci.&#x27;</span>,<span class="number">30000</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145129866.png" alt="image-20240325145129866"></p>
+<h3 id="b-使得instructor主键无效化，插入上面那条数据"><a href="#b-使得instructor主键无效化，插入上面那条数据" class="headerlink" title="b. 使得instructor主键无效化，插入上面那条数据"></a>b. 使得instructor主键无效化，插入上面那条数据</h3><ul>
+<li>首先使用Toad图形化界面得到</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144259903.png" alt="image-20240325144259903"></p>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144311982.png" alt="image-20240325144311982"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  DISABLE;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加cascade，采用级联删除，得到instructor主键无效化sql语句，由于在Toad无法运行，转在sqlplus中运行</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  DISABLE cascade;</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325144501536.png" alt="image-20240325144501536"></p>
+<ul>
+<li>最后插入步骤a中违反主键约束的语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--在instructor中已存在id&#x27;14365&#x27;的记录</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;14365&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Comp. Sci.&#x27;</span>,<span class="number">30000</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145440942.png" alt="image-20240325145440942"></p>
+<p>在Toad中成功插入数据，没有报错，Errors为空</p>
+<h3 id="c-尝试使instructor主键有效，记录出现的结果"><a href="#c-尝试使instructor主键有效，记录出现的结果" class="headerlink" title="c. 尝试使instructor主键有效，记录出现的结果"></a>c. 尝试使instructor主键有效，记录出现的结果</h3><ul>
+<li>使用Toad启用instructor主键约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145603997.png" alt="image-20240325145603997"></p>
+<p>产生的sql语句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  ENABLE;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行出现报错，提示为违反主键约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325145659715.png" alt="image-20240325145659715"></p>
+<p>脚本输出为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span><span class="operator">&gt;</span> <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  ENABLE<span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  ENABLE</span><br><span class="line">Error <span class="keyword">at</span> line <span class="number">2</span></span><br><span class="line">ORA<span class="number">-02437</span>: cannot validate (S202205566912.SYS_C0086727) <span class="operator">-</span> <span class="keyword">primary</span> key violated</span><br><span class="line">Script Terminated <span class="keyword">on</span> line <span class="number">2.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="d-删除之前插入的数据，使得instructor主键有效。"><a href="#d-删除之前插入的数据，使得instructor主键有效。" class="headerlink" title="d. 删除之前插入的数据，使得instructor主键有效。"></a>d. 删除之前插入的数据，使得instructor主键有效。</h3><ul>
+<li>删除之前插入的数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> instructor </span><br><span class="line"><span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27;14365&#x27;</span></span><br><span class="line"><span class="keyword">and</span> name<span class="operator">=</span><span class="string">&#x27;John&#x27;</span></span><br><span class="line"><span class="keyword">and</span> dept_name<span class="operator">=</span><span class="string">&#x27;Comp. Sci.&#x27;</span></span><br><span class="line"><span class="keyword">and</span> salary<span class="operator">=</span><span class="number">30000</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行sql语句，没有出现报错，Errors为空</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150037781.png" alt="image-20240325150037781"></p>
+<ul>
+<li>再运行步骤c中的使instructor主键有效的sql语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> SYS_C0086727</span><br><span class="line">  ENABLE;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行sql语句，没有出现报错，Errors为空</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150149138.png" alt="image-20240325150149138"></p>
+<h2 id="4．-外键约束"><a href="#4．-外键约束" class="headerlink" title="4． 外键约束"></a>4． 外键约束</h2><h3 id="a-instructor表里插入一条数据，使得其违反dept-name列上的外键约束。"><a href="#a-instructor表里插入一条数据，使得其违反dept-name列上的外键约束。" class="headerlink" title="a. instructor表里插入一条数据，使得其违反dept_name列上的外键约束。"></a>a. instructor表里插入一条数据，使得其违反dept_name列上的外键约束。</h3><ul>
+<li>插入的数据为</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--在dept_name列中，所引用的department关系不存在dept_name=&#x27;Cybersecurity&#x27;的记录前提下</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;12345&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Cybersecurity&#x27;</span>,<span class="number">30000</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行报错，提示父键未找到</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150530263.png" alt="image-20240325150530263"></p>
+<h3 id="b-department中加入新的院系”Cybersecurity”，在instructor表中加入一位老师，院系-为”Cybersecurity”。"><a href="#b-department中加入新的院系”Cybersecurity”，在instructor表中加入一位老师，院系-为”Cybersecurity”。" class="headerlink" title="b. department中加入新的院系”Cybersecurity”，在instructor表中加入一位老师，院系 为”Cybersecurity”。"></a>b. department中加入新的院系”Cybersecurity”，在instructor表中加入一位老师，院系 为”Cybersecurity”。</h3><ul>
+<li>在department新增院系‘Cybersecurity’</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> department(dept_name)</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;Cybersecurity&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行该sql语句，未报错，Errors为空</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150859911.png" alt="image-20240325150859911"></p>
+<ul>
+<li>新增数据为</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;12345&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Cybersecurity&#x27;</span>,<span class="number">30000</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行该sql语句，未报错，Errors为空</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325150946894.png" alt="image-20240325150946894"></p>
+<h3 id="c-在department中删除”Cybersecurity”，查看和记录instructor的变化，分析原因。"><a href="#c-在department中删除”Cybersecurity”，查看和记录instructor的变化，分析原因。" class="headerlink" title="c. 在department中删除”Cybersecurity”，查看和记录instructor的变化，分析原因。"></a>c. 在department中删除”Cybersecurity”，查看和记录instructor的变化，分析原因。</h3><ul>
+<li>编写sql语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> department</span><br><span class="line"><span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Cybersecurity&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行sql语句，未报错，Errors为空</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325151213349.png" alt="image-20240325151213349"></p>
+<ul>
+<li>编写sql语句，在instructor中查找原来插入的数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> instructor </span><br><span class="line"><span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27;12345&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找结果如图，但是dept_name变为了空值</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325151347037.png" alt="image-20240325151347037"></p>
+<ul>
+<li>分析原因为:</li>
+</ul>
+<blockquote>
+<p>在创建instructor关系的dept_name上的外键约束时，指定删除规则为SET NULL，即当父关系中相应记录删除时，同时将dept_name的值置为空。</p>
+</blockquote>
+<h3 id="d-删除instructor表的dept-name上的外键约束"><a href="#d-删除instructor表的dept-name上的外键约束" class="headerlink" title="d. 删除instructor表的dept_name上的外键约束"></a>d. 删除instructor表的dept_name上的外键约束</h3><ul>
+<li>利用Toad图形化界面生成删除instructor上dept_name列上的外键约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153058500.png" alt="image-20240325153058500"></p>
+<ul>
+<li>外键约束删除成功</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153116137.png" alt="image-20240325153116137"></p>
+<h3 id="e-建立instructor表的外键约束，删除规则为No-action。"><a href="#e-建立instructor表的外键约束，删除规则为No-action。" class="headerlink" title="e. 建立instructor表的外键约束，删除规则为No action。"></a>e. 建立instructor表的外键约束，删除规则为No action。</h3><ul>
+<li>使用Toad生成sql语句，指定列和删除规则为No action</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325152700886.png" alt="image-20240325152700886"></p>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325152752426.png" alt="image-20240325152752426"></p>
+<ul>
+<li>生成sql语句如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR <span class="keyword">ADD</span> </span><br><span class="line"><span class="keyword">CONSTRAINT</span> INSTRUCTOR_R01</span><br><span class="line"> <span class="keyword">FOREIGN</span> KEY (DEPT_NAME)</span><br><span class="line"> <span class="keyword">REFERENCES</span> S202205566912.DEPARTMENT (DEPT_NAME)</span><br><span class="line"> ENABLE</span><br><span class="line"> VALIDATE;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行，创建成功</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325153223379.png" alt="image-20240325153223379"></p>
+<h3 id="f-删除”Cybersecurity”院系，查看和记录结果，分析原因。"><a href="#f-删除”Cybersecurity”院系，查看和记录结果，分析原因。" class="headerlink" title="f. 删除”Cybersecurity”院系，查看和记录结果，分析原因。"></a>f. 删除”Cybersecurity”院系，查看和记录结果，分析原因。</h3><ul>
+<li>首先删除原来插入的数据，防止干扰</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">from</span> instructor </span><br><span class="line"><span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27;12345&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重复步骤b，添加’Cybersecurity’院系，并添加为’Cybersecurity’院系的老师</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> department(dept_name)</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;Cybersecurity&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;12345&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Cybersecurity&#x27;</span>,<span class="number">30000</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看插入的数据</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27;12345&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325154231894.png" alt="image-20240325154231894"></p>
+<ul>
+<li>运行步骤c中的删除’Cybersecurity’院系sql语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> department</span><br><span class="line"><span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Cybersecurity&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行成功，出现错误，提示违反完整性约束，找到子记录</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325154358792.png" alt="image-20240325154358792"></p>
+<ul>
+<li>分析原因</li>
+</ul>
+<blockquote>
+<p>原因为，我们首先在instructor中建立了外键约束并设置了删除规则，然后在department中插入了’Cybersecurity‘院系，其次在instructor中插入’Cybersecurity‘院系的老师，最后在department中删除’Cybersecurity‘院系，触发了完整性约束错误：删除父关系中的记录时，在子关系中找到了相关记录，所以无法删除</p>
+</blockquote>
+<h2 id="5．-unique约束"><a href="#5．-unique约束" class="headerlink" title="5． unique约束"></a>5． unique约束</h2><h3 id="a-在takes表上建立一个unique约束，保证每人每学期每课程只能修一个课程段。"><a href="#a-在takes表上建立一个unique约束，保证每人每学期每课程只能修一个课程段。" class="headerlink" title="a. 在takes表上建立一个unique约束，保证每人每学期每课程只能修一个课程段。"></a>a. 在takes表上建立一个unique约束，保证每人每学期每课程只能修一个课程段。</h3><ul>
+<li>利用Toad建立unique约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162254329.png" alt="image-20240325162254329"></p>
+<ul>
+<li>生成sql语句如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.TAKES <span class="keyword">ADD</span> </span><br><span class="line"><span class="keyword">CONSTRAINT</span> TAKES_U01</span><br><span class="line"> <span class="keyword">UNIQUE</span> (ID, COURSE_ID, SEMESTER, <span class="keyword">YEAR</span>)</span><br><span class="line"> ENABLE</span><br><span class="line"> VALIDATE</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>成功创建unique约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162341439.png" alt="image-20240325162341439"></p>
+<h3 id="b-创建一个样例，当插入这条记录时，会违反上面建立的约束，记录结果。"><a href="#b-创建一个样例，当插入这条记录时，会违反上面建立的约束，记录结果。" class="headerlink" title="b. 创建一个样例，当插入这条记录时，会违反上面建立的约束，记录结果。"></a>b. 创建一个样例，当插入这条记录时，会违反上面建立的约束，记录结果。</h3><ul>
+<li>编写sql语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--已存在id=7123,course_id=991,sec_id=1,semester=&#x27;Spring&#x27;,year=2008的记录 </span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> takes(id,course_id,sec_id,semester,<span class="keyword">year</span>)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">7123</span>,<span class="number">991</span>,<span class="number">2</span>,<span class="string">&#x27;Spring&#x27;</span>,<span class="number">2008</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行sql语句，出现报错，违反了在步骤a定义的TAKES_U01约束(unique约束)</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325162905403.png" alt="image-20240325162905403"></p>
+<h3 id="c-使得刚才建立的约束无效化，并再次运行上一条SQL语句，记录结果。"><a href="#c-使得刚才建立的约束无效化，并再次运行上一条SQL语句，记录结果。" class="headerlink" title="c. 使得刚才建立的约束无效化，并再次运行上一条SQL语句，记录结果。"></a>c. 使得刚才建立的约束无效化，并再次运行上一条SQL语句，记录结果。</h3><ul>
+<li>在Toad中禁用在步骤a定义的约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163013503.png" alt="image-20240325163013503"></p>
+<ul>
+<li>生成sql语句如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.TAKES</span><br><span class="line">  MODIFY <span class="keyword">CONSTRAINT</span> TAKES_U01</span><br><span class="line">  DISABLE;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>成功禁用unique约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163111395.png" alt="image-20240325163111395"></p>
+<ul>
+<li>再次运行步骤b中的sql语句</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--已存在id=7123,course_id=991,sec_id=1,semester=&#x27;Spring&#x27;,year=2008的记录 </span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> takes(id,course_id,sec_id,semester,<span class="keyword">year</span>)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">7123</span>,<span class="number">991</span>,<span class="number">2</span>,<span class="string">&#x27;Spring&#x27;</span>,<span class="number">2008</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>运行结果如下，分析报错原因</p>
+<blockquote>
+<p>经查看具体约束定义后得知，S202205566912.SYS_C0086742是引用section的外键约束，而我们定义的course_id,sec_id,semester和year并未事前在section关系中插入，故违反了引用section的外键约束。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163410421.png" alt="image-20240325163410421"></p>
+<h3 id="d-删除掉这个约束。"><a href="#d-删除掉这个约束。" class="headerlink" title="d. 删除掉这个约束。"></a>d. 删除掉这个约束。</h3><ul>
+<li>使用Toad删除步骤a定义的unique约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163750379.png" alt="image-20240325163750379"></p>
+<ul>
+<li>删除成功</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163807356.png" alt="image-20240325163807356"></p>
+<h2 id="6．-check约束"><a href="#6．-check约束" class="headerlink" title="6． check约束"></a>6． check约束</h2><h3 id="a-在instructor表上建立一个check约束，保证工资不超过500000。"><a href="#a-在instructor表上建立一个check约束，保证工资不超过500000。" class="headerlink" title="a. 在instructor表上建立一个check约束，保证工资不超过500000。"></a>a. 在instructor表上建立一个check约束，保证工资不超过500000。</h3><ul>
+<li>使用Toad建立check约束，并添加条件如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salary <span class="operator">&lt;=</span> <span class="number">500000</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325163900463.png" alt="image-20240325163900463"></p>
+<ul>
+<li>生成sql语句如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> S202205566912.INSTRUCTOR <span class="keyword">ADD</span> </span><br><span class="line"><span class="keyword">CONSTRAINT</span> INSTRUCTOR_C01</span><br><span class="line"> <span class="keyword">CHECK</span> (salary <span class="operator">&lt;=</span> <span class="number">500000</span>)</span><br><span class="line"> ENABLE</span><br><span class="line"> VALIDATE</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行成功</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325164025392.png" alt="image-20240325164025392"></p>
+<h3 id="b-在instructor表中插入一条记录，使其违反上续约束。"><a href="#b-在instructor表中插入一条记录，使其违反上续约束。" class="headerlink" title="b. 在instructor表中插入一条记录，使其违反上续约束。"></a>b. 在instructor表中插入一条记录，使其违反上续约束。</h3><ul>
+<li>编写插入记录的sql语句如下</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> instructor</span><br><span class="line"><span class="keyword">values</span> (<span class="string">&#x27;12345&#x27;</span>,<span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;Comp. Sci.&#x27;</span>,<span class="number">600000</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行sql语句，报错，提示违反check约束(INSTRUCTOR_C01)，即在步骤a定义的check约束</li>
+</ul>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A.assets/image-20240325164617234.png" alt="image-20240325164617234"></p>
+<h2 id="主键含义"><a href="#主键含义" class="headerlink" title="主键含义"></a>主键含义</h2><blockquote>
+<p>关系中的一列或者多列的组合，其值或者其组合能唯一地标志关系中的每一行。这样的列或者列的组合称为主键。</p>
+</blockquote>
+<h2 id="外键含义"><a href="#外键含义" class="headerlink" title="外键含义"></a>外键含义</h2><blockquote>
+<p>关系中的一列或者多列的组合，其值或者其组合必须在另一个关系中存在，也就是外键必须引用其他关系中的相关列。从而构建起两个关系的关联</p>
+</blockquote>
+<h2 id="主键与外键的区别"><a href="#主键与外键的区别" class="headerlink" title="主键与外键的区别"></a>主键与外键的区别</h2><ul>
+<li>主键不允许为空，不允许重复。外键可以为空，可以重复</li>
+<li>在一个关系中，主键只能有一个，外键可以有多个</li>
+</ul>
+<h2 id="unique约束与主键的关系"><a href="#unique约束与主键的关系" class="headerlink" title="unique约束与主键的关系"></a>unique约束与主键的关系</h2><ul>
+<li>unique约束和主键都可以确保值的唯一性</li>
+</ul>
+<h2 id="unique约束与主键的区别"><a href="#unique约束与主键的区别" class="headerlink" title="unique约束与主键的区别"></a>unique约束与主键的区别</h2><ul>
+<li>一个关系只能有一个主键，但一个关系可以有多个unique约束</li>
+<li>主键约束很难更新，唯一性约束只要唯一就能更新</li>
+<li>主键不允许为空，unique约束中，可以存在空值</li>
+</ul>
+<h2 id="check约束使用的限制"><a href="#check约束使用的限制" class="headerlink" title="check约束使用的限制"></a>check约束使用的限制</h2><ul>
+<li><p>CHECK约束中的表达式应该是一个返回布尔值的逻辑表达式。表达式中可以使用列名、常量、运算符（如算术运算符、比较运算符、逻辑运算符等）和函数。</p>
+</li>
+<li><p>CHECK约束的表达式中不能包含子查询。</p>
+</li>
+<li><p>CHECK约束对空值的处理。如果列的值为 NULL，CHECK 约束通常被视为<strong>满足条件</strong>，因为 NULL值表示“未知”，而不是“不满足条件”。</p>
+</li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%8A%A5%E5%91%8A/"
+      title="实验三报告"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        实验三报告
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A/"
+      title="实验六报告"
+     >
+
+    <p class="title-text">
+      
+        实验六报告
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

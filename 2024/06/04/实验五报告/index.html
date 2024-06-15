@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>实验五报告 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="实验五报告1. 查询修读人数最多的课程号，课程名称。答案12345678select course_id,title from(select course_id,title,count(distinct id) as cntfrom course natural join takesgroup by course_id,titleorder by cnt desc)where rownum&#x3D;1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验五报告">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/04/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="实验五报告1. 查询修读人数最多的课程号，课程名称。答案12345678select course_id,title from(select course_id,title,count(distinct id) as cntfrom course natural join takesgroup by course_id,titleorder by cnt desc)where rownum&#x3D;1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506155820640.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506155906799.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506161429849.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506161956161.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506164528888.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171356615.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171448517.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172307264.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172735689.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171723768.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171806095.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172824380.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506173249175.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513154727957.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513170829232.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513171730586.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513172828809.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173352628.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173406673.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173559881.png">
+<meta property="article:published_time" content="2024-06-04T08:15:14.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.863Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506155820640.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-实验五报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        实验五报告
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-04T08:15:14.000Z" itemprop="datePublished">2024-06-04</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="实验五报告"><a href="#实验五报告" class="headerlink" title="实验五报告"></a>实验五报告</h1><h2 id="1-查询修读人数最多的课程号，课程名称。"><a href="#1-查询修读人数最多的课程号，课程名称。" class="headerlink" title="1. 查询修读人数最多的课程号，课程名称。"></a>1. 查询修读人数最多的课程号，课程名称。</h2><h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> course_id,title <span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> course_id,title,<span class="built_in">count</span>(<span class="keyword">distinct</span> id) <span class="keyword">as</span> cnt</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">natural</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> course_id,title</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> cnt <span class="keyword">desc</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> rownum<span class="operator">=</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506155820640.png" alt="image-20240506155820640"></p>
+<h2 id="2-查询’Comp-Sci-’，’Biology’，’Physics’院的老师-ID-和姓名"><a href="#2-查询’Comp-Sci-’，’Biology’，’Physics’院的老师-ID-和姓名" class="headerlink" title="2. 查询’Comp. Sci.’，’Biology’，’Physics’院的老师 ID 和姓名"></a>2. 查询’Comp. Sci.’，’Biology’，’Physics’院的老师 ID 和姓名</h2><h3 id="答案-1"><a href="#答案-1" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">where</span> dept_name<span class="operator">=</span><span class="string">&#x27;Comp. Sci.&#x27;</span> <span class="keyword">or</span> dept_name<span class="operator">=</span><span class="string">&#x27;Biology&#x27;</span> <span class="keyword">or</span> dept_name<span class="operator">=</span><span class="string">&#x27;Physics&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506155906799.png" alt="image-20240506155906799"></p>
+<h2 id="3-成绩为”C-”视为不及格，求通过率最低的课程号，课程名称，学分和通过率。"><a href="#3-成绩为”C-”视为不及格，求通过率最低的课程号，课程名称，学分和通过率。" class="headerlink" title="3. 成绩为”C-”视为不及格，求通过率最低的课程号，课程名称，学分和通过率。"></a>3. 成绩为”C-”视为不及格，求通过率最低的课程号，课程名称，学分和通过率。</h2><h3 id="答案-2"><a href="#答案-2" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> all_score(course_id,title,credits,cnt_all) <span class="keyword">as</span></span><br><span class="line">(<span class="keyword">select</span> course_id,title,credits,<span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">natural</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> course_id,title,credits),</span><br><span class="line">pass_score(course_id,title,credits,cnt_pass) <span class="keyword">as</span></span><br><span class="line">(<span class="keyword">select</span> course_id,title,credits,<span class="built_in">count</span>(<span class="operator">*</span>)</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">natural</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">where</span> grade <span class="operator">!=</span> <span class="string">&#x27;C-&#x27;</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> course_id,title,credits)</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> course_id,title,credits,cnt_pass <span class="operator">/</span> cnt_all <span class="keyword">as</span> pass_ratio</span><br><span class="line"><span class="keyword">from</span> all_score <span class="keyword">natural</span> <span class="keyword">join</span> pass_score</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> pass_ratio <span class="keyword">asc</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> rownum<span class="operator">=</span><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506161429849.png" alt="image-20240506161429849"></p>
+<h2 id="4-查询工资比所在院平均工资高的老师的职工号，姓名，院系，工资。"><a href="#4-查询工资比所在院平均工资高的老师的职工号，姓名，院系，工资。" class="headerlink" title="4. 查询工资比所在院平均工资高的老师的职工号，姓名，院系，工资。"></a>4. 查询工资比所在院平均工资高的老师的职工号，姓名，院系，工资。</h2><h3 id="答案-3"><a href="#答案-3" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> temp(dept_name,avg_salary) <span class="keyword">as</span></span><br><span class="line">(<span class="keyword">select</span> dept_name,<span class="built_in">avg</span>(salary)</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dept_name)</span><br><span class="line"><span class="keyword">select</span> id,name,instructor.dept_name,salary</span><br><span class="line"><span class="keyword">from</span> instructor <span class="keyword">join</span> temp <span class="keyword">on</span> temp.dept_name<span class="operator">=</span>instructor.dept_name</span><br><span class="line"><span class="keyword">where</span> salary <span class="operator">&gt;</span> avg_salary</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-3"><a href="#结果-3" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506161956161.png" alt="image-20240506161956161"></p>
+<h2 id="5-查询修读了’63039’同学所修所有课程的学生号和姓名。"><a href="#5-查询修读了’63039’同学所修所有课程的学生号和姓名。" class="headerlink" title="5. 查询修读了’63039’同学所修所有课程的学生号和姓名。"></a>5. 查询修读了’63039’同学所修所有课程的学生号和姓名。</h2><h3 id="答案-4"><a href="#答案-4" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,name</span><br><span class="line"><span class="keyword">from</span> student <span class="keyword">natural</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">where</span> course_id <span class="keyword">in</span> (<span class="keyword">select</span> course_id</span><br><span class="line"><span class="keyword">from</span> takes <span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27;63039&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-4"><a href="#结果-4" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506164528888.png" alt="image-20240506164528888"></p>
+<h2 id="6-使用-rank-函数查询已修学分最多前-10-的同学的学号，姓名，院系，已修学分和排名"><a href="#6-使用-rank-函数查询已修学分最多前-10-的同学的学号，姓名，院系，已修学分和排名" class="headerlink" title="6. 使用 rank 函数查询已修学分最多前 10 的同学的学号，姓名，院系，已修学分和排名"></a>6. 使用 rank 函数查询已修学分最多前 10 的同学的学号，姓名，院系，已修学分和排名</h2><h3 id="答案-5"><a href="#答案-5" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> id,name,dept_name,tot_cred,<span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> tot_cred <span class="keyword">desc</span>) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-5"><a href="#结果-5" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171356615.png" alt="image-20240506171356615"></p>
+<h2 id="7-使用标量子查询实现上一个的查询"><a href="#7-使用标量子查询实现上一个的查询" class="headerlink" title="7. 使用标量子查询实现上一个的查询"></a>7. 使用标量子查询实现上一个的查询</h2><h3 id="答案-6"><a href="#答案-6" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> id,name,dept_name,tot_cred,(<span class="number">1</span><span class="operator">+</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student A <span class="keyword">where</span> B.tot_cred <span class="operator">&lt;</span> A.tot_cred)) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student B</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> credits_rank</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-6"><a href="#结果-6" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171448517.png" alt="image-20240506171448517"></p>
+<h2 id="8-使用-rank-函数查询各院，已修学分最多的前-3-同学的学号，姓名，院系，已修学分和排名"><a href="#8-使用-rank-函数查询各院，已修学分最多的前-3-同学的学号，姓名，院系，已修学分和排名" class="headerlink" title="8. 使用 rank 函数查询各院，已修学分最多的前 3 同学的学号，姓名，院系，已修学分和排名"></a>8. 使用 rank 函数查询各院，已修学分最多的前 3 同学的学号，姓名，院系，已修学分和排名</h2><h3 id="答案-7"><a href="#答案-7" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> id,name,dept_name,tot_cred,<span class="built_in">rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> dept_name <span class="keyword">order</span> <span class="keyword">by</span> tot_cred <span class="keyword">desc</span>) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-7"><a href="#结果-7" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172307264.png" alt="image-20240506172307264"></p>
+<h2 id="9-使用标量子查询实现上一个的查询"><a href="#9-使用标量子查询实现上一个的查询" class="headerlink" title="9. 使用标量子查询实现上一个的查询"></a>9. 使用标量子查询实现上一个的查询</h2><h3 id="答案-8"><a href="#答案-8" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> id,name,dept_name,tot_cred,(<span class="number">1</span><span class="operator">+</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> student A <span class="keyword">where</span> B.tot_cred <span class="operator">&lt;</span> A.tot_cred <span class="keyword">and</span> B.dept_name<span class="operator">=</span>A.dept_name)) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student B</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> credits_rank</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">3</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-8"><a href="#结果-8" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172735689.png" alt="image-20240506172735689"></p>
+<h2 id="10-使用-dense-rank-函数查询已修学分最多前-10（密集排名）的同学的学号，姓名，院系，已修学分和密-集排名"><a href="#10-使用-dense-rank-函数查询已修学分最多前-10（密集排名）的同学的学号，姓名，院系，已修学分和密-集排名" class="headerlink" title="10. 使用 dense_rank 函数查询已修学分最多前 10（密集排名）的同学的学号，姓名，院系，已修学分和密 集排名"></a>10. 使用 dense_rank 函数查询已修学分最多前 10（密集排名）的同学的学号，姓名，院系，已修学分和密 集排名</h2><h3 id="答案-9"><a href="#答案-9" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> id,name,dept_name,tot_cred,<span class="built_in">dense_rank</span>() <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> tot_cred <span class="keyword">desc</span>) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-9"><a href="#结果-9" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171723768.png" alt="image-20240506171723768"></p>
+<h2 id="11-使用标量子查询实现上一个的查询"><a href="#11-使用标量子查询实现上一个的查询" class="headerlink" title="11. 使用标量子查询实现上一个的查询"></a>11. 使用标量子查询实现上一个的查询</h2><h3 id="答案-10"><a href="#答案-10" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> id,name,dept_name,tot_cred,(<span class="number">1</span><span class="operator">+</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> A.tot_cred) <span class="keyword">from</span> student A <span class="keyword">where</span> B.tot_cred <span class="operator">&lt;</span> A.tot_cred)) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student B</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> credits_rank</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-10"><a href="#结果-10" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506171806095.png" alt="image-20240506171806095"></p>
+<h2 id="12-使用-dense-rank-函数查询各院，已修学分最多的前-3（密集排名）同学的学号，姓名，院系，已修学分-和密集排名"><a href="#12-使用-dense-rank-函数查询各院，已修学分最多的前-3（密集排名）同学的学号，姓名，院系，已修学分-和密集排名" class="headerlink" title="12. 使用 dense_rank 函数查询各院，已修学分最多的前 3（密集排名）同学的学号，姓名，院系，已修学分 和密集排名"></a>12. 使用 dense_rank 函数查询各院，已修学分最多的前 3（密集排名）同学的学号，姓名，院系，已修学分 和密集排名</h2><h3 id="答案-11"><a href="#答案-11" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> id,name,dept_name,tot_cred,<span class="built_in">dense_rank</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> dept_name <span class="keyword">order</span> <span class="keyword">by</span> tot_cred <span class="keyword">desc</span>) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-11"><a href="#结果-11" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506172824380.png" alt="image-20240506172824380"></p>
+<h2 id="13-使用标量子查询实现上一个的查询"><a href="#13-使用标量子查询实现上一个的查询" class="headerlink" title="13. 使用标量子查询实现上一个的查询"></a>13. 使用标量子查询实现上一个的查询</h2><h3 id="答案-12"><a href="#答案-12" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> id,name,dept_name,tot_cred,(<span class="number">1</span><span class="operator">+</span> (<span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> A.tot_cred) <span class="keyword">from</span> student A <span class="keyword">where</span> B.tot_cred <span class="operator">&lt;</span> A.tot_cred <span class="keyword">and</span> B.dept_name<span class="operator">=</span>A.dept_name)) <span class="keyword">as</span> credits_rank</span><br><span class="line"><span class="keyword">from</span> student B</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> credits_rank</span><br><span class="line">)</span><br><span class="line"><span class="keyword">where</span> credits_rank <span class="operator">&lt;=</span> <span class="number">3</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dept_name,credits_rank</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-12"><a href="#结果-12" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240506173249175.png" alt="image-20240506173249175"></p>
+<h2 id="14-查询各院在-2008-年到-2010-年三年的修课总人次，列依次为院系名，2008，2009，2010，并按各院字典-序排列显示。"><a href="#14-查询各院在-2008-年到-2010-年三年的修课总人次，列依次为院系名，2008，2009，2010，并按各院字典-序排列显示。" class="headerlink" title="14. 查询各院在 2008 年到 2010 年三年的修课总人次，列依次为院系名，2008，2009，2010，并按各院字典 序排列显示。"></a>14. 查询各院在 2008 年到 2010 年三年的修课总人次，列依次为院系名，2008，2009，2010，并按各院字典 序排列显示。</h2><h3 id="答案-13"><a href="#答案-13" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span> dept_name,<span class="keyword">year</span>,<span class="built_in">count</span>(id) <span class="keyword">as</span> cnt</span><br><span class="line"><span class="keyword">from</span> student <span class="keyword">natural</span> <span class="keyword">join</span> takes</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dept_name,<span class="keyword">year</span>    </span><br><span class="line">)</span><br><span class="line">pivot(</span><br><span class="line">    <span class="built_in">sum</span>(cnt)</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">year</span> <span class="keyword">in</span> (<span class="string">&#x27;2008&#x27;</span>,<span class="string">&#x27;2009&#x27;</span>,<span class="string">&#x27;2010&#x27;</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> (dept_name)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-13"><a href="#结果-13" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513154727957.png" alt="image-20240513154727957"></p>
+<h2 id="15-查询各课程-A-类-A-A-A-B-类-B-B-B-C-类-C-C-C-成绩的人数，列依次为课程号，课程名称，A，B，C。"><a href="#15-查询各课程-A-类-A-A-A-B-类-B-B-B-C-类-C-C-C-成绩的人数，列依次为课程号，课程名称，A，B，C。" class="headerlink" title="15. 查询各课程 A 类(A+,A,A-),B 类(B+,B,B-),C 类(C+,C,C-)成绩的人数，列依次为课程号，课程名称，A，B，C。"></a>15. 查询各课程 A 类(A+,A,A-),B 类(B+,B,B-),C 类(C+,C,C-)成绩的人数，列依次为课程号，课程名称，A，B，C。</h2><h3 id="答案-14"><a href="#答案-14" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> temp <span class="keyword">as</span>(</span><br><span class="line">    <span class="keyword">select</span> course_id,(<span class="keyword">case</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;A+&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;A-&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;B+&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;B-&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;B&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;C+&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;C-&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">        <span class="keyword">when</span> grade <span class="operator">=</span> <span class="string">&#x27;C&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">        <span class="keyword">end</span>) <span class="keyword">as</span> grade <span class="keyword">from</span> takes)</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span>  </span><br><span class="line">(<span class="keyword">select</span> course_id,title,grade,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> cnt <span class="keyword">from</span> temp <span class="keyword">natural</span> <span class="keyword">join</span> course</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> course_id,title,grade)</span><br><span class="line">pivot(</span><br><span class="line">    <span class="built_in">sum</span>(cnt)</span><br><span class="line">    <span class="keyword">for</span> grade <span class="keyword">in</span> (<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-14"><a href="#结果-14" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513170829232.png" alt="image-20240513170829232"></p>
+<h2 id="16-查询各院姓名首字母是-A-B-C-的老师的工资总额，列依次为院名，A，B，C。"><a href="#16-查询各院姓名首字母是-A-B-C-的老师的工资总额，列依次为院名，A，B，C。" class="headerlink" title="16. 查询各院姓名首字母是 A,B,C 的老师的工资总额，列依次为院名，A，B，C。"></a>16. 查询各院姓名首字母是 A,B,C 的老师的工资总额，列依次为院名，A，B，C。</h2><h3 id="答案-15"><a href="#答案-15" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> temp <span class="keyword">as</span>(</span><br><span class="line">	<span class="keyword">select</span> dept_name,(<span class="keyword">case</span></span><br><span class="line">		<span class="keyword">when</span> name <span class="keyword">like</span> <span class="string">&#x27;A%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;A&#x27;</span></span><br><span class="line">		<span class="keyword">when</span> name <span class="keyword">like</span> <span class="string">&#x27;B%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;B&#x27;</span></span><br><span class="line">		<span class="keyword">when</span> name <span class="keyword">like</span> <span class="string">&#x27;C%&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;C&#x27;</span></span><br><span class="line">         <span class="keyword">end</span>) <span class="keyword">as</span> name,salary </span><br><span class="line">    <span class="keyword">from</span> instructor</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> dept_name,name,<span class="built_in">sum</span>(salary) <span class="keyword">from</span> temp <span class="keyword">group</span> <span class="keyword">by</span> name)</span><br><span class="line">pivot(</span><br><span class="line">	salary</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> (<span class="string">&#x27;A&#x27;</span>,<span class="string">&#x27;B&#x27;</span>,<span class="string">&#x27;C&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-15"><a href="#结果-15" class="headerlink" title="结果"></a>结果</h3><p><img src="/bartonzzx/bartonzzx.github.io/./%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513171730586.png" alt="image-20240513171730586"></p>
+<h2 id="17-查询每年的修课人次和近三年的均值（前年，去年，今年）。"><a href="#17-查询每年的修课人次和近三年的均值（前年，去年，今年）。" class="headerlink" title="17. 查询每年的修课人次和近三年的均值（前年，去年，今年）。"></a>17. 查询每年的修课人次和近三年的均值（前年，去年，今年）。</h2><h3 id="答案-16"><a href="#答案-16" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tms <span class="keyword">as</span>(</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">year</span>,<span class="built_in">count</span>(id) <span class="keyword">as</span> cnt</span><br><span class="line">    <span class="keyword">from</span> takes</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">year</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,cnt,<span class="built_in">avg</span>(cnt)</span><br><span class="line"><span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">year</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">3</span> preceding <span class="keyword">and</span> <span class="keyword">current</span> <span class="type">row</span>)</span><br><span class="line"><span class="keyword">from</span> tms</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-16"><a href="#结果-16" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513172828809.png" alt="image-20240513172828809"></p>
+<h2 id="18-查询每年各院的修课总人次，每年的修课总人次，全校修课总人次。"><a href="#18-查询每年各院的修课总人次，每年的修课总人次，全校修课总人次。" class="headerlink" title="18. 查询每年各院的修课总人次，每年的修课总人次，全校修课总人次。"></a>18. 查询每年各院的修课总人次，每年的修课总人次，全校修课总人次。</h2><h3 id="答案-17"><a href="#答案-17" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tms <span class="keyword">as</span>(</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">year</span>,dept_name,<span class="built_in">count</span>(id) <span class="keyword">as</span> cnt</span><br><span class="line">    <span class="keyword">from</span> takes <span class="keyword">natural</span> <span class="keyword">join</span> student</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> dept_name,<span class="keyword">year</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,dept_name,<span class="built_in">sum</span>(cnt)</span><br><span class="line"><span class="keyword">from</span> tms</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>(<span class="keyword">year</span>,dept_name)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-17"><a href="#结果-17" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173352628.png" alt="image-20240513173352628"></p>
+<p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173406673.png" alt="image-20240513173406673"></p>
+<h2 id="19-查询每年各院的修课总人次，每年的修课总人次，各院的修课总人次，全校修课总人次。"><a href="#19-查询每年各院的修课总人次，每年的修课总人次，各院的修课总人次，全校修课总人次。" class="headerlink" title="19. 查询每年各院的修课总人次，每年的修课总人次，各院的修课总人次，全校修课总人次。"></a>19. 查询每年各院的修课总人次，每年的修课总人次，各院的修课总人次，全校修课总人次。</h2><h3 id="答案-18"><a href="#答案-18" class="headerlink" title="答案"></a>答案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tms <span class="keyword">as</span>(</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">year</span>,dept_name,<span class="built_in">count</span>(id) <span class="keyword">as</span> cnt</span><br><span class="line">    <span class="keyword">from</span> takes <span class="keyword">natural</span> <span class="keyword">join</span> student</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> dept_name,<span class="keyword">year</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">year</span>,dept_name,<span class="built_in">sum</span>(cnt)</span><br><span class="line"><span class="keyword">from</span> tms</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">cube</span>(<span class="keyword">year</span>,dept_name)</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-18"><a href="#结果-18" class="headerlink" title="结果"></a>结果</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E4%BA%94%E6%8A%A5%E5%91%8A.assets/image-20240513173559881.png" alt="image-20240513173559881"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/04/Sql%E5%A4%8D%E4%B9%A0/"
+      title="Sql复习"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        Sql复习
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/02/%E5%AE%9E%E9%AA%8C%E4%B8%83%E8%AF%B4%E6%98%8E%E4%B9%A6/"
+      title="实验七说明书"
+     >
+
+    <p class="title-text">
+      
+        实验七说明书
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>实验六报告 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="实验六报告1. 有下列数据需求，请画出这个数据库的 E-R 设计图。某大学的程序设计实践系统数据需求如下：a) 用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数， 做对的题目数，所属角色。b) 题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包 括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验六报告">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="实验六报告1. 有下列数据需求，请画出这个数据库的 E-R 设计图。某大学的程序设计实践系统数据需求如下：a) 用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数， 做对的题目数，所属角色。b) 题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包 括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E5%AE%9E%E9%AA%8C%E5%85%AD1ER%E5%9B%BE.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.1ER%E5%9B%BE.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.2ER%E5%9B%BE.drawio.png">
+<meta property="og:image" content="d:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.3ER%E5%9B%BE.drawio.png">
+<meta property="article:published_time" content="2024-05-24T01:21:45.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.864Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E5%AE%9E%E9%AA%8C%E5%85%AD1ER%E5%9B%BE.drawio.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-实验六报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        实验六报告
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.6k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="实验六报告"><a href="#实验六报告" class="headerlink" title="实验六报告"></a>实验六报告</h1><h2 id="1-有下列数据需求，请画出这个数据库的-E-R-设计图。某大学的程序设计实践系统数据需求如下："><a href="#1-有下列数据需求，请画出这个数据库的-E-R-设计图。某大学的程序设计实践系统数据需求如下：" class="headerlink" title="1. 有下列数据需求，请画出这个数据库的 E-R 设计图。某大学的程序设计实践系统数据需求如下："></a>1. 有下列数据需求，请画出这个数据库的 E-R 设计图。某大学的程序设计实践系统数据需求如下：</h2><h3 id="a-用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数，-做对的题目数，所属角色。"><a href="#a-用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数，-做对的题目数，所属角色。" class="headerlink" title="a) 用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数， 做对的题目数，所属角色。"></a>a) 用户包括用户号，姓名，年级，专业，班级，密码，最近登录时间，最近使用语言，做过的题目数， 做对的题目数，所属角色。</h3><h3 id="b-题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包-括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。"><a href="#b-题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包-括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。" class="headerlink" title="b) 题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包 括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。"></a>b) 题目包括题号，名称，时间限制，内存限制，题目内容。题目含若干组测试数据，一组测试数据包 括输入数据和输出数据。题目支持出题方提供的验证器（可执行文件）进行数据验证判题。</h3><h3 id="c-用户可以对题目进行提交，每个提交包括提交号，所用语言，源代码。系统会对提交进行判题，会返回判题结果和运行时长，所用内存大小。运行时长和所用内存大小在某些判题结果中为空值。"><a href="#c-用户可以对题目进行提交，每个提交包括提交号，所用语言，源代码。系统会对提交进行判题，会返回判题结果和运行时长，所用内存大小。运行时长和所用内存大小在某些判题结果中为空值。" class="headerlink" title="c) 用户可以对题目进行提交，每个提交包括提交号，所用语言，源代码。系统会对提交进行判题，会返回判题结果和运行时长，所用内存大小。运行时长和所用内存大小在某些判题结果中为空值。"></a>c) 用户可以对题目进行提交，每个提交包括提交号，所用语言，源代码。系统会对提交进行判题，会返回判题结果和运行时长，所用内存大小。运行时长和所用内存大小在某些判题结果中为空值。</h3><h3 id="d-比赛包括比赛号，比赛名称，比赛开始时间，比赛时长，比赛的描述，比赛公告，比赛的类型分为-公开、私有。-用户可以创建比赛，并且可以对自己创建的比赛进行管理。每个比赛包含若干道题-目，一场比赛中赛题应该是唯一的。用户可以参加比赛，并在比赛中对赛题进行提交，可以查看自-己提交的判题结果。系统并根据过题数和罚时，对参加比赛的用户进行排名，用户可以看到排名情-况。"><a href="#d-比赛包括比赛号，比赛名称，比赛开始时间，比赛时长，比赛的描述，比赛公告，比赛的类型分为-公开、私有。-用户可以创建比赛，并且可以对自己创建的比赛进行管理。每个比赛包含若干道题-目，一场比赛中赛题应该是唯一的。用户可以参加比赛，并在比赛中对赛题进行提交，可以查看自-己提交的判题结果。系统并根据过题数和罚时，对参加比赛的用户进行排名，用户可以看到排名情-况。" class="headerlink" title="d) 比赛包括比赛号，比赛名称，比赛开始时间，比赛时长，比赛的描述，比赛公告，比赛的类型分为 公开、私有。 用户可以创建比赛，并且可以对自己创建的比赛进行管理。每个比赛包含若干道题 目，一场比赛中赛题应该是唯一的。用户可以参加比赛，并在比赛中对赛题进行提交，可以查看自 己提交的判题结果。系统并根据过题数和罚时，对参加比赛的用户进行排名，用户可以看到排名情 况。"></a>d) 比赛包括比赛号，比赛名称，比赛开始时间，比赛时长，比赛的描述，比赛公告，比赛的类型分为 公开、私有。 用户可以创建比赛，并且可以对自己创建的比赛进行管理。每个比赛包含若干道题 目，一场比赛中赛题应该是唯一的。用户可以参加比赛，并在比赛中对赛题进行提交，可以查看自 己提交的判题结果。系统并根据过题数和罚时，对参加比赛的用户进行排名，用户可以看到排名情 况。</h3><p><img src="https://hila-1300222503.cos.ap-shanghai.myqcloud.com/md_image/%E5%AE%9E%E9%AA%8C%E5%85%AD1ER%E5%9B%BE.drawio.png" alt="实验六1ER图.drawio"></p>
+<h2 id="2-根据你的-E-R-图，将其转换成数据库模型，并指出其符合第几范式的要求。"><a href="#2-根据你的-E-R-图，将其转换成数据库模型，并指出其符合第几范式的要求。" class="headerlink" title="2. 根据你的 E-R 图，将其转换成数据库模型，并指出其符合第几范式的要求。"></a>2. 根据你的 E-R 图，将其转换成数据库模型，并指出其符合第几范式的要求。</h2><p>user(<u>user_id</u>,user_name,year,major,class,password,recent_login,recent_language,commit_num,pass_num)</p>
+<p>user_role(<u>use_id</u>,<u>role_id</u>)</p>
+<p>role(<u>role_id</u>,role_name)</p>
+<p>problem(<u>problem_id</u>,problem_name,time_limit,mem_limit,content,test_id)</p>
+<p>solution(<u>sol_id</u>,language,code,problem_id,judge_id)</p>
+<p>judge(<u>judge_id</u>,result,time,mem)</p>
+<p>test(<u>test_id</u>,test_language,test_input,test_output,test_val_addr)</p>
+<p>contest(<u>contest_id</u>,contest_name,start_time,duration,description,announcement,creator_id,type_id)</p>
+<p>contestparticipator(<u>contest_id</u>,<u>participator_id</u>,pass_num,penalty,ranking)</p>
+<p>contesttype(<u>type_id</u>,type_name)</p>
+<p>contestprob(<u>contest_id</u>,<u>prob_id</u>)</p>
+<p>contestsol(contest_id,sol_id,penalty)</p>
+<p>满足第三范式</p>
+<h2 id="3-你的数据库模型满足-BCNF-范式的要求吗？是否可以修改其设计使得其达到-BCNF-范式要求？如果可-以请修改其设计，如果不可以请修改其设计达到-3NF-的要求，以及怎么做，才能保证数据的一致性。"><a href="#3-你的数据库模型满足-BCNF-范式的要求吗？是否可以修改其设计使得其达到-BCNF-范式要求？如果可-以请修改其设计，如果不可以请修改其设计达到-3NF-的要求，以及怎么做，才能保证数据的一致性。" class="headerlink" title="3. 你的数据库模型满足 BCNF 范式的要求吗？是否可以修改其设计使得其达到 BCNF 范式要求？如果可 以请修改其设计，如果不可以请修改其设计达到 3NF 的要求，以及怎么做，才能保证数据的一致性。"></a>3. 你的数据库模型满足 BCNF 范式的要求吗？是否可以修改其设计使得其达到 BCNF 范式要求？如果可 以请修改其设计，如果不可以请修改其设计达到 3NF 的要求，以及怎么做，才能保证数据的一致性。</h2><p>当前也满足了BCNF范式</p>
+<h2 id="4-加入下列需求变更"><a href="#4-加入下列需求变更" class="headerlink" title="4. 加入下列需求变更"></a>4. 加入下列需求变更</h2><h3 id="a-题目的每组数据有一个对应的分数，题目需要对所有测试数据进行测试，题目的得分为所有获得通-过的数据分值的累加和。用户可以看到每组数据的测试结果和最后的分数。比赛中新增一个-OI-排-名，其按照所有题目获得分值的累加逆序排名。-修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。"><a href="#a-题目的每组数据有一个对应的分数，题目需要对所有测试数据进行测试，题目的得分为所有获得通-过的数据分值的累加和。用户可以看到每组数据的测试结果和最后的分数。比赛中新增一个-OI-排-名，其按照所有题目获得分值的累加逆序排名。-修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。" class="headerlink" title="a) 题目的每组数据有一个对应的分数，题目需要对所有测试数据进行测试，题目的得分为所有获得通 过的数据分值的累加和。用户可以看到每组数据的测试结果和最后的分数。比赛中新增一个 OI 排 名，其按照所有题目获得分值的累加逆序排名。 修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。"></a>a) 题目的每组数据有一个对应的分数，题目需要对所有测试数据进行测试，题目的得分为所有获得通 过的数据分值的累加和。用户可以看到每组数据的测试结果和最后的分数。比赛中新增一个 OI 排 名，其按照所有题目获得分值的累加逆序排名。 修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.1ER%E5%9B%BE.drawio.png" alt="实验六4.1ER图.drawio"></p>
+<p>user(<u>user_id</u>,user_name,year,major,class,password,recent_login,recent_language,commit_num,pass_num)</p>
+<p>user_role(<u>use_id</u>,<u>role_id</u>)</p>
+<p>role(<u>role_id</u>,role_name)</p>
+<p>problem(<u>problem_id</u>,problem_name,time_limit,mem_limit,content,test_id)</p>
+<p>solution(<u>sol_id</u>,language,code,problem_id,judge_id)</p>
+<p>judge(<u>judge_id</u>,result,time,mem)</p>
+<p>test(<u>test_id</u>,test_language,test_input,test_output,test_val_addr,test_score)</p>
+<p>contest(<u>contest_id</u>,contest_name,start_time,duration,description,announcement,creator_id,type_id)</p>
+<p>contestparticipator(<u>contest_id</u>,<u>participator_id</u>,pass_num,penalty,ranking,oi_ranking)</p>
+<p>contesttype(<u>type_id</u>,type_name)</p>
+<p>contestprob(<u>contest_id</u>,<u>prob_id</u>)</p>
+<p>contestsol(contest_id,sol_id,penalty)</p>
+<h3 id="b-增加一个角色的管理功能。管理员可以建立和删除角色，查询角色的列表和属于这个角色的用户，-可以更改角色的名称和权限。一个用户只能属于某一个角色，一个角色可以有个多个用户。-修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。"><a href="#b-增加一个角色的管理功能。管理员可以建立和删除角色，查询角色的列表和属于这个角色的用户，-可以更改角色的名称和权限。一个用户只能属于某一个角色，一个角色可以有个多个用户。-修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。" class="headerlink" title="b) 增加一个角色的管理功能。管理员可以建立和删除角色，查询角色的列表和属于这个角色的用户， 可以更改角色的名称和权限。一个用户只能属于某一个角色，一个角色可以有个多个用户。 修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。"></a>b) 增加一个角色的管理功能。管理员可以建立和删除角色，查询角色的列表和属于这个角色的用户， 可以更改角色的名称和权限。一个用户只能属于某一个角色，一个角色可以有个多个用户。 修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.2ER%E5%9B%BE.drawio.png" alt="实验六4.2ER图.drawio"></p>
+<p>user(<u>user_id</u>,user_name,year,major,class,password,recent_login,recent_language,commit_num,pass_num,role_id)</p>
+<p>role(<u>role_id</u>,role_name)</p>
+<p>role_auth(<u>role_id</u>,<u>role_auth_id</u>,role_auth_name)</p>
+<p>problem(<u>problem_id</u>,problem_name,time_limit,mem_limit,content,test_id)</p>
+<p>solution(<u>sol_id</u>,language,code,problem_id,judge_id)</p>
+<p>judge(<u>judge_id</u>,result,time,mem)</p>
+<p>test(<u>test_id</u>,test_language,test_input,test_output,test_val_addr,test_score)</p>
+<p>contest(<u>contest_id</u>,contest_name,start_time,duration,description,announcement,creator_id,type_id)</p>
+<p>contestparticipator(<u>contest_id</u>,<u>participator_id</u>,pass_num,penalty,ranking,oi_ranking)</p>
+<p>contesttype(<u>type_id</u>,type_name)</p>
+<p>contestprob(<u>contest_id</u>,<u>prob_id</u>)</p>
+<p>contestsol(contest_id,sol_id,penalty)</p>
+<h3 id="c-将用户和角色的权限改为多对多，即一个用户可以是多种角色，一个角色有多个用户。用户拥有的-权限是所有角色权限的并集。修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。"><a href="#c-将用户和角色的权限改为多对多，即一个用户可以是多种角色，一个角色有多个用户。用户拥有的-权限是所有角色权限的并集。修改你的-E-R-设计和数据库模型设计，使得其满足新的需求。" class="headerlink" title="c) 将用户和角色的权限改为多对多，即一个用户可以是多种角色，一个角色有多个用户。用户拥有的 权限是所有角色权限的并集。修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。"></a>c) 将用户和角色的权限改为多对多，即一个用户可以是多种角色，一个角色有多个用户。用户拥有的 权限是所有角色权限的并集。修改你的 E-R 设计和数据库模型设计，使得其满足新的需求。</h3><p><img src="D:/Document/notes/%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%AE%9E%E9%AA%8C%E5%85%AD%E6%8A%A5%E5%91%8A.assets/%E5%AE%9E%E9%AA%8C%E5%85%AD4.3ER%E5%9B%BE.drawio.png" alt="实验六4.3ER图.drawio"></p>
+<p>user(<u>user_id</u>,user_name,year,major,class,password,recent_login,recent_language,commit_num,pass_num)</p>
+<p>user_role(<u>use_id</u>,<u>role_id</u>)</p>
+<p>role(<u>role_id</u>,role_name)</p>
+<p>role_auth(<u>role_id</u>,<u>role_auth_id</u>,role_auth_name)</p>
+<p>problem(<u>problem_id</u>,problem_name,time_limit,mem_limit,content,test_id)</p>
+<p>solution(<u>sol_id</u>,language,code,problem_id,judge_id)</p>
+<p>judge(<u>judge_id</u>,result,time,mem)</p>
+<p>test(<u>test_id</u>,test_language,test_input,test_output,test_val_addr,test_score)</p>
+<p>contest(<u>contest_id</u>,contest_name,start_time,duration,description,announcement,creator_id,type_id)</p>
+<p>contestparticipator(<u>contest_id</u>,<u>participator_id</u>,pass_num,penalty,ranking,oi_ranking)</p>
+<p>contesttype(<u>type_id</u>,type_name)</p>
+<p>contestprob(<u>contest_id</u>,<u>prob_id</u>)</p>
+<p>contestsol(contest_id,sol_id,penalty)</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A/"
+      title="实验二报告"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        实验二报告
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/05/24/%E5%AE%9E%E9%AA%8C%E5%9B%9B%E6%8A%A5%E5%91%8A/"
+      title="实验四报告"
+     >
+
+    <p class="title-text">
+      
+        实验四报告
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>

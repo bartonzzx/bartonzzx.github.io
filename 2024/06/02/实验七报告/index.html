@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
+<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>实验七报告 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="实验七设计与实现文档功能 实现属性闭包计算算法，并应用此算法，实现判定超码，判定候选码，计算函数依赖集闭包，判定函数依赖是否属于函数依赖集闭包等功能。  实现函数依赖保持判定算法。  实现BCNF的判定算法，用于判断模式是否满足BCNF。  实现分解后模式的BCNF判定算法，用于判断分解后的模式是否属于BCNF。  实现函数依赖集正则覆盖的构造算法。  实现3NF分解算法。  实现BCNF分解算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验七报告">
+<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/02/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="实验七设计与实现文档功能 实现属性闭包计算算法，并应用此算法，实现判定超码，判定候选码，计算函数依赖集闭包，判定函数依赖是否属于函数依赖集闭包等功能。  实现函数依赖保持判定算法。  实现BCNF的判定算法，用于判断模式是否满足BCNF。  实现分解后模式的BCNF判定算法，用于判断分解后的模式是否属于BCNF。  实现函数依赖集正则覆盖的构造算法。  实现3NF分解算法。  实现BCNF分解算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233716338.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233725938.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233737087.png">
+<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233745806.png">
+<meta property="article:published_time" content="2024-06-02T15:37:46.000Z">
+<meta property="article:modified_time" content="2024-06-15T03:44:18.861Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233716338.png">
+  
+    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+  
+  
+<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/bartonzzx/bartonzzx.github.io/">
+      <!-- <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+    
+    
+      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">45</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-实验七报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        实验七报告
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-02T15:37:46.000Z" itemprop="datePublished">2024-06-02</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            6.2k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="实验七设计与实现文档"><a href="#实验七设计与实现文档" class="headerlink" title="实验七设计与实现文档"></a>实验七设计与实现文档</h1><h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li><p>实现属性闭包计算算法，并应用此算法，实现判定超码，判定候选码，计算函数依赖集闭包，判定函数依赖是否属于函数依赖集闭包等功能。</p>
+</li>
+<li><p>实现函数依赖保持判定算法。</p>
+</li>
+<li><p>实现BCNF的判定算法，用于判断模式是否满足BCNF。</p>
+</li>
+<li><p>实现分解后模式的BCNF判定算法，用于判断分解后的模式是否属于BCNF。</p>
+</li>
+<li><p>实现函数依赖集正则覆盖的构造算法。</p>
+</li>
+<li><p>实现3NF分解算法。</p>
+</li>
+<li><p>实现BCNF分解算法。</p>
+</li>
+<li><p>将以上功能组合形成一个完整的工具软件。</p>
+</li>
+</ol>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FunctionalDependency</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, ori, tar</span>):</span><br><span class="line">        self.ori = ori</span><br><span class="line">        self.tar = tar</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_dependencies</span>(<span class="params">n</span>):</span><br><span class="line">    dependencies = []</span><br><span class="line">    elements = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        ori = <span class="built_in">input</span>().strip()</span><br><span class="line">        _ = <span class="built_in">input</span>().strip()  <span class="comment"># Skip the &quot;-&gt;&quot;</span></span><br><span class="line">        tar = <span class="built_in">input</span>().strip()</span><br><span class="line">        dependencies.append(FunctionalDependency(ori, tar))</span><br><span class="line">        elements.update(ori)</span><br><span class="line">        elements.update(tar)</span><br><span class="line">    <span class="keyword">return</span> dependencies, elements</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_information</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 0:退出&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 1:查看输入的信息&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 2:判定超码&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 3:判定候选码&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 4:查看函数依赖集闭包&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 5:判定函数依赖是否属于函数依赖集闭包&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 6:判定是否满足BCNF范式&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 7:构造函数依赖集正则覆盖&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 8:3NF分解&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot; 9:BCNF分解&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">start</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;-------------------------范式工具------------------------------\n&quot;</span>)</span><br><span class="line">    k = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;输入属性个数：&quot;</span>).strip())</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;输入函数依赖个数：&quot;</span>).strip())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入函数依赖，（请输入大写字母）&quot;</span>)</span><br><span class="line">    dependencies, elements = input_dependencies(n)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;----------------------------------------------------------------&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输入需要的功能代号:&quot;</span>)</span><br><span class="line">    check_information()</span><br><span class="line">    <span class="keyword">return</span> k, n, dependencies, elements</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">closure</span>(<span class="params">tmp, dependencies</span>):</span><br><span class="line">    t = <span class="built_in">set</span>(tmp)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        len_before = <span class="built_in">len</span>(t)</span><br><span class="line">        <span class="keyword">for</span> dep <span class="keyword">in</span> dependencies:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">all</span>(c <span class="keyword">in</span> t <span class="keyword">for</span> c <span class="keyword">in</span> dep.ori):</span><br><span class="line">                t.update(dep.tar)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(t) == len_before:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">sorted</span>(t))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_superkey</span>(<span class="params">tmp, k, dependencies</span>):</span><br><span class="line">    ans = closure(tmp, dependencies)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(ans) == k</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_candidate_key</span>(<span class="params">tmp, k, dependencies</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> is_superkey(tmp, k, dependencies):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(tmp)):</span><br><span class="line">        reduced_tmp = tmp[:i] + tmp[i+<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">if</span> is_superkey(reduced_tmp, k, dependencies):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_fd_in_closure</span>(<span class="params">tmp, tag, dependencies</span>):</span><br><span class="line">    ans = closure(tmp, dependencies)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">all</span>(c <span class="keyword">in</span> ans <span class="keyword">for</span> c <span class="keyword">in</span> tag)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_closures</span>(<span class="params">cur, tmp, v, dependencies</span>):</span><br><span class="line">    <span class="keyword">if</span> cur == <span class="built_in">len</span>(v):</span><br><span class="line">        ans = closure(tmp, dependencies)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ans:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;空集的闭包为空集&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;tmp&#125;</span>的闭包为：<span class="subst">&#123;ans&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    find_closures(cur + <span class="number">1</span>, tmp + v[cur], v, dependencies)</span><br><span class="line">    find_closures(cur + <span class="number">1</span>, tmp, v, dependencies)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_bcnf</span>(<span class="params">dependencies, elements</span>):</span><br><span class="line">    <span class="keyword">for</span> dep <span class="keyword">in</span> dependencies:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> is_superkey(dep.ori, <span class="built_in">len</span>(elements), dependencies):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">canonical_cover</span>(<span class="params">dependencies</span>):</span><br><span class="line">    new_dependencies = []</span><br><span class="line">    <span class="keyword">for</span> dep <span class="keyword">in</span> dependencies:</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> dep.tar:</span><br><span class="line">            new_dependencies.append(FunctionalDependency(dep.ori, char))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Remove extraneous attributes from left side</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(new_dependencies):</span><br><span class="line">        dep = new_dependencies[i]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(dep.ori) &gt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> char <span class="keyword">in</span> dep.ori:</span><br><span class="line">                reduced_ori = dep.ori.replace(char, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                <span class="keyword">if</span> char <span class="keyword">in</span> closure(reduced_ori, new_dependencies[:i] + new_dependencies[i+<span class="number">1</span>:]):</span><br><span class="line">                    new_dependencies[i] = FunctionalDependency(reduced_ori, dep.tar)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Remove redundant dependencies</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(new_dependencies):</span><br><span class="line">        dep = new_dependencies[i]</span><br><span class="line">        <span class="keyword">if</span> dep.tar <span class="keyword">in</span> closure(dep.ori, new_dependencies[:i] + new_dependencies[i+<span class="number">1</span>:]):</span><br><span class="line">            new_dependencies.pop(i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new_dependencies</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decompose_3nf</span>(<span class="params">dependencies, elements</span>):</span><br><span class="line">    canonical_deps = canonical_cover(dependencies)</span><br><span class="line">    schemas = []</span><br><span class="line">    <span class="keyword">for</span> dep <span class="keyword">in</span> canonical_deps:</span><br><span class="line">        schemas.append(<span class="built_in">set</span>(dep.ori + dep.tar))</span><br><span class="line">    candidate_keys = [<span class="built_in">set</span>(e) <span class="keyword">for</span> e <span class="keyword">in</span> elements <span class="keyword">if</span> is_candidate_key(e, <span class="built_in">len</span>(elements), dependencies)]</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> candidate_keys:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">any</span>(key.issubset(schema) <span class="keyword">for</span> schema <span class="keyword">in</span> schemas):</span><br><span class="line">            schemas.append(key)</span><br><span class="line">    <span class="keyword">return</span> schemas</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decompose_bcnf</span>(<span class="params">dependencies, elements</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">decompose</span>(<span class="params">dependencies, elements</span>):</span><br><span class="line">        <span class="keyword">for</span> dep <span class="keyword">in</span> dependencies:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> is_superkey(dep.ori, <span class="built_in">len</span>(elements), dependencies):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [elements]</span><br><span class="line"></span><br><span class="line">        left_closure = <span class="built_in">set</span>(closure(dep.ori, dependencies))</span><br><span class="line">        right_elements = elements - left_closure</span><br><span class="line"></span><br><span class="line">        left_dependencies = [d <span class="keyword">for</span> d <span class="keyword">in</span> dependencies <span class="keyword">if</span> <span class="built_in">set</span>(d.ori).issubset(left_closure)]</span><br><span class="line">        right_dependencies = [d <span class="keyword">for</span> d <span class="keyword">in</span> dependencies <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">set</span>(d.ori).issubset(left_closure)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> decompose(left_dependencies, left_closure) + decompose(right_dependencies, right_elements)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decompose(dependencies, <span class="built_in">set</span>(elements))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    k, n, dependencies, elements = start()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        m = <span class="built_in">int</span>(<span class="built_in">input</span>().strip())</span><br><span class="line">        <span class="keyword">if</span> m == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;--------------------------欢迎下次使用----------------------&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;---------------------------查看按键信息---------------------&quot;</span>)</span><br><span class="line">            check_information()</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;-----------------------------判断超键------------------------&quot;</span>)</span><br><span class="line">            sx = <span class="built_in">input</span>(<span class="string">&quot;请输入属性集：&quot;</span>).strip()</span><br><span class="line">            <span class="keyword">if</span> is_superkey(sx, k, dependencies):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Yes!&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;No!&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">3</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;------------------------------判断候选码----------------------&quot;</span>)</span><br><span class="line">            sx = <span class="built_in">input</span>(<span class="string">&quot;请输入属性集：&quot;</span>).strip()</span><br><span class="line">            <span class="keyword">if</span> is_candidate_key(sx, k, dependencies):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Yes!&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;No!&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">4</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;------------------------------查看函数依赖集闭包---------------&quot;</span>)</span><br><span class="line">            find_closures(<span class="number">0</span>, <span class="string">&quot;&quot;</span>, <span class="built_in">list</span>(elements), dependencies)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">5</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;---------------判定函数依赖是否属于函数依赖集闭包--------------&quot;</span>)</span><br><span class="line">            x = <span class="built_in">input</span>(<span class="string">&quot;请输入函数依赖左侧：&quot;</span>).strip()</span><br><span class="line">            _ = <span class="built_in">input</span>(<span class="string">&quot; -&gt; &quot;</span>).strip()  <span class="comment"># Skip the &quot;-&gt;&quot;</span></span><br><span class="line">            y = <span class="built_in">input</span>(<span class="string">&quot;请输入函数依赖右侧：&quot;</span>).strip()</span><br><span class="line">            <span class="keyword">if</span> is_fd_in_closure(x, y, dependencies):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Yes!&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;No!&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">6</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;-------------------------判定是否是BCNF范式---------------------&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> is_bcnf(dependencies, elements):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Yes!&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;No!&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">7</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;-------------------------构造函数依赖集正则覆盖---------------------&quot;</span>)</span><br><span class="line">            canonical_deps = canonical_cover(dependencies)</span><br><span class="line">            <span class="keyword">for</span> dep <span class="keyword">in</span> canonical_deps:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;dep.ori&#125;</span> -&gt; <span class="subst">&#123;dep.tar&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">8</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;-------------------------3NF分解---------------------&quot;</span>)</span><br><span class="line">            schemas = decompose_3nf(dependencies, elements)</span><br><span class="line">            <span class="keyword">for</span> schema <span class="keyword">in</span> schemas:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;&quot;</span>.join(<span class="built_in">sorted</span>(schema)))</span><br><span class="line">        <span class="keyword">elif</span> m == <span class="number">9</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;-------------------------BCNF分解---------------------&quot;</span>)</span><br><span class="line">            schemas = decompose_bcnf(dependencies, elements)</span><br><span class="line">            <span class="keyword">for</span> schema <span class="keyword">in</span> schemas:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;&quot;</span>.join(<span class="built_in">sorted</span>(schema)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233716338.png" alt="image-20240602233716338"></p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233725938.png" alt="image-20240602233725938"></p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233737087.png" alt="image-20240602233737087"></p>
+<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%B8%83%E6%8A%A5%E5%91%8A.assets/image-20240602233745806.png" alt="image-20240602233745806"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/02/%E5%AE%9E%E9%AA%8C%E4%B8%83%E8%AF%B4%E6%98%8E%E4%B9%A6/"
+      title="实验七说明书"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        实验七说明书
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/bartonzzx/bartonzzx.github.io/2024/06/02/%E7%AC%AC%E5%85%AB%E7%AB%A0%E4%BD%9C%E4%B8%9A/"
+      title="第八章作业"
+     >
+
+    <p class="title-text">
+      
+        第八章作业
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+</body>
+</html>
