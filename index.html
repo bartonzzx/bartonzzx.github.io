@@ -2955,6 +2955,88 @@ g． 键入“commit...
    
 
 
+<article id="post-实验三报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%8A%A5%E5%91%8A/">实验三报告</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.9k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              实验三报告1． 更新“99052”老师工资为40000。答案123update instructorset salary=40000where id=&#x27;99052&#x27;;
+
+运行结果正常运行无报错
+
+2． 给“Comp. Sci.”院的老师加薪10%。答案123update instructorset salary=salary*1.1where dept_name=&#x27;Comp. Sci.&#x27;;
+
+运行前
+运行后
+3． 给“Taylor”楼里的所有院系的所有老师涨薪1000。答案123456update instructorset instructor.salary=salary+1000where dept_name in 	(select dept_name      from department      where building=&#x27;Taylor&#x27;);
+
+查询123select *from instructor inner join department on instructor.dept_name=depart...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%8A%A5%E5%91%8A/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-实验二报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -3021,88 +3103,6 @@ b. 使得instructor主键无效化，插入上面那条数据
     <a class="right-panel  non-pic  "
       
       href="/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%BA%8C%E6%8A%A5%E5%91%8A/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-实验三报告" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%8A%A5%E5%91%8A/">实验三报告</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            2.9k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              实验三报告1． 更新“99052”老师工资为40000。答案123update instructorset salary=40000where id=&#x27;99052&#x27;;
-
-运行结果正常运行无报错
-
-2． 给“Comp. Sci.”院的老师加薪10%。答案123update instructorset salary=salary*1.1where dept_name=&#x27;Comp. Sci.&#x27;;
-
-运行前
-运行后
-3． 给“Taylor”楼里的所有院系的所有老师涨薪1000。答案123456update instructorset instructor.salary=salary+1000where dept_name in 	(select dept_name      from department      where building=&#x27;Taylor&#x27;);
-
-查询123select *from instructor inner join department on instructor.dept_name=depart...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/05/24/%E5%AE%9E%E9%AA%8C%E4%B8%89%E6%8A%A5%E5%91%8A/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -3458,86 +3458,6 @@ instructor_salary(id,salary,start_time,end_time)
    
 
 
-<article id="post-第四章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第四章作业</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            3.3k 词 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              第四章作业4-11由于instructor和course表都有dept_name属性，此时进行自然连接得到的会是2017年春季讲授的，属于教师所在院系的课程标题以及教师姓名
-
-4-2a12select id,decode(sec_id,NULL,&#x27;0&#x27;,sec_id) as sec_idfrom instructor natural left outer join teaches
-
-b1234select id,(select count(*)           from teaches T          where T.id=I.id)from instructor I
-
-c1234select course_id,sec_id,id,decode(name,NULL,&#x27;-&#x27;,name) as namefrom section natural left join teaches natural left join instructorwhere year=2018and semester=&#x27;Spring&#x27;
-
-d1...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
 <article id="post-第三章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -3763,6 +3683,86 @@ f12345select max(count(id))...
     <a class="right-panel  non-pic  "
       
       href="/2024/05/24/%E7%AC%AC%E4%BA%94%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-第四章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第四章作业</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-05-24T01:21:45.000Z" itemprop="datePublished">2024-05-24</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.3k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              第四章作业4-11由于instructor和course表都有dept_name属性，此时进行自然连接得到的会是2017年春季讲授的，属于教师所在院系的课程标题以及教师姓名
+
+4-2a12select id,decode(sec_id,NULL,&#x27;0&#x27;,sec_id) as sec_idfrom instructor natural left outer join teaches
+
+b1234select id,(select count(*)           from teaches T          where T.id=I.id)from instructor I
+
+c1234select course_id,sec_id,id,decode(name,NULL,&#x27;-&#x27;,name) as namefrom section natural left join teaches natural left join instructorwhere year=2018and semester=&#x27;Spring&#x27;
+
+d1...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

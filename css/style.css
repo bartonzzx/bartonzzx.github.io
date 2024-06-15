@@ -2500,7 +2500,7 @@ pre .javascript .function {
 }
 .back-to-top-wrapper {
   width: 60px;
-  height: 60px;
+  height: 1px;
   position: absolute;
   right: 0;
   top: 0;
