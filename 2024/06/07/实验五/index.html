@@ -5,8 +5,8 @@
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
-<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
-<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
 <head>
   <meta charset="utf-8">
   
@@ -17,33 +17,33 @@
   <title>实验五 | 张志雄的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <meta name="description" content="实验五实验内容1．初始化一个货架，并存货 100；最大容量 100；取货每次取 60，放货每次放 40；小于 60 不能取，大于 100 不能放。 Producer类，存放货架信息、取货存货方法  Producer.java代码 123456789101112131415161718192021222324252627282930313233343536import java.lang.Inter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实验五">
-<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E4%BA%94/index.html">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E4%BA%94/index.html">
 <meta property="og:site_name" content="张志雄的博客">
 <meta property="og:description" content="实验五实验内容1．初始化一个货架，并存货 100；最大容量 100；取货每次取 60，放货每次放 40；小于 60 不能取，大于 100 不能放。 Producer类，存放货架信息、取货存货方法  Producer.java代码 123456789101112131415161718192021222324252627282930313233343536import java.lang.Inter">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171350119.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171433409.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171350119.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171433409.png">
 <meta property="article:published_time" content="2024-06-07T07:06:43.000Z">
 <meta property="article:modified_time" content="2024-06-15T03:43:18.694Z">
 <meta property="article:author" content="张志雄">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png">
+<meta name="twitter:image" content="https://bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png">
   
-    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+    <link rel="alternate" href="/atom.xml" title="张志雄的博客" type="application/atom+xml">
   
   
-<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+    <link rel="shortcut icon" href="/avatar.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -54,7 +54,7 @@
   
     
 <div id="banner" class="">
-  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <img src="/bg.png" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
@@ -63,7 +63,7 @@
     <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
-    <a href="/bartonzzx/bartonzzx.github.io/">
+    <a href="/">
       <!-- <div id="vivia-logo">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -75,11 +75,11 @@
   </nav>
   <nav id="main-nav">
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="main-nav-link" href="/">主页</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="main-nav-link" href="/archives">博客列表</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="main-nav-link" href="/intro">简介</a>
     
   </nav>
   <nav id="sub-nav">
@@ -88,7 +88,7 @@
       <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
     </a>
     
-      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
       </a>
     
@@ -100,14 +100,14 @@
 <div id="nav-dropdown" class="hidden">
   <div id="dropdown-link-list">
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="nav-dropdown-link" href="/">主页</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="nav-dropdown-link" href="/archives">博客列表</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="nav-dropdown-link" href="/intro">简介</a>
     
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
      
     </div>
 </div>
@@ -126,7 +126,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+        <image src=/avatar.png></image>
       
       <div class="img-dim"></div>
     </div>
@@ -140,7 +140,7 @@
         
           <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
         
-          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
          
       </div>  
     </div>
@@ -157,7 +157,7 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
                 笔记
                 <div class="category-count">45</div>
             </a>
@@ -171,7 +171,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -210,7 +210,7 @@
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
    
 </div>
   
@@ -220,7 +220,7 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
@@ -231,15 +231,15 @@
 <p>Producer.java代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.InterruptedException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Producer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;想要存货&quot;</span> + num + <span class="string">&quot;件，货架中有&quot;</span> + count + <span class="string">&quot;件。&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (count + num &gt; <span class="number">100</span>) &#123; <span class="comment">// 如果货架已满则不能存货</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;暂不能存货，容量有限！&quot;</span>);</span><br><span class="line">                wait(); <span class="comment">// 等待被唤醒</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        count = count + num;</span><br><span class="line">        System.out.println(<span class="string">&quot;可以存货，存了&quot;</span> + num + <span class="string">&quot;件，还剩&quot;</span> + count + <span class="string">&quot;件。&quot;</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line">        notify(); <span class="comment">// 唤醒其他互斥锁</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;想要取货&quot;</span> + num + <span class="string">&quot;件，货架中有&quot;</span> + count + <span class="string">&quot;件。&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (count - num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;暂不能取货，货物不够！&quot;</span>);</span><br><span class="line">                wait(); <span class="comment">// 等待被唤醒</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        count = count - num;</span><br><span class="line">        System.out.println(<span class="string">&quot;可以取货，取了&quot;</span> + num + <span class="string">&quot;件，还剩&quot;</span> + count + <span class="string">&quot;件。&quot;</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line">        notify(); <span class="comment">// 唤醒其他互斥锁</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png" alt="image-20240606171224818"></p>
+<p><img src="/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171224818.png" alt="image-20240606171224818"></p>
 <ul>
 <li>Consumer类，用于执行多线程存取</li>
 </ul>
 <p>Consumer.java代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Consumer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Producer</span> <span class="variable">producer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Producer</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="type">Thread</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">MyThread</span>(producer)); <span class="comment">// Pass the producer instance to MyThread</span></span><br><span class="line">            t.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Producer producer; </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyThread</span><span class="params">(Producer producer)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.producer = producer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        producer.get(<span class="number">60</span>); </span><br><span class="line">        producer.put(<span class="number">40</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171350119.png" alt="image-20240606171350119"></p>
-<h3 id="2．创建两个线程，分别实现存、取操作。"><a href="#2．创建两个线程，分别实现存、取操作。" class="headerlink" title="2．创建两个线程，分别实现存、取操作。"></a>2．创建两个线程，分别实现存、取操作。</h3><h3 id="3．两个线程并发执行各-5-次。"><a href="#3．两个线程并发执行各-5-次。" class="headerlink" title="3．两个线程并发执行各 5 次。"></a>3．两个线程并发执行各 5 次。</h3><h3 id="4．查看执行结果，并分析原因。"><a href="#4．查看执行结果，并分析原因。" class="headerlink" title="4．查看执行结果，并分析原因。"></a>4．查看执行结果，并分析原因。</h3><p><img src="/bartonzzx/bartonzzx.github.io/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171433409.png" alt="image-20240606171433409"></p>
+<p><img src="/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171350119.png" alt="image-20240606171350119"></p>
+<h3 id="2．创建两个线程，分别实现存、取操作。"><a href="#2．创建两个线程，分别实现存、取操作。" class="headerlink" title="2．创建两个线程，分别实现存、取操作。"></a>2．创建两个线程，分别实现存、取操作。</h3><h3 id="3．两个线程并发执行各-5-次。"><a href="#3．两个线程并发执行各-5-次。" class="headerlink" title="3．两个线程并发执行各 5 次。"></a>3．两个线程并发执行各 5 次。</h3><h3 id="4．查看执行结果，并分析原因。"><a href="#4．查看执行结果，并分析原因。" class="headerlink" title="4．查看执行结果，并分析原因。"></a>4．查看执行结果，并分析原因。</h3><p><img src="/%E5%AE%9E%E9%AA%8C%E4%BA%94.assets/image-20240606171433409.png" alt="image-20240606171433409"></p>
 <p>由于每次取货60件，存货20件，最终会可用货物为0，无法继续取货</p>
 
         
@@ -255,7 +255,7 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E5%85%AD/"
+      href="/2024/06/07/%E5%AE%9E%E9%AA%8C%E5%85%AD/"
       title="实验六"
      >
     <i class="fa-solid fa-angle-left"></i>
@@ -267,7 +267,7 @@
   </a>
   <a class="article-nav-btn right "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E4%B8%89/"
+      href="/2024/06/07/%E5%AE%9E%E9%AA%8C%E4%B8%89/"
       title="实验三"
      >
 
@@ -323,6 +323,6 @@
 </script>
 
   </div>
-  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+  <script src="/js/light-dark-switch.js"></script>
 </body>
 </html>

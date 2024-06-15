@@ -5,8 +5,8 @@
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
-<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
-<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
 <head>
   <meta charset="utf-8">
   
@@ -17,44 +17,44 @@
   <title>数据结构一 | 张志雄的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <meta name="description" content="数据结构一链表与邻接表邻接表应用：存储图和树 数组模拟单列表定义：value（int e[N]），下一节点指针（int ne[N]），空节点指针用-1表示  单链表插入到头节点操作 例题   单链表代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构一">
-<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80/index.html">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80/index.html">
 <meta property="og:site_name" content="张志雄的博客">
 <meta property="og:description" content="数据结构一链表与邻接表邻接表应用：存储图和树 数组模拟单列表定义：value（int e[N]），下一节点指针（int ne[N]），空节点指针用-1表示  单链表插入到头节点操作 例题   单链表代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530171128266.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173512607.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173527404.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173548395.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530174932779.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240531102115212.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530175634593.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182153597.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182631142.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202914900.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202942483.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530211949579.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530230701606.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530171128266.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173512607.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173527404.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173548395.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530174932779.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240531102115212.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530175634593.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182153597.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182631142.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202914900.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202942483.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530211949579.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530230701606.png">
 <meta property="article:published_time" content="2024-06-07T01:02:04.000Z">
 <meta property="article:modified_time" content="2024-06-15T03:44:35.667Z">
 <meta property="article:author" content="张志雄">
 <meta property="article:tag" content="算法课程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png">
+<meta name="twitter:image" content="https://bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png">
   
-    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+    <link rel="alternate" href="/atom.xml" title="张志雄的博客" type="application/atom+xml">
   
   
-<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+    <link rel="shortcut icon" href="/avatar.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -65,7 +65,7 @@
   
     
 <div id="banner" class="">
-  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <img src="/bg.png" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
@@ -74,7 +74,7 @@
     <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
-    <a href="/bartonzzx/bartonzzx.github.io/">
+    <a href="/">
       <!-- <div id="vivia-logo">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -86,11 +86,11 @@
   </nav>
   <nav id="main-nav">
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="main-nav-link" href="/">主页</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="main-nav-link" href="/archives">博客列表</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="main-nav-link" href="/intro">简介</a>
     
   </nav>
   <nav id="sub-nav">
@@ -99,7 +99,7 @@
       <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
     </a>
     
-      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
       </a>
     
@@ -111,14 +111,14 @@
 <div id="nav-dropdown" class="hidden">
   <div id="dropdown-link-list">
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="nav-dropdown-link" href="/">主页</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="nav-dropdown-link" href="/archives">博客列表</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="nav-dropdown-link" href="/intro">简介</a>
     
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
      
     </div>
 </div>
@@ -137,7 +137,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+        <image src=/avatar.png></image>
       
       <div class="img-dim"></div>
     </div>
@@ -151,7 +151,7 @@
         
           <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
         
-          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
          
       </div>  
     </div>
@@ -168,7 +168,7 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
                 笔记
                 <div class="category-count">45</div>
             </a>
@@ -182,7 +182,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
    
 </div>
   
@@ -231,32 +231,32 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <h1 id="数据结构一"><a href="#数据结构一" class="headerlink" title="数据结构一"></a>数据结构一</h1><h2 id="链表与邻接表"><a href="#链表与邻接表" class="headerlink" title="链表与邻接表"></a>链表与邻接表</h2><p>邻接表应用：存储图和树</p>
 <h3 id="数组模拟单列表"><a href="#数组模拟单列表" class="headerlink" title="数组模拟单列表"></a>数组模拟单列表</h3><p>定义：value（int e[N]），下一节点指针（int ne[N]），空节点指针用-1表示</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png" alt="image-20240530170413596"></p>
-<h3 id="单链表插入到头节点操作"><a href="#单链表插入到头节点操作" class="headerlink" title="单链表插入到头节点操作"></a>单链表插入到头节点操作</h3><p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530171128266.png" alt="image-20240530171128266"></p>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173512607.png" alt="image-20240530173512607"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173527404.png" alt="image-20240530173527404"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173548395.png" alt="image-20240530173548395"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530170413596.png" alt="image-20240530170413596"></p>
+<h3 id="单链表插入到头节点操作"><a href="#单链表插入到头节点操作" class="headerlink" title="单链表插入到头节点操作"></a>单链表插入到头节点操作</h3><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530171128266.png" alt="image-20240530171128266"></p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173512607.png" alt="image-20240530173512607"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173527404.png" alt="image-20240530173527404"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530173548395.png" alt="image-20240530173548395"></p>
 <h3 id="单链表代码"><a href="#单链表代码" class="headerlink" title="单链表代码"></a>单链表代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="comment">// head表示头节点下标</span></span><br><span class="line"><span class="comment">// e[i]表示节点i的值</span></span><br><span class="line"><span class="comment">// ne[i]表示节点i的next指针是多少</span></span><br><span class="line"><span class="comment">// idx存储当前已经用到了哪个点</span></span><br><span class="line"><span class="type">int</span> head,e[N],ne[N],idx;</span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    head=<span class="number">-1</span>;</span><br><span class="line">    idx=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将x插到头节点步骤：</span></span><br><span class="line"><span class="comment">// 1.x的下一节点指向头节点的下一个</span></span><br><span class="line"><span class="comment">// 2.头节点指向x</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_to_head</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=head;</span><br><span class="line">    head=idx;</span><br><span class="line">    idx++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将x插到下标为k的节点后面：</span></span><br><span class="line"><span class="comment">// 1.让x的下一节点指针指向k的下一节点</span></span><br><span class="line"><span class="comment">// 2.让k的下一节点指向x</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> k,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=ne[k];</span><br><span class="line">    ne[k]=idx;</span><br><span class="line">    idx++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将下标为k的节点后面的点删掉：</span></span><br><span class="line"><span class="comment">// 1.让k的下一节点指针指向k的下一节点的下一节点指针</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">    ne[k]=ne[ne[k]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> m;</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> k,x;</span><br><span class="line">        <span class="type">char</span> op;</span><br><span class="line">        cin&gt;&gt;op;</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="string">&#x27;H&#x27;</span>)&#123;</span><br><span class="line">            cin&gt;&gt;x;</span><br><span class="line">            <span class="built_in">add_to_head</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="string">&#x27;D&#x27;</span>)&#123;</span><br><span class="line">            cin&gt;&gt;k;</span><br><span class="line">            <span class="built_in">remove</span>(k<span class="number">-1</span>);</span><br><span class="line">            <span class="comment">// 如果删除的点是头节点，头节点会被修改为头节点指向的下一节点</span></span><br><span class="line">            <span class="keyword">if</span>(!k) head=ne[head]; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            cin&gt;&gt;k&gt;&gt;x;</span><br><span class="line">            <span class="built_in">add</span>(k<span class="number">-1</span>,x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head;i!=<span class="number">-1</span>;i=ne[i]) cout&lt;&lt;e[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//样例</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line">H <span class="number">9</span></span><br><span class="line">I <span class="number">1</span> <span class="number">1</span></span><br><span class="line">D <span class="number">1</span></span><br><span class="line">D <span class="number">0</span></span><br><span class="line">H <span class="number">6</span></span><br><span class="line">I <span class="number">3</span> <span class="number">6</span></span><br><span class="line">I <span class="number">4</span> <span class="number">5</span></span><br><span class="line">I <span class="number">4</span> <span class="number">5</span></span><br><span class="line">I <span class="number">3</span> <span class="number">4</span></span><br><span class="line">D <span class="number">6</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="自测"><a href="#自测" class="headerlink" title="自测"></a>自测</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> head,e[N],ne[N],idx;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    head=<span class="number">-1</span>;</span><br><span class="line">    idx=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_to_head</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=head;</span><br><span class="line">    head=idx;</span><br><span class="line">	idx++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> k,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=ne[k];</span><br><span class="line">    ne[k]=idx;</span><br><span class="line">    idx++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">int</span> k,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    ne[k]=ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="数组模拟双链表"><a href="#数组模拟双链表" class="headerlink" title="数组模拟双链表"></a>数组模拟双链表</h3><p>双链表应用：优化某些问题</p>
 <p>双链表：两个指针，一个指向前，一个指向后</p>
-<h3 id="双链表插入"><a href="#双链表插入" class="headerlink" title="双链表插入"></a>双链表插入</h3><p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530174932779.png" alt="image-20240530174932779"></p>
-<h3 id="双链表删除"><a href="#双链表删除" class="headerlink" title="双链表删除"></a>双链表删除</h3><p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240531102115212.png" alt="image-20240531102115212"></p>
+<h3 id="双链表插入"><a href="#双链表插入" class="headerlink" title="双链表插入"></a>双链表插入</h3><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530174932779.png" alt="image-20240530174932779"></p>
+<h3 id="双链表删除"><a href="#双链表删除" class="headerlink" title="双链表删除"></a>双链表删除</h3><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240531102115212.png" alt="image-20240531102115212"></p>
 <h3 id="双链表代码"><a href="#双链表代码" class="headerlink" title="双链表代码"></a>双链表代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> m;</span><br><span class="line"><span class="type">int</span> e[N],l[N],r[N],idx;</span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 0表示左端点，1表示右端点</span></span><br><span class="line">	r[<span class="number">0</span>]=<span class="number">1</span>,l[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    idx=<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在下标为k的点 的 右边插入节点。若想在k的左边插入节点，调用add(l[k],x)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> k,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    r[idx]=r[k];</span><br><span class="line">    l[idx]=k;</span><br><span class="line">    l[r[k]]=idx;</span><br><span class="line">    r[k]=idx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 删除：k节点左边的节点，他的右指针指向k的右节点。k节点右边的节点，他的左指针指向k的左节点。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">    r[l[k]]=r[k];</span><br><span class="line">    l[r[k]]=l[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="自测-1"><a href="#自测-1" class="headerlink" title="自测"></a>自测</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> e[N],l[N],r[N],idx;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    r[<span class="number">0</span>]=<span class="number">1</span>,l[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    idx=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> k,<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    r[idx]=r[k];</span><br><span class="line">    l[idx]=k;</span><br><span class="line">    r[k]=idx;</span><br><span class="line">    l[r[k]]=idx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">    r[l[k]]=r[k];</span><br><span class="line">    l[r[k]]=l[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>实质：n个单列表</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530175634593.png" alt="image-20240530175634593"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530175634593.png" alt="image-20240530175634593"></p>
 <h2 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h2><p>栈：先进后出</p>
 <h3 id="栈代码"><a href="#栈代码" class="headerlink" title="栈代码"></a>栈代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> stk[N],tt=<span class="number">0</span>;</span><br><span class="line"><span class="comment">// 插入</span></span><br><span class="line">stk[++tt]=x;</span><br><span class="line"><span class="comment">// 弹出</span></span><br><span class="line">tt--;</span><br><span class="line"><span class="comment">// 判断栈是否为空</span></span><br><span class="line"><span class="keyword">if</span>(tt&gt;<span class="number">0</span>) <span class="keyword">not</span> empty</span><br><span class="line"><span class="keyword">else</span> empty</span><br><span class="line"><span class="comment">// 栈顶</span></span><br><span class="line">stk[tt];</span><br></pre></td></tr></table></figure>
 
@@ -267,19 +267,19 @@
 
 <h3 id="单调栈和单调队列"><a href="#单调栈和单调队列" class="headerlink" title="单调栈和单调队列"></a>单调栈和单调队列</h3><h4 id="单调栈题型："><a href="#单调栈题型：" class="headerlink" title="单调栈题型："></a>单调栈题型：</h4><ul>
 <li>单调栈：给出一个序列，求序列中每个数的左边，离他最近的数，且小于他的数（或大于） </li>
-<li><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182153597.png" alt="image-20240530182153597"></li>
+<li><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182153597.png" alt="image-20240530182153597"></li>
 </ul>
 <p>分析方法：1.先想暴力解法 2.找性质</p>
 <p>1.暴力做法</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182631142.png" alt="image-20240530182631142"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530182631142.png" alt="image-20240530182631142"></p>
 <p>2.优化做法</p>
 <p>用栈保存i左边的数，是否有数永远不会被输出？这个栈会被优化为一个严格递增的栈</p>
 <h4 id="单调栈代码"><a href="#单调栈代码" class="headerlink" title="单调栈代码"></a>单调栈代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> stk[N],tt;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 读入优化</span></span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="comment">// scanf优化</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;input %d: %d\n&quot;</span>,i+<span class="number">1</span>,x);</span><br><span class="line">        <span class="keyword">while</span>(tt &amp;&amp; stk[tt]&gt;=x)&#123;</span><br><span class="line">        	<span class="built_in">printf</span>(<span class="string">&quot;now stk[tt] : %d\n&quot;</span>,stk[tt]);</span><br><span class="line">			tt--;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="keyword">if</span>(tt) <span class="built_in">printf</span>(<span class="string">&quot;ans=%d \n&quot;</span>,stk[tt]);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;ans=-1 \n&quot;</span>);</span><br><span class="line">        stk[++tt]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 样例</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">3</span> <span class="number">4</span> <span class="number">2</span> <span class="number">7</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="自测-3"><a href="#自测-3" class="headerlink" title="自测"></a>自测</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> stk[N],tt;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="keyword">while</span>(tt &amp;&amp; stk[tt]&gt;=x) tt--;</span><br><span class="line">        <span class="keyword">if</span>(tt) <span class="built_in">printf</span>(<span class="string">&quot;ans=%d\n&quot;</span>,stk[tt]);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;ans=-1\n&quot;</span>);</span><br><span class="line">        stk[++tt]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="单调队列题型："><a href="#单调队列题型：" class="headerlink" title="单调队列题型："></a>单调队列题型：</h4><p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202914900.png" alt="image-20240530202914900"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202942483.png" alt="image-20240530202942483"></p>
+<h4 id="单调队列题型："><a href="#单调队列题型：" class="headerlink" title="单调队列题型："></a>单调队列题型：</h4><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202914900.png" alt="image-20240530202914900"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530202942483.png" alt="image-20240530202942483"></p>
 <p>分析：用队列维护窗口，从空开始移动。1.先想朴素（暴力）做法 2.删去没有用的元素 3.找极值取端点，找某个值用二分</p>
 <h4 id="单调队列代码："><a href="#单调队列代码：" class="headerlink" title="单调队列代码："></a>单调队列代码：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N],q[N];</span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">    <span class="comment">// 求每个窗口的最小值</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    <span class="type">int</span> hh=<span class="number">0</span>,tt=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="comment">// 判断队头是否已经滑出窗口</span></span><br><span class="line">        <span class="keyword">if</span>(hh&lt;=tt &amp;&amp; i-k+<span class="number">1</span>&gt;q[hh]) hh++;</span><br><span class="line">        <span class="keyword">while</span>(hh&lt;=tt &amp;&amp; a[q[tt]]&gt;=a[i]) tt--;</span><br><span class="line">        q[++tt]=i;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=k<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[q[hh]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 求每个窗口的最大值</span></span><br><span class="line">    hh=<span class="number">0</span>,tt=<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="comment">// 判断队头是否已经滑出窗口</span></span><br><span class="line">        <span class="keyword">if</span>(hh&lt;=tt &amp;&amp; i-k+<span class="number">1</span>&gt;q[hh]) hh++;</span><br><span class="line">        <span class="keyword">while</span>(hh&lt;=tt &amp;&amp; a[q[tt]]&lt;=a[i]) tt--;</span><br><span class="line">        q[++tt] = i;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=k<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[q[hh]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 样例</span></span><br><span class="line"><span class="number">8</span> <span class="number">3</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">-1</span> <span class="number">-3</span> <span class="number">5</span> <span class="number">3</span> <span class="number">6</span> <span class="number">7</span></span><br></pre></td></tr></table></figure>
 
@@ -291,8 +291,8 @@
 <p>1.朴素、暴力算法怎么做</p>
 <p>2.如何去优化</p>
 <p>KMP朴素做法</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530211949579.png" alt="image-20240530211949579"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530230701606.png" alt="image-20240530230701606"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530211949579.png" alt="image-20240530211949579"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%80.assets/image-20240530230701606.png" alt="image-20240530230701606"></p>
 <h3 id="KMP代码"><a href="#KMP代码" class="headerlink" title="KMP代码"></a>KMP代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e4</span>+<span class="number">10</span>,M=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">char</span> p[N],s[M];</span><br><span class="line"><span class="type">int</span> ne[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;p+<span class="number">1</span>&gt;&gt;m&gt;&gt;s+<span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 求next的过程</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>,j=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j &amp;&amp; p[i] != p[j+<span class="number">1</span>]) j=ne[j];</span><br><span class="line">        <span class="keyword">if</span>(p[i] == p[j+<span class="number">1</span>]) j++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// kmp匹配过程</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j &amp;&amp; s[i] != p[j+<span class="number">1</span>]) j=ne[j];</span><br><span class="line">        <span class="keyword">if</span>(s[i] == p[j+<span class="number">1</span>]) j++;</span><br><span class="line">        <span class="keyword">if</span>(j==n)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i-n);</span><br><span class="line">            j=ne[j];<span class="comment">//</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 样例</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">aba</span><br><span class="line"><span class="number">5</span></span><br><span class="line">ababa</span><br></pre></td></tr></table></figure>
 
 
@@ -309,7 +309,7 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/07/%E5%AE%9E%E9%AA%8C%E5%8D%81/"
+      href="/2024/06/07/%E5%AE%9E%E9%AA%8C%E5%8D%81/"
       title="实验十"
      >
     <i class="fa-solid fa-angle-left"></i>
@@ -321,7 +321,7 @@
   </a>
   <a class="article-nav-btn right "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/"
+      href="/2024/06/05/%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E5%92%8C%E8%8C%83%E5%BC%8F%E5%A4%8D%E4%B9%A0/"
       title="函数依赖和范式复习"
      >
 
@@ -377,6 +377,6 @@
 </script>
 
   </div>
-  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+  <script src="/js/light-dark-switch.js"></script>
 </body>
 </html>

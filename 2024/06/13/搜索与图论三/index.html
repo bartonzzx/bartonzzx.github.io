@@ -5,8 +5,8 @@
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
-<script src="/bartonzzx/bartonzzx.github.io/js/color.global.min.js" ></script>
-<script src="/bartonzzx/bartonzzx.github.io/js/load-settings.js" ></script>
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
 <head>
   <meta charset="utf-8">
   
@@ -17,51 +17,51 @@
   <title>搜索与图论三 | 张志雄的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="/bartonzzx/bartonzzx.github.io/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <meta name="description" content="搜索与图论三最小生成树都是无向图 Prim算法朴素PrimO(n^2) 稠密图    代码   1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include &lt;cstring&gt;#include &lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搜索与图论三">
-<meta property="og:url" content="https://github.com/bartonzzx/bartonzzx.github.io/2024/06/13/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89/index.html">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/13/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89/index.html">
 <meta property="og:site_name" content="张志雄的博客">
 <meta property="og:description" content="搜索与图论三最小生成树都是无向图 Prim算法朴素PrimO(n^2) 稠密图    代码   1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include &lt;cstring&gt;#include &lt;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204034658.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204043776.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205150229.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205947030.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212442076.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212740365.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212753371.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213246574.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213155063.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215416499.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215501176.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215510892.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215731458.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215917472.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000143665.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000529867.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000617120.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000457921.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000711648.png">
-<meta property="og:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000925977.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204034658.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204043776.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205150229.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205947030.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212442076.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212740365.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212753371.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213246574.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213155063.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215416499.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215501176.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215510892.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215731458.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215917472.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000143665.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000529867.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000617120.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000457921.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000711648.png">
+<meta property="og:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000925977.png">
 <meta property="article:published_time" content="2024-06-12T16:17:45.000Z">
 <meta property="article:modified_time" content="2024-06-15T03:44:35.666Z">
 <meta property="article:author" content="张志雄">
 <meta property="article:tag" content="算法课程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png">
+<meta name="twitter:image" content="https://bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png">
   
-    <link rel="alternate" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="张志雄的博客" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/bartonzzx/bartonzzx.github.io/avatar.png">
+    <link rel="alternate" href="/atom.xml" title="张志雄的博客" type="application/atom+xml">
   
   
-<link rel="stylesheet" href="/bartonzzx/bartonzzx.github.io/css/style.css">
+    <link rel="shortcut icon" href="/avatar.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -72,7 +72,7 @@
   
     
 <div id="banner" class="">
-  <img src="/bartonzzx/bartonzzx.github.io/bg.png" itemprop="image">
+  <img src="/bg.png" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
@@ -81,7 +81,7 @@
     <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
-    <a href="/bartonzzx/bartonzzx.github.io/">
+    <a href="/">
       <!-- <div id="vivia-logo">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -93,11 +93,11 @@
   </nav>
   <nav id="main-nav">
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="main-nav-link" href="/">主页</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="main-nav-link" href="/archives">博客列表</a>
     
-      <a class="main-nav-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="main-nav-link" href="/intro">简介</a>
     
   </nav>
   <nav id="sub-nav">
@@ -106,7 +106,7 @@
       <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
     </a>
     
-      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
       </a>
     
@@ -118,14 +118,14 @@
 <div id="nav-dropdown" class="hidden">
   <div id="dropdown-link-list">
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/">主页</a>
+      <a class="nav-dropdown-link" href="/">主页</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/archives">博客列表</a>
+      <a class="nav-dropdown-link" href="/archives">博客列表</a>
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/intro">简介</a>
+      <a class="nav-dropdown-link" href="/intro">简介</a>
     
     
-      <a class="nav-dropdown-link" href="/bartonzzx/bartonzzx.github.io/atom.xml" title="RSS 订阅">RSS</a>
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
      
     </div>
 </div>
@@ -144,7 +144,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=/bartonzzx/bartonzzx.github.io/avatar.png></image>
+        <image src=/avatar.png></image>
       
       <div class="img-dim"></div>
     </div>
@@ -158,7 +158,7 @@
         
           <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
         
-          <a class="link-btn" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
          
       </div>  
     </div>
@@ -175,7 +175,7 @@
     <div class="widget">
       <h3 class="widget-title">分类</h3>
       <div class="category-box">
-            <a class="category-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">
+            <a class="category-link" href="/categories/%E7%AC%94%E8%AE%B0/">
                 笔记
                 <div class="category-count">45</div>
             </a>
@@ -189,7 +189,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">标签</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
     </div>
   </div>
 
@@ -228,7 +228,7 @@
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
   
-  <a class="meta-cate-link" href="/bartonzzx/bartonzzx.github.io/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  <a class="meta-cate-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
    
 </div>
   
@@ -238,30 +238,30 @@
           </div>
         </div>
         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/bartonzzx/bartonzzx.github.io/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li></ul>
 
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <h1 id="搜索与图论三"><a href="#搜索与图论三" class="headerlink" title="搜索与图论三"></a>搜索与图论三</h1><h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>都是无向图</p>
 <h3 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h3><h4 id="朴素Prim"><a href="#朴素Prim" class="headerlink" title="朴素Prim"></a>朴素Prim</h4><p>O(n^2) 稠密图</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png" alt="image-20240612204114434"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204034658.png" alt="image-20240612204034658"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204043776.png" alt="image-20240612204043776"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204114434.png" alt="image-20240612204114434"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204034658.png" alt="image-20240612204034658"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612204043776.png" alt="image-20240612204043776"></p>
 <p>代码</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205150229.png" alt="image-20240612205150229"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205947030.png" alt="image-20240612205947030"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205150229.png" alt="image-20240612205150229"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612205947030.png" alt="image-20240612205947030"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">510</span>,INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="comment">// 邻接矩阵存图</span></span><br><span class="line"><span class="type">int</span> g[N][N];</span><br><span class="line"><span class="type">int</span> dist[N];</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">prim</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dist));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 最小生成树中 边的权值之和</span></span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> t=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="comment">// 在集合外 且 一个点都未找到或t的距离大于h的距离 </span></span><br><span class="line">            <span class="keyword">if</span>(!st[j] &amp;&amp; (t==<span class="number">-1</span> || dist[t] &gt; dist[j]))</span><br><span class="line">                t=j;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果不是第一个点 且 到t距离为正无穷</span></span><br><span class="line">        <span class="keyword">if</span>(i &amp;&amp; dist[t]==INF) <span class="keyword">return</span> INF;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 注意：先把边加入结果 在用t更新其他点</span></span><br><span class="line">        <span class="comment">// 只要不是第一条边 就把边加入结果</span></span><br><span class="line">        <span class="keyword">if</span>(i) res+=dist[t];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 用t更新到其他点的距离</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++) dist[j]=<span class="built_in">min</span>(dist[j],g[t][j]);</span><br><span class="line">        </span><br><span class="line">        st[t]=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="built_in">memset</span>(g,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(g));</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> a,b,c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        <span class="comment">// 对于重边 保留距离最短的一条边即可</span></span><br><span class="line">        g[a][b]=g[b][a]=<span class="built_in">min</span>(g[a][b],c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> t=<span class="built_in">prim</span>();</span><br><span class="line">    <span class="keyword">if</span>(t==INF) <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,t);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">4 5</span></span><br><span class="line"><span class="comment">1 2 1</span></span><br><span class="line"><span class="comment">1 3 2</span></span><br><span class="line"><span class="comment">1 4 3</span></span><br><span class="line"><span class="comment">2 3 2</span></span><br><span class="line"><span class="comment">3 4 4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h4 id="堆优化Prim"><a href="#堆优化Prim" class="headerlink" title="堆优化Prim"></a>堆优化Prim</h4><p>O(mlogn) 稀疏图</p>
 <h3 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h3><p>O(mlogm) 稀疏图</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212442076.png" alt="image-20240612212442076"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212740365.png" alt="image-20240612212740365"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212753371.png" alt="image-20240612212753371"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213246574.png" alt="image-20240612213246574"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213155063.png" alt="image-20240612213155063"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212442076.png" alt="image-20240612212442076"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212740365.png" alt="image-20240612212740365"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612212753371.png" alt="image-20240612212753371"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213246574.png" alt="image-20240612213246574"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612213155063.png" alt="image-20240612213155063"></p>
 <p>代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">200010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> p[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> a,b,w;</span><br><span class="line">    <span class="comment">// 重载小于号 用权值排序</span></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt; (<span class="type">const</span> Edge &amp;W)<span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w&lt;W.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;edges[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x]!=x) p[x]=<span class="built_in">find</span>(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> a,b,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;w);</span><br><span class="line">        edges[i]=&#123;a,b,w&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">sort</span>(edges,edges+m);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) p[i]=i;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// res存储最小生成树中所有边的权值之和 cnt存储当前加了多少边</span></span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> a=edges[i].a,b=edges[i].b,w=edges[i].w;</span><br><span class="line">        a=<span class="built_in">find</span>(a),b=<span class="built_in">find</span>(b);</span><br><span class="line">        <span class="keyword">if</span>(a!=b)&#123;</span><br><span class="line">            p[a]=b;</span><br><span class="line">            res+=w;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cnt&lt;n<span class="number">-1</span>) <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">4 5</span></span><br><span class="line"><span class="comment">1 2 1</span></span><br><span class="line"><span class="comment">1 3 2</span></span><br><span class="line"><span class="comment">1 4 3</span></span><br><span class="line"><span class="comment">2 3 2</span></span><br><span class="line"><span class="comment">3 4 4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
@@ -272,23 +272,23 @@
 <li>一个图是二分图 当且仅当 图中不含奇数环(环的边数为奇数)</li>
 <li>由于图中不含奇数环，所以染色过程中一定没有矛盾</li>
 </ul>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215416499.png" alt="image-20240612215416499"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215501176.png" alt="image-20240612215501176"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215510892.png" alt="image-20240612215510892"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215731458.png" alt="image-20240612215731458"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215917472.png" alt="image-20240612215917472"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215416499.png" alt="image-20240612215416499"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215501176.png" alt="image-20240612215501176"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215510892.png" alt="image-20240612215510892"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215731458.png" alt="image-20240612215731458"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240612215917472.png" alt="image-20240612215917472"></p>
 <p>代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 边数比给定的多一倍</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>,M = <span class="number">20010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用邻接表存储</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> h[N],e[M],ne[M],idx;</span><br><span class="line"><span class="type">int</span> color[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 记录当前点的颜色</span></span><br><span class="line">    color[u]=c;</span><br><span class="line">    <span class="comment">// 遍历和当前点邻接的点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[u];i!=<span class="number">-1</span>;i=ne[i])&#123;</span><br><span class="line">        <span class="type">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(!color[j])&#123;</span><br><span class="line">            <span class="comment">// 试图将j点染为其他颜色</span></span><br><span class="line">            <span class="keyword">if</span>(!<span class="built_in">dfs</span>(j,<span class="number">3</span>-c)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果同色</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(color[j]==c) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="built_in">memset</span>(h,<span class="number">-1</span>,<span class="built_in">sizeof</span>(h));</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="built_in">add</span>(a,b),<span class="built_in">add</span>(b,a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!color[i])&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="built_in">dfs</span>(i,<span class="number">1</span>))&#123;</span><br><span class="line">                flag=<span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">4 4</span></span><br><span class="line"><span class="comment">1 3</span></span><br><span class="line"><span class="comment">1 4</span></span><br><span class="line"><span class="comment">2 3</span></span><br><span class="line"><span class="comment">2 4</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h3><p>最坏O(mn)，实际运行时间一般远小于O(mn)</p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000143665.png" alt="image-20240613000143665"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000529867.png" alt="image-20240613000529867"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000617120.png" alt="image-20240613000617120"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000457921.png" alt="image-20240613000457921"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000711648.png" alt="image-20240613000711648"></p>
-<p><img src="/bartonzzx/bartonzzx.github.io/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000925977.png" alt="image-20240613000925977"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000143665.png" alt="image-20240613000143665"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000529867.png" alt="image-20240613000529867"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000617120.png" alt="image-20240613000617120"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000457921.png" alt="image-20240613000457921"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000711648.png" alt="image-20240613000711648"></p>
+<p><img src="/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%B8%89.assets/image-20240613000925977.png" alt="image-20240613000925977"></p>
 <p>代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">510</span>,M = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n1,n2,m;</span><br><span class="line"><span class="type">int</span> h[N],e[N],ne[M],idx;</span><br><span class="line"><span class="type">int</span> match[N];</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=h[x];i!=<span class="number">-1</span>;i=ne[i])&#123;</span><br><span class="line">        <span class="type">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(!st[j])&#123;</span><br><span class="line">            st[j]=<span class="literal">true</span>;</span><br><span class="line">            <span class="comment">// 如果第二个集合中的点j未被匹配 或者能为j找到另一个关联的第一个集合中的点</span></span><br><span class="line">            <span class="keyword">if</span>(match[j]===<span class="number">0</span> || <span class="built_in">find</span>(match[j]))&#123;</span><br><span class="line">                match[j]=x;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n1,&amp;n2,&amp;m);</span><br><span class="line">    <span class="built_in">memset</span>(h,<span class="number">-1</span>,<span class="built_in">sizeof</span>(h));</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="built_in">add</span>(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(st,<span class="literal">false</span>,<span class="built_in">sizeof</span>(st));</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(i)) res++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -306,7 +306,7 @@
 <nav id="article-nav">
   <a class="article-nav-btn left "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%80/"
+      href="/2024/06/13/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%80/"
       title="动态规划一"
      >
     <i class="fa-solid fa-angle-left"></i>
@@ -318,7 +318,7 @@
   </a>
   <a class="article-nav-btn right "
     
-      href="/bartonzzx/bartonzzx.github.io/2024/06/12/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%BA%8C/"
+      href="/2024/06/12/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA%E4%BA%8C/"
       title="搜索与图论二"
      >
 
@@ -374,6 +374,6 @@
 </script>
 
   </div>
-  <script src="/bartonzzx/bartonzzx.github.io/js/light-dark-switch.js"></script>
+  <script src="/js/light-dark-switch.js"></script>
 </body>
 </html>
