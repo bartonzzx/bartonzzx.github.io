@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="../../../../js/color.global.min.js" ></script>
+<script src="../../../../js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>第四章知识点 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="../../../../css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../../../../css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="第四章调度简介1.什么是处理器的三级调度？处理器的三级调度是指一个作业在运行过程中要遇到的高级调度（作业调度）、中级调度（进程对换）和低级调度（进程调度）。不是所有的操作系统都有三级调度，有些只实现了其中的一级或两级，但是每个操作系统都有进程调度。 2.处理器的三级调度分别在什么情况下发生？高级调度（作业调度）主要在需要从外存调入一个作业到内存中时发生； 中级调度（进程对换）主要在内存紧张需要调出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四章知识点">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/29/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="第四章调度简介1.什么是处理器的三级调度？处理器的三级调度是指一个作业在运行过程中要遇到的高级调度（作业调度）、中级调度（进程对换）和低级调度（进程调度）。不是所有的操作系统都有三级调度，有些只实现了其中的一级或两级，但是每个操作系统都有进程调度。 2.处理器的三级调度分别在什么情况下发生？高级调度（作业调度）主要在需要从外存调入一个作业到内存中时发生； 中级调度（进程对换）主要在内存紧张需要调出">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-29T04:39:11.000Z">
+<meta property="article:modified_time" content="2024-06-29T08:59:07.191Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="../../../../avatar.png">
+  
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="../../../../bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="../../../../index.html">
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="../../../../index.html">主页</a>
+    
+      <a class="main-nav-link" href="../../../../archives">博客列表</a>
+    
+      <a class="main-nav-link" href="../../../../intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="../../../../index.html">主页</a>
+    
+      <a class="nav-dropdown-link" href="../../../../archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="../../../../intro">简介</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=../../../../avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">53</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-第四章知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        第四章知识点
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-29T04:39:11.000Z" itemprop="datePublished">2024-06-29</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="../../../../categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.4k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h1><h2 id="调度简介"><a href="#调度简介" class="headerlink" title="调度简介"></a>调度简介</h2><h3 id="1-什么是处理器的三级调度？"><a href="#1-什么是处理器的三级调度？" class="headerlink" title="1.什么是处理器的三级调度？"></a>1.什么是处理器的三级调度？</h3><p>处理器的三级调度是指一个作业在运行过程中要遇到的高级调度（作业调度）、中级调度（进程对换）和低级调度（进程调度）。不是所有的操作系统都有三级调度，有些只实现了其中的一级或两级，但是每个操作系统都有进程调度。</p>
+<h3 id="2-处理器的三级调度分别在什么情况下发生？"><a href="#2-处理器的三级调度分别在什么情况下发生？" class="headerlink" title="2.处理器的三级调度分别在什么情况下发生？"></a>2.处理器的三级调度分别在什么情况下发生？</h3><p>高级调度（作业调度）主要在需要从外存调入一个作业到内存中时发生；</p>
+<p>中级调度（进程对换）主要在内存紧张需要调出一些进程时，或者内存空闲需要把先前调出的进程调回内存时发生；</p>
+<p>低级调度（进程调度）主要在正在执行的进程放弃CPU或者被其他高优先级的进程抢占CPU时发生。</p>
+<h3 id="3-各级调度分别完成什么工作？"><a href="#3-各级调度分别完成什么工作？" class="headerlink" title="3.各级调度分别完成什么工作？"></a>3.各级调度分别完成什么工作？</h3><p>高级调度的主要工作是决定外存的后备队列中哪个进程被调入到内存中，并给这个作业创建进程，给它分配必要的资源；</p>
+<p>中级调度的主要工作是在内存紧张时把就绪队列中暂时得不到执行的进程换到外存，也负责在内存较空闲时把换到外存的进程调回内存；</p>
+<p>低级调度的主要工作是决定把CPU分配给就绪队列中的哪个进程。</p>
+<h3 id="4-调度原则（性能指标）"><a href="#4-调度原则（性能指标）" class="headerlink" title="4.调度原则（性能指标）"></a>4.调度原则（性能指标）</h3><p>周转时间：作业提交给系统开始，到作业完成为止的这段时间间隔</p>
+<p>平均带权周转时间：周转时间和服务时间的比值</p>
+<p>响应时间：用户提交请求开始直至系统首次产生响应为止的时间间隔（评价分时系统的重要原则）</p>
+<p>截止时间：某任务开始执行的最迟时间 &#x2F; 必须完成的最迟时间（评价实时系统）</p>
+<p>优先权</p>
+<p>吞吐量：单位时间内系统所完成的作业数</p>
+<p>处理机利用率</p>
+<p>公平性</p>
+<h2 id="死锁简介"><a href="#死锁简介" class="headerlink" title="死锁简介"></a>死锁简介</h2><h3 id="1-资源"><a href="#1-资源" class="headerlink" title="1.资源"></a>1.资源</h3><p>计算机系统中的资源分为可剥夺性资源（处理机和内存）和非剥夺性资源（磁带机、打印机）</p>
+<p>可剥夺性资源：某进程在获得这类资源后，可以再被其他进程或系统剥夺的资源</p>
+<p>非剥夺性资源：这类资源在被分配给某进程后，不能再强行收回，只能由进程用完后自行释放</p>
+<h3 id="2-死锁定义"><a href="#2-死锁定义" class="headerlink" title="2.死锁定义"></a>2.死锁定义</h3><p>死锁 (Deadlock)，是指多个进程因竞争资源而造成的一种僵局(Deadly-Embrace)，若无外力作用，这些进程将永远不能再向前推进。</p>
+<h3 id="3-死锁原因"><a href="#3-死锁原因" class="headerlink" title="3.死锁原因"></a>3.死锁原因</h3><p>死锁产生的原因和临界资源的访问及进程的并发执行有关。</p>
+<p>资源竞争：当系统中供多个进程共享的资源如打印机，其数目不足以满足诸进程的需要时，会引起诸多进程对资源的竞争而产生死锁；</p>
+<p>进程推进顺序不当：进程在运行过程中，请求和释放资源的顺序不当，也同样会导致产生进程死锁。 </p>
+<h3 id="4-死锁产生的必要条件"><a href="#4-死锁产生的必要条件" class="headerlink" title="4.死锁产生的必要条件"></a>4.死锁产生的必要条件</h3><p>互斥: 进程对所分配到的资源必须独立使用，即在一段时间内某资源只由一个进程占用，不能共享。如果此时还有其它进程请求该资源，则请求者只能等待，直至占有该资源的进程使用完毕，对资源进行释放。</p>
+<p>请求和保持：进程已经持有了至少一个资源，但又提出了新的资源请求，而该资源又已被其它进程占有，此时请求进程阻塞，但又对已获得的其它资源保持继续持有。</p>
+<p>不可剥夺: 在未使用完之前，不能剥夺进程已获得的资源，只能在使用完时由自己释放。</p>
+<p>循环等待：在发生死锁时，必然存在一个进程和进程之间等待相互资源的环形链。使得链中每个进程的资源需求都得不到满足。</p>
+<h3 id="5-死锁表示和判定"><a href="#5-死锁表示和判定" class="headerlink" title="5.死锁表示和判定"></a>5.死锁表示和判定</h3><p>使用SRAG图表示，死锁的充要条件是当且仅当SRAG是不可完全简化的</p>
+<h2 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h2><p>破坏死锁的条件。</p>
+<p>而互斥条件不能破坏（临界资源本身特性决定其必须互斥访问，无法共享），只能破坏其余三个条件</p>
+<h2 id="死锁检测和恢复"><a href="#死锁检测和恢复" class="headerlink" title="死锁检测和恢复"></a>死锁检测和恢复</h2><h3 id="1-死锁检测方法"><a href="#1-死锁检测方法" class="headerlink" title="1.死锁检测方法"></a>1.死锁检测方法</h3><p>死锁定理和安全性算法</p>
+<h3 id="2-死锁恢复方法"><a href="#2-死锁恢复方法" class="headerlink" title="2.死锁恢复方法"></a>2.死锁恢复方法</h3><p>1.取消所有的死锁进程</p>
+<p>2.让每个死锁进程回退到上述某些安全性检查的时间点之前，并重新启动所有进程。要求在系统中构造回退和重启机制</p>
+<p>3.连续取消死锁进程指导不再存在死锁为止</p>
+<p>4.连续抢占资源指导不再存在死锁为止</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="../%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/"
+      title="第五章知识点"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        第五章知识点
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="../../28/%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/"
+      title="第三章知识点"
+     >
+
+    <p class="title-text">
+      
+        第三章知识点
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="../../../../js/light-dark-switch.js"></script>
+</body>
+</html>

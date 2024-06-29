@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="../../../../js/color.global.min.js" ></script>
+<script src="../../../../js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>第八章知识点 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="../../../../css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../../../../css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="第八章*1.操作系统用户接口中包括哪几种接口？分别适用于哪种情况？用户接口包含四种：命令接口（联机与脱机命令接口）、程序接口、图形化用户接口、网络用户接口 命令接口和图形化用户接口支持用户直接通过终端来使用计算机系统 程序接口提供给用户在编制程序时使用 网络用户接口是面向网络应用的接口 2.命令接口由哪几部分组成？联机命令接口由一组联机命令、终端处理程序和命令解释程序构成 3.命令通常有哪几种类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八章知识点">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/29/%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="第八章*1.操作系统用户接口中包括哪几种接口？分别适用于哪种情况？用户接口包含四种：命令接口（联机与脱机命令接口）、程序接口、图形化用户接口、网络用户接口 命令接口和图形化用户接口支持用户直接通过终端来使用计算机系统 程序接口提供给用户在编制程序时使用 网络用户接口是面向网络应用的接口 2.命令接口由哪几部分组成？联机命令接口由一组联机命令、终端处理程序和命令解释程序构成 3.命令通常有哪几种类型">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-29T08:55:43.000Z">
+<meta property="article:modified_time" content="2024-06-29T08:59:07.186Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="../../../../avatar.png">
+  
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="../../../../bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="../../../../index.html">
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="../../../../index.html">主页</a>
+    
+      <a class="main-nav-link" href="../../../../archives">博客列表</a>
+    
+      <a class="main-nav-link" href="../../../../intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="../../../../index.html">主页</a>
+    
+      <a class="nav-dropdown-link" href="../../../../archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="../../../../intro">简介</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=../../../../avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">53</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-第八章知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        第八章知识点
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-29T08:55:43.000Z" itemprop="datePublished">2024-06-29</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="../../../../categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.4k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="第八章"><a href="#第八章" class="headerlink" title="第八章"></a>第八章</h1><h3 id="1-操作系统用户接口中包括哪几种接口？分别适用于哪种情况？"><a href="#1-操作系统用户接口中包括哪几种接口？分别适用于哪种情况？" class="headerlink" title="*1.操作系统用户接口中包括哪几种接口？分别适用于哪种情况？"></a>*1.操作系统用户接口中包括哪几种接口？分别适用于哪种情况？</h3><p>用户接口包含四种：命令接口（联机与脱机命令接口）、程序接口、图形化用户接口、网络用户接口</p>
+<p>命令接口和图形化用户接口支持用户直接通过终端来使用计算机系统</p>
+<p>程序接口提供给用户在编制程序时使用</p>
+<p>网络用户接口是面向网络应用的接口</p>
+<h3 id="2-命令接口由哪几部分组成？"><a href="#2-命令接口由哪几部分组成？" class="headerlink" title="2.命令接口由哪几部分组成？"></a>2.命令接口由哪几部分组成？</h3><p>联机命令接口由一组联机命令、终端处理程序和命令解释程序构成</p>
+<h3 id="3-命令通常有哪几种类型？每种类型包括哪些主要命令？"><a href="#3-命令通常有哪几种类型？每种类型包括哪些主要命令？" class="headerlink" title="3.命令通常有哪几种类型？每种类型包括哪些主要命令？"></a>3.命令通常有哪几种类型？每种类型包括哪些主要命令？</h3><h3 id="4-命令解释程序的主要功能是什么？"><a href="#4-命令解释程序的主要功能是什么？" class="headerlink" title="4.命令解释程序的主要功能是什么？"></a>4.命令解释程序的主要功能是什么？</h3><h3 id="5-试说明MS-DOS的命令处理程序COMMAND-COM的工作流程"><a href="#5-试说明MS-DOS的命令处理程序COMMAND-COM的工作流程" class="headerlink" title="5.试说明MS-DOS的命令处理程序COMMAND.COM的工作流程"></a>5.试说明MS-DOS的命令处理程序COMMAND.COM的工作流程</h3><h3 id="6-试比较一般的过程调用与系统调用"><a href="#6-试比较一般的过程调用与系统调用" class="headerlink" title="*6.试比较一般的过程调用与系统调用"></a>*6.试比较一般的过程调用与系统调用</h3><p>系统调用本质上是过程调用的一种特殊形式，与一般的过程调用有差别：</p>
+<p>1.运行状态不同</p>
+<p>​	一般过程调用的调用过程和被调用过程均为用户程序，或者均为系统程序，运行在同一系统状态（用户态或系统态）</p>
+<p>​	系统调用的调用过程是用户态下的用户程序，被调用过程是系统态下的系统程序</p>
+<p>2.软中断进入机制</p>
+<p>​	一般的过程调用可直接由调用过程转向被调用过程</p>
+<p>​	而系统调用不允许由调用过程直接转向被调用过程，一般通过软中断机制，先进入操作系统内核，经内核分析后，才能转向相应命令处理程序</p>
+<p>3.返回及重新调度</p>
+<p>​	一般过程调用在被调用结束后，返回调用点继续执行</p>
+<p>​	系统调用被调用完后，要对系统中所有运行进程重新调度。只有当调用进程仍具有最高优先权才返回调用过程继续执行</p>
+<h3 id="7-系统调用有哪几种类型？"><a href="#7-系统调用有哪几种类型？" class="headerlink" title="*7.系统调用有哪几种类型？"></a>*7.系统调用有哪几种类型？</h3><p>1.进程控制</p>
+<p>​	包括进程创建、进程中止、进程等待、获得和设置进程属性等系统调用</p>
+<p>2.进程通信</p>
+<p>​	包括消息队列、共享存储区等通信渠道的建立、使用和删除等系统调用</p>
+<p>3.设备管理</p>
+<p>​	包括设备的申请和释放，设备打开、关闭、读、写、获得和设置设备属性等系统调用</p>
+<p>4.文件管理</p>
+<p>​	包括创建文件、删除文件、打开文件、关闭文件、读文件、写文件、建立目录、移动文件的读 &#x2F; 写指针、改变文件属性等系统调用</p>
+<p>5.系统管理</p>
+<p>​	包括获取和设置日期、时间，获得和设置系统数据等系统调用</p>
+<h3 id="8-如何设置系统调用所需的参数？"><a href="#8-如何设置系统调用所需的参数？" class="headerlink" title="*8.如何设置系统调用所需的参数？"></a>*8.如何设置系统调用所需的参数？</h3><p>通常有三种方式</p>
+<p>1.陷入指令自带方式</p>
+<p>​	在陷入指令中，除了系统调用号外，还自带几个参数。由于指令长度限制，不能携带很多参数</p>
+<p>2.直接将参数送入相应的寄存器中</p>
+<p>​	这是一种最简单的方式，使用MOV指令将参数送入相应的寄存器中。这种方式的主要问题是由于寄存器数量有限，也不能携带很多参数</p>
+<p>3.参数表方式</p>
+<p>​	将参数放入一张参数表，然后把指向该表的指针存放于指定的寄存器中</p>
+<h3 id="9-试说明系统调用的处理步骤"><a href="#9-试说明系统调用的处理步骤" class="headerlink" title="*9.试说明系统调用的处理步骤"></a>*9.试说明系统调用的处理步骤</h3><p>1.设置系统调用号和参数</p>
+<p>​	可以采用上述三种方式之一，当前大多数OS采用参数表方式</p>
+<p>2.执行陷入指令，将处理机状态由用户态转为系统态</p>
+<p>​	先由硬件和内核程序进行系统调用的一般性处理，即保护被中断进程的CPU环境，将处理机状态字PSW、程序计数器PC、系统调用号、用户找栈指针以及通用寄存器内容等压入堆栈。然后将用户定义的参数传送到指定的地方保存起来</p>
+<p>3.取系统调用功能号，查找系统调用子程序的入口地址</p>
+<p>​	根据系统调用功能号查找系统调用入口地址表，找到相应系统调用子程序的入口地址，然后转到该子程序执行</p>
+<p>4.在系统调用处理子程序执行完后，恢复被中断的用户进程的CPU现场或设置新进程的CPU现场，返回被中断进程或新进程，继续执行</p>
+<h3 id="10-GUI由哪几部分组成？这些部分分别具有什么功能？"><a href="#10-GUI由哪几部分组成？这些部分分别具有什么功能？" class="headerlink" title="10.GUI由哪几部分组成？这些部分分别具有什么功能？"></a>10.GUI由哪几部分组成？这些部分分别具有什么功能？</h3>
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="../%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/"
+      title="第七章知识点"
+     >
+
+    <p class="title-text">
+      
+        第七章知识点
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="../../../../js/light-dark-switch.js"></script>
+</body>
+</html>

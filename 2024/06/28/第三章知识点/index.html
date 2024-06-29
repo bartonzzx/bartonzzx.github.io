@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="../../../../js/color.global.min.js" ></script>
+<script src="../../../../js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>第三章知识点 | 张志雄的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="../../../../css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="../../../../css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="第三章1.程序并发执行时为什么会失去封闭性和可再现性？失去封闭性： ​	程序在并发执行时，多个程序共享系统中的各种资源，因此系统资源的状态将由多个程序来改变，致使程序失去了封闭性。 失去可再现性： ​	程序在并发执行时，失去了封闭性，也将导致失去执行的可再现性。 *2.比较进程和程序程序是完成特定任务的一组指令的结合，可以永久保存，具有静态性。 进程是程序在某一数据结构上的一次执行过程，是系统进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三章知识点">
+<meta property="og:url" content="https://bartonzzx.github.io/2024/06/28/%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="张志雄的博客">
+<meta property="og:description" content="第三章1.程序并发执行时为什么会失去封闭性和可再现性？失去封闭性： ​	程序在并发执行时，多个程序共享系统中的各种资源，因此系统资源的状态将由多个程序来改变，致使程序失去了封闭性。 失去可再现性： ​	程序在并发执行时，失去了封闭性，也将导致失去执行的可再现性。 *2.比较进程和程序程序是完成特定任务的一组指令的结合，可以永久保存，具有静态性。 进程是程序在某一数据结构上的一次执行过程，是系统进行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-28T14:08:14.000Z">
+<meta property="article:modified_time" content="2024-06-29T08:59:07.179Z">
+<meta property="article:author" content="张志雄">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="shortcut icon" href="../../../../avatar.png">
+  
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="../../../../bg.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="../../../../index.html">
+      <div>张志雄的博客 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="../../../../index.html">主页</a>
+    
+      <a class="main-nav-link" href="../../../../archives">博客列表</a>
+    
+      <a class="main-nav-link" href="../../../../intro">简介</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="../../../../index.html">主页</a>
+    
+      <a class="nav-dropdown-link" href="../../../../archives">博客列表</a>
+    
+      <a class="nav-dropdown-link" href="../../../../intro">简介</a>
+    
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=../../../../avatar.png></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">张志雄 </div>
+      <div class="dot"></div>
+      <div class="subtitle">路漫漫其修远兮，吾将上下而求索 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://u.wechat.com/MIxX-l5l09MlHweY2yLU_0E" title="Wechat"><i class="fa-brands fa-weixin"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://user.qzone.qq.com/635981480/infocenter" title="QQ"><i class="fa-brands fa-qq"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/bartonzzx" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="categories/%E7%AC%94%E8%AE%B0/">
+                笔记
+                <div class="category-count">53</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E7%AE%97%E6%B3%95%E8%AF%BE%E7%A8%8B/" rel="tag">算法课程</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="../../../../tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-第三章知识点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        第三章知识点
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2024-06-28T14:08:14.000Z" itemprop="datePublished">2024-06-28</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="../../../../categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.2k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h3 id="1-程序并发执行时为什么会失去封闭性和可再现性？"><a href="#1-程序并发执行时为什么会失去封闭性和可再现性？" class="headerlink" title="1.程序并发执行时为什么会失去封闭性和可再现性？"></a>1.程序并发执行时为什么会失去封闭性和可再现性？</h3><p>失去封闭性：</p>
+<p>​	程序在并发执行时，多个程序共享系统中的各种资源，因此系统资源的状态将由多个程序来改变，致使程序失去了封闭性。</p>
+<p>失去可再现性：</p>
+<p>​	程序在并发执行时，失去了封闭性，也将导致失去执行的可再现性。</p>
+<h3 id="2-比较进程和程序"><a href="#2-比较进程和程序" class="headerlink" title="*2.比较进程和程序"></a>*2.比较进程和程序</h3><p>程序是完成特定任务的一组指令的结合，可以永久保存，具有静态性。</p>
+<p>进程是程序在某一数据结构上的一次执行过程，是系统进行资源分配和调度的基本单位，具有动态性。</p>
+<p>一个进程可以包含多个程序，一个程序也可以被多个进程执行。</p>
+<h3 id="3-试说明PCB的作用，为什么说PCB是进程存在的唯一标志？"><a href="#3-试说明PCB的作用，为什么说PCB是进程存在的唯一标志？" class="headerlink" title="*3.试说明PCB的作用，为什么说PCB是进程存在的唯一标志？"></a>*3.试说明PCB的作用，为什么说PCB是进程存在的唯一标志？</h3><p>PCB是操作系统用于记录进程状态和相关信息，控制进程运行的数据结构，是进程的唯一标识符。</p>
+<p>唯一标志原因：</p>
+<p>​	系统是根据PCB对进程进行控制，以及感知到该进程的存在的，所以说PCB是进程存在的唯一标识</p>
+<h3 id="4-五状态转换图"><a href="#4-五状态转换图" class="headerlink" title="*4.五状态转换图"></a>*4.五状态转换图</h3><h3 id="5-试说明进程状态转换的典型原因"><a href="#5-试说明进程状态转换的典型原因" class="headerlink" title="*5.试说明进程状态转换的典型原因"></a>*5.试说明进程状态转换的典型原因</h3><h3 id="6-为什么要引入挂起状态？该状态有哪些性质？"><a href="#6-为什么要引入挂起状态？该状态有哪些性质？" class="headerlink" title="6.为什么要引入挂起状态？该状态有哪些性质？"></a>6.为什么要引入挂起状态？该状态有哪些性质？</h3><p>1.在引入挂起状态之前，进程都驻留在内存中，而内存空间有限，只能容纳个数不多的进程。而且处理机速度比IO快得多，有可能当前内存中没有就绪的进程。为了缓解内存空间有限以及提高处理机的利用率，引入了挂起状态。</p>
+<p>2.性质：进程不被调度执行、处于静止状态、可由就绪、阻塞状态转换而来</p>
+<h3 id="7-在创建-终止一个进程时所要完成的主要工作是什么？"><a href="#7-在创建-终止一个进程时所要完成的主要工作是什么？" class="headerlink" title="*7.在创建 &#x2F; 终止一个进程时所要完成的主要工作是什么？"></a>*7.在创建 &#x2F; 终止一个进程时所要完成的主要工作是什么？</h3><p>创建一个进程：</p>
+<p>1.系统为新建进程申请一个空白的PCB，获得一个唯一的进程标识符</p>
+<p>2.系统为新建进程分配运行所需的资源</p>
+<p>3.PCB初始化</p>
+<p>4.设置链接</p>
+<p>终止一个进程：</p>
+<p>1.根据需要终止进程的进程标识符，从PCB集合中找出对应进程的PCB，读出该进程状态</p>
+<p>2.若被终止进程正在执行状态，则应立即终止进程执行，并设置相应调度信息，用于指示该进程终止后应重新进行调度</p>
+<p>3.将被终止进程所拥有的所有资源归还给其父进程，或者归还给系统</p>
+<p>4.若被终止进程还拥有子进程，则将其所有子进程一并终止</p>
+<p>5.归还PCB所占据的空间</p>
+<h3 id="8-进程在运行时存在哪两种形式的制约？"><a href="#8-进程在运行时存在哪两种形式的制约？" class="headerlink" title="8.进程在运行时存在哪两种形式的制约？"></a>8.进程在运行时存在哪两种形式的制约？</h3><p>存在资源制约和执行制约</p>
+<p>资源制约：由于进程之间竞争共享资源而引起的，当一个进程在使用某个共享资源时，其他进程必须等待。</p>
+<p>执行制约：由调度算法和优先级引起的，决定了进程的执行顺序。</p>
+<h3 id="9-为什么要在操作系统中引入线程？"><a href="#9-为什么要在操作系统中引入线程？" class="headerlink" title="9.为什么要在操作系统中引入线程？"></a>9.为什么要在操作系统中引入线程？</h3><p>引入线程是为了减少程序在并发执行时所付出的时空开销，使操作系统具有更好的并发性，线程成为调度和分派的基本单位。</p>
+<p>引入进程的目的是使多个程序能并发执行，以提高资源利用率和系统吞吐量</p>
+<h3 id="10-对进程和线程进行比较"><a href="#10-对进程和线程进行比较" class="headerlink" title="*10.对进程和线程进行比较"></a>*10.对进程和线程进行比较</h3><p>1.调度性：线程在OS中是调度和分派的基本单位，进程是资源分配的基本单位</p>
+<p>2.并发性：进程可以并发执行，一个进程的多个线程也可并发执行</p>
+<p>3.拥有资源：进程是资源分配的基本单位，线程只拥有运行时必不可少的资源，本身不拥有系统资源，但可以访问隶属进程的资源</p>
+<p>4.系统开销：创建、撤销和切换进程的开销显著大于线程</p>
+<h3 id="11-顺序执行特征"><a href="#11-顺序执行特征" class="headerlink" title="*11.顺序执行特征"></a>*11.顺序执行特征</h3><p>顺序性、封闭性、可再现性</p>
+<h3 id="12-并行执行特征"><a href="#12-并行执行特征" class="headerlink" title="*12.并行执行特征"></a>*12.并行执行特征</h3><p>间断性（异步性）、失去封闭性、不可再现性</p>
+<h3 id="13-导致进程创建的事件"><a href="#13-导致进程创建的事件" class="headerlink" title="*13.导致进程创建的事件"></a>*13.导致进程创建的事件</h3><p>批处理作业、用户登录、提供服务、进程派生</p>
+<h3 id="14-导致进程终止的事件"><a href="#14-导致进程终止的事件" class="headerlink" title="*14.导致进程终止的事件"></a>*14.导致进程终止的事件</h3><p>正常原因</p>
+<p>​	正常完成</p>
+<p>异常时间发生导致进程意外终止</p>
+<p>​	运行超时、等待超时、内存不足、越界错误、保护错误、算数错误、IO错误、无效指令、特权指令、</p>
+<p>外界对进程干预</p>
+<p>​	操作员或操作系统干涉、父进程请求、父进程终止</p>
+<h3 id="15-引起阻塞的事件"><a href="#15-引起阻塞的事件" class="headerlink" title="*15.引起阻塞的事件"></a>*15.引起阻塞的事件</h3><p>请求系统服务、启动某种操作、新数据尚未到达、无新工作可做</p>
+<h2 id="3-3线程"><a href="#3-3线程" class="headerlink" title="3.3线程"></a>3.3线程</h2><h3 id="16-线程实现方式"><a href="#16-线程实现方式" class="headerlink" title="*16.线程实现方式"></a>*16.线程实现方式</h3><p>用户级线程、内核级线程、组合线程</p>
+<h3 id="17-用户线程和内核线程的关系：线程模型"><a href="#17-用户线程和内核线程的关系：线程模型" class="headerlink" title="*17.用户线程和内核线程的关系：线程模型"></a>*17.用户线程和内核线程的关系：线程模型</h3><p>多对一模型</p>
+<p>​	多个用户级线程映射到一个内核级线程</p>
+<p>一对一模型</p>
+<p>​	每个用户级线程都一一映射到内核级线程</p>
+<p>多对多模型</p>
+<p>​	多个用户级线程映射到多个内核级线程</p>
+<h2 id="3-4互斥和同步"><a href="#3-4互斥和同步" class="headerlink" title="3.4互斥和同步"></a>3.4互斥和同步</h2><h2 id="并发原理"><a href="#并发原理" class="headerlink" title="并发原理"></a>并发原理</h2><h3 id="18-名词解释"><a href="#18-名词解释" class="headerlink" title="*18.名词解释"></a>*18.名词解释</h3><p>临界区：是一段程序代码，进程在此代码中访问共享的资源，当另一个进程已经在该代码中运行时，该进程不能在这段代码中执行</p>
+<p>临界资源：一次仅允许一个进程使用的共享资源</p>
+<p>竞争：多个进程在访问一个共享数据时，结果依赖于它们执行的相对时间</p>
+<p>同步：系统中有一些相互合作、协同合作的进程，它们之间的相互联系称为进程的同步</p>
+<p>互斥：多个进程因争用临界区内的共享资源而互斥地执行</p>
+<p>死锁：两个或两个以上的进程因其中的每个进程都在等待其他进程执行完毕而不能继续执行</p>
+<p>饥饿：指一个可运行的进程虽然能继续执行，但被调度程序无限期地忽视而不能执行的情况</p>
+<h3 id="19-调度原则"><a href="#19-调度原则" class="headerlink" title="*19.调度原则"></a>*19.调度原则</h3><p>空闲让进、忙则等待、有限等待、让权等待</p>
+<h2 id="硬件同步"><a href="#硬件同步" class="headerlink" title="硬件同步"></a>硬件同步</h2><h3 id="1-硬件同步方法"><a href="#1-硬件同步方法" class="headerlink" title="*1.硬件同步方法"></a>*1.硬件同步方法</h3><p>1.关中断</p>
+<p>2.TestAndSet指令</p>
+<p>3.Swap指令</p>
+<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="*1.分类"></a>*1.分类</h3><p>1.整型信号量（P、V？）</p>
+<p>2.记录型信号量（P、V？）</p>
+<p>3.二元信号量</p>
+<h2 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h2><h3 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="*1.名词解释"></a>*1.名词解释</h3><p>管程：管程是由一个或多个过程、一个初始化序列和数据组成的软件模块，是一种程序设计语言结构成分，具有和信号量同等的表达能力</p>
+<h2 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h2><h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p>生产者-消费者问题</p>
+<p>多生产者-消费者问题</p>
+<p>读者-写者问题</p>
+<p>吸烟者问题</p>
+<p>哲学家进餐问题（解决方案）</p>
+<h2 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h2><h3 id="1-两个原语"><a href="#1-两个原语" class="headerlink" title="1.两个原语"></a>1.两个原语</h3><p>send(msgbox,msg)</p>
+<p>receive(msgbox,msg)</p>
+<h3 id="2-名词解释"><a href="#2-名词解释" class="headerlink" title="2.名词解释"></a>2.名词解释</h3><p>信箱：用于进行消息传递的，在不同进程间的共享的数据结构</p>
+<p>消息：消息是一组信息，由消息头和消息体组成</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="../../29/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/"
+      title="第四章知识点"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        第四章知识点
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9F%A5%E8%AF%86%E7%82%B9/"
+      title="第一章知识点"
+     >
+
+    <p class="title-text">
+      
+        第一章知识点
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2024 张志雄<br>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="../../../../js/light-dark-switch.js"></script>
+</body>
+</html>
