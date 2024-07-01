@@ -441,7 +441,7 @@ IO系统控制方式1.有哪几种IO控...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            926 词 
+            1k 词 
           </div>
         </div>
         
@@ -463,10 +463,9 @@ IO系统控制方式1.有哪几种IO控...
 2.保护和恢复现场
 3.中断响应
 3.试述中断处理过程1.保护现场和传递参数
-2.执行相应的中断服务程序
+2.执行相应的中断服务程序（一种类型的中断对应一种中断服务程序）
 3.恢复现场并退出中断
-4.中断和异常有何区别？5.什么是向量中断？什么是中断向量？向量中断：
-​	当中...
+4.中断和异常有何区别？5.什么是向量中断...
             
           </div>
         
@@ -610,7 +609,7 @@ IO系统控制方式1.有哪几种IO控...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            1.4k 词 
+            1.6k 词 
           </div>
         </div>
         
@@ -623,13 +622,11 @@ IO系统控制方式1.有哪几种IO控...
             
               第四章调度简介1.什么是处理器的三级调度？处理器的三级调度是指一个作业在运行过程中要遇到的高级调度（作业调度）、中级调度（进程对换）和低级调度（进程调度）。不是所有的操作系统都有三级调度，有些只实现了其中的一级或两级，但是每个操作系统都有进程调度。
 2.处理器的三级调度分别在什么情况下发生？高级调度（作业调度）主要在需要从外存调入一个作业到内存中时发生；
-中级调度（进程对换）主要在内存紧张需要调出一些进程时，或者内存空闲需要把先前调出的进程调回内存时发生；
-低级调度（进程调度）主要在正在执行的进程放弃CPU或者被其他高优先级的进程抢占CPU时发生。
-3.各级调度分别完成什么工作？高级调度的主要工作是决定外存的后备队列中哪个进程被调入到内存中，并给这个作业创建进程，给它分配必要的资源；
+中级调度（进程对换）主要在内存紧张需要调出一些进程为挂起状态时，或者内存空闲需要把先前调出的进程调回内存时发生；
+低级调度（进程调度）主要在正在执行的进程放弃CPU或者被其他高优先级的进程抢占CPU时发生。（在就绪队列中决定有多少个进程、哪些进程应获得处理机，保存处理机现场信息，由分派程序把处理机分配给相关进程）
+3.各级调度分别完成什么工作？高级调度的主要工作是决定外存的后备队列中哪个作业被调入到内存中，并给这个作业创建进程，给它分配必要的资源；
 中级调度的主要工作是在内存紧张时把就绪队列中暂时得不到执行的进程换到外存，也负责在内存较空闲时把换到外存的进程调回内存；
-低级调度的主要工作是决定把CPU分配给就绪队列中的哪个进程。
-4.调度原则（性能指标）周转时间：作业提交给系统开始，到作业完成为止的这段时间间隔
-平均带权周转时间：周转时间和服务...
+低级调度的主要工作是决定把CPU分配给就绪队列中的哪个进程。...
             
           </div>
         
@@ -783,7 +780,7 @@ IO系统控制方式1.有哪几种IO控...
         
           <div class="truncate-text">
             
-              第一章1.什么是操作系统？设计操作系统的主要目标是什么？操作系统是计算机系统钟最基本、最重要的系统软件，是其他软件的支撑。控制和管理计算机系统的硬件和软件资源，合理地组织计算机工作流程，并为用户使用计算机提供公共和基本的服务。
+              第一章1.什么是操作系统？设计操作系统的主要目标是什么？操作系统是计算机系统中最基本、最重要的系统软件，是其他软件的支撑。控制和管理计算机系统的硬件和软件资源，合理地组织计算机工作流程，并为用户使用计算机提供公共和基本的服务。
 主要目标：
 1.高效性
 ​	操作系统允许以更加高效的方式使用计算机系统资源
@@ -796,8 +793,8 @@ IO系统控制方式1.有哪几种IO控...
 3.微观上的串行性
 ​	在某一时刻，CPU上只有一道程序在执行，多道程序轮流或分时占有CPU
 3.要实现多道批处理需要解决哪些问题？1.处理机的管理和分配问题
-2.内存的分配和保护问题
-3.I&#x2F;O设备的管理和分配问题
+2.I&#x2F;O设备的管理和分配问题
+3.内存的分配和保护问题
 4.文件的组织和管理问题
 4.分时系统和实时系统有何区别？分时系统：宏观上，多个用户同时工作，共享系统资源；微观上，每个用户程序轮流运行一个时间片
 实时系统：系统能及时响应外部事件的请求，在规定时间内完成对该事件的处理
@@ -4202,7 +4199,7 @@ f12345select max(count(id))...
    
 
 
-<article id="post-第二章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-第四章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -4213,7 +4210,7 @@ f12345select max(count(id))...
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="2024/05/24/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第二章作业</a>
+        <a class="p-name article-title" href="2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第四章作业</a>
       </h1>
     
   
@@ -4232,7 +4229,7 @@ f12345select max(count(id))...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            44 词 
+            3.3k 词 
           </div>
         </div>
         
@@ -4243,20 +4240,15 @@ f12345select max(count(id))...
         
           <div class="truncate-text">
             
-              第二章作业2.1
-2.2
-2.6
-2.7
+              第四章作业4-11由于instructor和course表都有dept_name属性，此时进行自然连接得到的会是2017年春季讲授的，属于教师所在院系的课程标题以及教师姓名
 
-2.8
-2.9
-6.2
-6.3
-6.4
-6.10
-6.11
-6.12
+4-2a12select id,decode(sec_id,NULL,&#x27;0&#x27;,sec_id) as sec_idfrom instructor natural left outer join teaches
 
+b1234select id,(select count(*)           from teaches T          where T.id=I.id)from instructor I
+
+c1234select course_id,sec_id,id,decode(name,NULL,&#x27;-&#x27;,name) as namefrom section natural left join teaches natural left join instructorwhere year=2018and semester=&#x27;Spring&#x27;
+
+d1...
             
           </div>
         
@@ -4268,7 +4260,7 @@ f12345select max(count(id))...
      
     <a class="right-panel  non-pic  "
       
-      href="2024/05/24/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
+      href="2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -4363,7 +4355,7 @@ f12345select max(count(id))...
    
 
 
-<article id="post-第四章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article id="post-第二章作业" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
     <div class="article-main">
@@ -4374,7 +4366,7 @@ f12345select max(count(id))...
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第四章作业</a>
+        <a class="p-name article-title" href="2024/05/24/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BD%9C%E4%B8%9A/">第二章作业</a>
       </h1>
     
   
@@ -4393,7 +4385,7 @@ f12345select max(count(id))...
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            3.3k 词 
+            44 词 
           </div>
         </div>
         
@@ -4404,15 +4396,20 @@ f12345select max(count(id))...
         
           <div class="truncate-text">
             
-              第四章作业4-11由于instructor和course表都有dept_name属性，此时进行自然连接得到的会是2017年春季讲授的，属于教师所在院系的课程标题以及教师姓名
+              第二章作业2.1
+2.2
+2.6
+2.7
 
-4-2a12select id,decode(sec_id,NULL,&#x27;0&#x27;,sec_id) as sec_idfrom instructor natural left outer join teaches
+2.8
+2.9
+6.2
+6.3
+6.4
+6.10
+6.11
+6.12
 
-b1234select id,(select count(*)           from teaches T          where T.id=I.id)from instructor I
-
-c1234select course_id,sec_id,id,decode(name,NULL,&#x27;-&#x27;,name) as namefrom section natural left join teaches natural left join instructorwhere year=2018and semester=&#x27;Spring&#x27;
-
-d1...
             
           </div>
         
@@ -4424,7 +4421,7 @@ d1...
      
     <a class="right-panel  non-pic  "
       
-      href="2024/05/24/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
+      href="2024/05/24/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E4%BD%9C%E4%B8%9A/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
